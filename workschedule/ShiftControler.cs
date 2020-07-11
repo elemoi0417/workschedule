@@ -1,0 +1,116 @@
+﻿using System;
+using System.Windows.Forms;
+
+namespace workschedule
+{
+    public partial class ShiftControler : Form
+    {
+        MainSchedule frmMainSchedule;
+
+        public ShiftControler(MainSchedule frmMainSchedule_Parent)
+        {
+            InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+
+            frmMainSchedule = frmMainSchedule_Parent;
+        }
+
+        // 勤務種類ボタンクリックイベント
+        private void btnWorkKind_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            switch (btn.Text)
+            {
+                case "日勤":
+                    frmMainSchedule.ChangeMainGridData(0);
+                    break;
+                case "夜勤":
+                    frmMainSchedule.ChangeMainGridData(1);
+                    break;
+                case "夜明":
+                    frmMainSchedule.ChangeMainGridData(2);
+                    break;
+                case "休":
+                    frmMainSchedule.ChangeMainGridData(3);
+                    break;
+                case "前公":
+                    frmMainSchedule.ChangeMainGridData(4);
+                    break;
+                case "後公":
+                    frmMainSchedule.ChangeMainGridData(5);
+                    break;
+                case "有休":
+                    frmMainSchedule.ChangeMainGridData(6);
+                    break;
+                case "前有":
+                    frmMainSchedule.ChangeMainGridData(7);
+                    break;
+                case "後有":
+                    frmMainSchedule.ChangeMainGridData(8);
+                    break;
+                case "代有":
+                    frmMainSchedule.ChangeMainGridData(9);
+                    break;
+                case "遅出":
+                    frmMainSchedule.ChangeMainGridData(10);
+                    break;
+                case "研修":
+                    frmMainSchedule.ChangeMainGridData(11);
+                    break;
+                case "特休":
+                    frmMainSchedule.ChangeMainGridData(12);
+                    break;
+                case "欠勤":
+                    frmMainSchedule.ChangeMainGridData(13);
+                    break;
+                case "病欠":
+                    frmMainSchedule.ChangeMainGridData(14);
+                    break;
+                case "早出":
+                    frmMainSchedule.ChangeMainGridData(15);
+                    break;
+            }
+
+            if (frmMainSchedule.piDayCount != frmMainSchedule.piGrdMain_CurrentColumn)
+            {
+                frmMainSchedule.piGrdMain_CurrentColumn += 1;
+                frmMainSchedule.grdMain.CurrentCell = frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow];
+            }
+        }
+
+        // セル移動コントロールイベント
+        private void btnMoveCurrentCellControl_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            switch (btn.Text)
+            {
+                case "↑":
+                    if (frmMainSchedule.piGrdMain_CurrentRow != 0)
+                    {
+                        frmMainSchedule.piGrdMain_CurrentRow -= 1;
+                    }
+                    break;
+                case "←":
+                    if (frmMainSchedule.piGrdMain_CurrentColumn != 0)
+                    {
+                        frmMainSchedule.piGrdMain_CurrentColumn -= 1;
+                    }
+                    break;
+                case "→":
+                    if (frmMainSchedule.piDayCount != frmMainSchedule.piGrdMain_CurrentColumn)
+                    {
+                        frmMainSchedule.piGrdMain_CurrentColumn += 1;
+                    }
+                    break;
+                case "↓":
+                    if (frmMainSchedule.piScheduleStaffCount != frmMainSchedule.piGrdMain_CurrentRow)
+                    {
+                        frmMainSchedule.piGrdMain_CurrentRow += 1;
+                    }
+                    break;
+            }
+            frmMainSchedule.grdMain.CurrentCell = frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow];
+
+        }
+    }
+}

@@ -1,0 +1,218 @@
+﻿using System.Data;
+
+namespace workschedule.Functions
+{
+    class DataTableControl
+    {
+        /// <summary>
+        /// テーブル作成(勤務予定ヘッダ)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_ScheduleHeader()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("schedule_no");
+            dataTable.Rows.Add("ward");
+            dataTable.Rows.Add("staff_kind");
+            dataTable.Rows.Add("target_month");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(勤務予定詳細)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_ScheduleDetail()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("schedule_no");
+            dataTable.Rows.Add("schedule_detail_no");
+            dataTable.Rows.Add("staff");
+            dataTable.Rows.Add("target_date");
+            dataTable.Rows.Add("work_kind");
+            dataTable.Rows.Add("request_flag");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(勤務実績ヘッダ)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_ResultHeader()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("result_no");
+            dataTable.Rows.Add("ward");
+            dataTable.Rows.Add("staff_kind");
+            dataTable.Rows.Add("target_month");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(勤務実績詳細)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_ResultDetail()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("result_no");
+            dataTable.Rows.Add("result_detail_no");
+            dataTable.Rows.Add("staff");
+            dataTable.Rows.Add("target_date");
+            dataTable.Rows.Add("work_kind");
+            dataTable.Rows.Add("work_time_day");
+            dataTable.Rows.Add("work_time_night");
+            dataTable.Rows.Add("work_time_night_total");
+            dataTable.Rows.Add("change_flag");
+            dataTable.Rows.Add("other1_work_kind");
+            dataTable.Rows.Add("other1_start_time");
+            dataTable.Rows.Add("other1_end_time");
+            dataTable.Rows.Add("other2_work_kind");
+            dataTable.Rows.Add("other2_start_time");
+            dataTable.Rows.Add("other2_end_time");
+            dataTable.Rows.Add("other3_work_kind");
+            dataTable.Rows.Add("other3_start_time");
+            dataTable.Rows.Add("other3_end_time");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(職員マスタ)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_Staff()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("id");
+            dataTable.Rows.Add("name");
+            dataTable.Rows.Add("ward");
+            dataTable.Rows.Add("sex");
+            dataTable.Rows.Add("staff_kind");
+            dataTable.Rows.Add("staff_kind_sub");
+            dataTable.Rows.Add("staff_position");
+            dataTable.Rows.Add("seq");
+            dataTable.Rows.Add("using_flag");
+            dataTable.Rows.Add("created_date");
+            dataTable.Rows.Add("updated_date");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(予定職員一覧)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_ScheduleStaff()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("ward");
+            dataTable.Rows.Add("target_month");
+            dataTable.Rows.Add("staff_kind");
+            dataTable.Rows.Add("staff_id");
+            dataTable.Rows.Add("seq");
+            dataTable.Rows.Add("office_flag");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(希望シフト)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_RequestShift()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("staff");
+            dataTable.Rows.Add("ward");
+            dataTable.Rows.Add("target_date");
+            dataTable.Rows.Add("staff_kind");
+            dataTable.Rows.Add("work_kind");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(常日勤データ)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_StaffDayOnly()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("staff");
+            dataTable.Rows.Add("staff_kind");
+            dataTable.Rows.Add("ward");
+            dataTable.Rows.Add("target_day_start");
+            dataTable.Rows.Add("target_day_end");
+            dataTable.Rows.Add("holiday_flag");
+            dataTable.Rows.Add("office_flag");
+            dataTable.Rows.Add("staff_level");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(曜日別制限値設定)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_CountLimitDay()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("ward");
+            dataTable.Rows.Add("staff_kind");
+            dataTable.Rows.Add("day_of_week");
+            dataTable.Rows.Add("day_min");
+            dataTable.Rows.Add("night_max");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(様式9データ)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_WardYoushiki9()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("ward");
+            dataTable.Rows.Add("target_month");
+            dataTable.Rows.Add("kubun");
+            dataTable.Rows.Add("nurse_count");
+            dataTable.Rows.Add("care_count");
+            dataTable.Rows.Add("ward_count");
+            dataTable.Rows.Add("bed_count");
+            dataTable.Rows.Add("average_day");
+            dataTable.Rows.Add("nurse_percentage1");
+            dataTable.Rows.Add("nurse_percentage2");
+            dataTable.Rows.Add("average_year");
+
+            return dataTable;
+        }
+
+        /// <summary>
+        /// テーブル作成(救急指定日データ)
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetTable_EmergencyDate()
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Rows.Add("target_date");
+
+            return dataTable;
+        }
+    }
+}
