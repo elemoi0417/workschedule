@@ -576,7 +576,7 @@ namespace workschedule
                 case 1: // 希望シフト
                         // データセルのみ対象とする
                     if (e.ColumnIndex > 0)
-                        e.ContextMenuStrip = ctmsMain_Request;
+                        e.ContextMenuStrip = ctmsMain_Request;                        
                     else
                         return;
                     break;
@@ -792,10 +792,30 @@ namespace workschedule
             switch(piDataKind)
             {
                 case 1:
-                    clsMainScheduleRequestControl.ChangeMainGridData(iWorkKindID);
+                    // Mod Start WataruT 2020.07.13 複数選択箇所を一括変更可能とする
+                    //clsMainScheduleRequestControl.ChangeMainGridData(iWorkKindID);
+                    if (grdMain.SelectedCells.Count > 1)
+                    {
+                        clsMainScheduleRequestControl.ChangeMainGridMultiData(iWorkKindID);
+                    }
+                    else
+                    {
+                        clsMainScheduleRequestControl.ChangeMainGridData(iWorkKindID);
+                    }
+                    // Mod End   WataruT 2020.07.13 複数選択箇所を一括変更可能とする
                     break;
                 case 2:
-                    clsMainScheduleScheduleControl.ChangeMainGridData(iWorkKindID);
+                    // Mod Start WataruT 2020.07.13 複数選択箇所を一括変更可能とする
+                    //clsMainScheduleScheduleControl.ChangeMainGridData(iWorkKindID);
+                    if (grdMain.SelectedCells.Count > 1)
+                    {
+                        clsMainScheduleScheduleControl.ChangeMainGridMultiData(iWorkKindID);
+                    }
+                    else
+                    {
+                        clsMainScheduleScheduleControl.ChangeMainGridData(iWorkKindID);
+                    }
+                    // Mod End   WataruT 2020.07.13 複数選択箇所を一括変更可能とする
                     break;
             }
         }

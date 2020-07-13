@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NPOI.HSSF.Record.Chart;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -230,8 +231,14 @@ namespace workschedule.MainScheduleControl
             }
 
             // 先頭列のみ固定とする
-            frmMainSchedule.grdMain.Rows[0].Frozen = true;
-
+            // MOD START WataruT 2020.07.13 対象年月と対象病棟切り替え時、エラーが発生する
+            //frmMainSchedule.grdMain.Rows[0].Frozen = true;
+            if (frmMainSchedule.grdMain.Rows.Count > 0)
+            {
+                frmMainSchedule.grdMain.Rows[0].Frozen = true;
+            }
+            // MOD END   WataruT 2020.07.13 対象年月と対象病棟切り替え時、エラーが発生する
+            
             // 表示していない職種の列合計値を取得
             SetColumnTotalOtherStaffKindCount();
 
@@ -1879,6 +1886,77 @@ namespace workschedule.MainScheduleControl
                 frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Value.ToString());
             frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(
                 clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", frmMainSchedule.piGrdMain_CurrentColumn), frmMainSchedule.astrHoliday));
+
+            // 行・列の合計グリッドを再描画
+            SetRowTotal();
+            SetColumnTotal();
+
+            // 列・行の合計グリッドの表示位置をセット
+            frmMainSchedule.grdRowTotal.FirstDisplayedScrollingRowIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingRowIndex;
+            if (frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex == 0)
+                frmMainSchedule.grdColumnTotal.FirstDisplayedScrollingColumnIndex = 1;
+            else
+                frmMainSchedule.grdColumnTotal.FirstDisplayedScrollingColumnIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex;
+        }
+
+        /// <summary>
+        /// メイングリッドデータの一括変更
+        /// Add WataruT 2020.07.13 複数選択箇所を一括変更可能とする
+        /// </summary>
+        public void ChangeMainGridMultiData(int iWorkKindID)
+        {
+            int iCurrentRow;
+            int iCurrentColumn;
+
+            // 希望シフト判定
+            for (int iTargetCell = 0; iTargetCell < frmMainSchedule.grdMain.SelectedCells.Count; iTargetCell++)
+            {
+                if (clsCommonControl.GetRequestFlag(frmMainSchedule.grdMain.SelectedCells[iTargetCell].Style.BackColor) == "1")
+                {
+                    if (MessageBox.Show("変更箇所が希望シフトとなりますが、よろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+
+            // 選択しているセル数だけ処理
+            for (int iTargetCell = 0; iTargetCell < frmMainSchedule.grdMain.SelectedCells.Count; iTargetCell++)
+            {
+                // 氏名列は対象外
+                if (frmMainSchedule.grdMain.SelectedCells[iTargetCell].ColumnIndex > 0)
+                {
+                    //選択したセルの行・列を取得
+                    iCurrentRow = frmMainSchedule.grdMain.SelectedCells[iTargetCell].RowIndex;
+                    iCurrentColumn = frmMainSchedule.grdMain.SelectedCells[iTargetCell].ColumnIndex;
+
+                    // 共通変数側の値をリセット
+                    for (int iWorkKind = 0; iWorkKind < frmMainSchedule.astrWorkKind.GetLength(0); iWorkKind++)
+                    {
+                        if (frmMainSchedule.aiData[iCurrentRow, iCurrentColumn - 1, iWorkKind] == 1)
+                        {
+                            frmMainSchedule.aiData[iCurrentRow, iCurrentColumn - 1, iWorkKind] = 0;
+                            CheckWorkKindForRowTotalData(iCurrentRow, iWorkKind, -1);
+                            CheckWorkKindForColumnTotalData(iCurrentColumn - 1, iWorkKind, -1, frmMainSchedule.astrScheduleStaff[iCurrentRow, 0]);
+                        }
+                    }
+                    // 共通変数側の値を設定
+                    frmMainSchedule.aiData[iCurrentRow, iCurrentColumn - 1, iWorkKindID] = 1;
+                    CheckWorkKindForRowTotalData(iCurrentRow, iWorkKindID, 1);
+                    CheckWorkKindForColumnTotalData(iCurrentColumn - 1, iWorkKindID, 1, frmMainSchedule.astrScheduleStaff[iCurrentRow, 0]);
+
+                    // メイングリッドに値、色設定をセット
+                    frmMainSchedule.grdMain[iCurrentColumn, iCurrentRow].Value = frmMainSchedule.astrWorkKind[iWorkKindID, 1];
+                    frmMainSchedule.grdMain[iCurrentColumn, iCurrentRow].Style.ForeColor = clsCommonControl.GetWorkKindForeColor(
+                        frmMainSchedule.grdMain[iCurrentColumn, iCurrentRow].Value.ToString());
+                    frmMainSchedule.grdMain[iCurrentColumn, iCurrentRow].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(
+                        clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iCurrentColumn), frmMainSchedule.astrHoliday));
+                }
+            }
 
             // 行・列の合計グリッドを再描画
             SetRowTotal();
