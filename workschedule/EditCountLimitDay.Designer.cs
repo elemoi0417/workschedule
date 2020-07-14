@@ -169,7 +169,7 @@
             // txtCareMaxNightHol
             // 
             this.txtCareMaxNightHol.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMaxNightHol.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMaxNightHol.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMaxNightHol.Location = new System.Drawing.Point(537, 298);
             this.txtCareMaxNightHol.Name = "txtCareMaxNightHol";
             this.txtCareMaxNightHol.Size = new System.Drawing.Size(78, 27);
@@ -179,7 +179,7 @@
             // txtCareMinDayHol
             // 
             this.txtCareMinDayHol.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMinDayHol.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMinDayHol.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMinDayHol.Location = new System.Drawing.Point(434, 298);
             this.txtCareMinDayHol.Name = "txtCareMinDayHol";
             this.txtCareMinDayHol.Size = new System.Drawing.Size(78, 27);
@@ -189,7 +189,7 @@
             // txtCareMaxNightSat
             // 
             this.txtCareMaxNightSat.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMaxNightSat.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMaxNightSat.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMaxNightSat.Location = new System.Drawing.Point(537, 265);
             this.txtCareMaxNightSat.Name = "txtCareMaxNightSat";
             this.txtCareMaxNightSat.Size = new System.Drawing.Size(78, 27);
@@ -199,7 +199,7 @@
             // txtCareMinDaySat
             // 
             this.txtCareMinDaySat.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMinDaySat.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMinDaySat.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMinDaySat.Location = new System.Drawing.Point(434, 265);
             this.txtCareMinDaySat.Name = "txtCareMinDaySat";
             this.txtCareMinDaySat.Size = new System.Drawing.Size(78, 27);
@@ -209,7 +209,7 @@
             // txtCareMaxNightFri
             // 
             this.txtCareMaxNightFri.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMaxNightFri.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMaxNightFri.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMaxNightFri.Location = new System.Drawing.Point(537, 232);
             this.txtCareMaxNightFri.Name = "txtCareMaxNightFri";
             this.txtCareMaxNightFri.Size = new System.Drawing.Size(78, 27);
@@ -219,7 +219,7 @@
             // txtCareMaxNightThu
             // 
             this.txtCareMaxNightThu.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMaxNightThu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMaxNightThu.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMaxNightThu.Location = new System.Drawing.Point(537, 199);
             this.txtCareMaxNightThu.Name = "txtCareMaxNightThu";
             this.txtCareMaxNightThu.Size = new System.Drawing.Size(78, 27);
@@ -229,7 +229,7 @@
             // txtCareMinDayFri
             // 
             this.txtCareMinDayFri.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMinDayFri.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMinDayFri.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMinDayFri.Location = new System.Drawing.Point(434, 232);
             this.txtCareMinDayFri.Name = "txtCareMinDayFri";
             this.txtCareMinDayFri.Size = new System.Drawing.Size(78, 27);
@@ -239,7 +239,7 @@
             // txtCareMinDayThu
             // 
             this.txtCareMinDayThu.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMinDayThu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMinDayThu.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMinDayThu.Location = new System.Drawing.Point(434, 199);
             this.txtCareMinDayThu.Name = "txtCareMinDayThu";
             this.txtCareMinDayThu.Size = new System.Drawing.Size(78, 27);
@@ -249,7 +249,7 @@
             // txtCareMaxNightWed
             // 
             this.txtCareMaxNightWed.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMaxNightWed.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMaxNightWed.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMaxNightWed.Location = new System.Drawing.Point(537, 166);
             this.txtCareMaxNightWed.Name = "txtCareMaxNightWed";
             this.txtCareMaxNightWed.Size = new System.Drawing.Size(78, 27);
@@ -259,7 +259,7 @@
             // txtCareMinDayWed
             // 
             this.txtCareMinDayWed.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMinDayWed.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMinDayWed.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMinDayWed.Location = new System.Drawing.Point(434, 166);
             this.txtCareMinDayWed.Name = "txtCareMinDayWed";
             this.txtCareMinDayWed.Size = new System.Drawing.Size(78, 27);
@@ -269,7 +269,7 @@
             // txtCareMaxNightTue
             // 
             this.txtCareMaxNightTue.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMaxNightTue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMaxNightTue.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMaxNightTue.Location = new System.Drawing.Point(537, 133);
             this.txtCareMaxNightTue.Name = "txtCareMaxNightTue";
             this.txtCareMaxNightTue.Size = new System.Drawing.Size(78, 27);
@@ -279,7 +279,7 @@
             // txtCareMinDayTue
             // 
             this.txtCareMinDayTue.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMinDayTue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMinDayTue.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMinDayTue.Location = new System.Drawing.Point(434, 133);
             this.txtCareMinDayTue.Name = "txtCareMinDayTue";
             this.txtCareMinDayTue.Size = new System.Drawing.Size(78, 27);
@@ -289,7 +289,7 @@
             // txtCareMaxNightMon
             // 
             this.txtCareMaxNightMon.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMaxNightMon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMaxNightMon.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMaxNightMon.Location = new System.Drawing.Point(537, 100);
             this.txtCareMaxNightMon.Name = "txtCareMaxNightMon";
             this.txtCareMaxNightMon.Size = new System.Drawing.Size(78, 27);
@@ -299,7 +299,7 @@
             // txtCareMaxNightSun
             // 
             this.txtCareMaxNightSun.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMaxNightSun.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMaxNightSun.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMaxNightSun.Location = new System.Drawing.Point(537, 67);
             this.txtCareMaxNightSun.Name = "txtCareMaxNightSun";
             this.txtCareMaxNightSun.Size = new System.Drawing.Size(78, 27);
@@ -339,7 +339,7 @@
             // txtCareMinDayMon
             // 
             this.txtCareMinDayMon.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMinDayMon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMinDayMon.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMinDayMon.Location = new System.Drawing.Point(434, 100);
             this.txtCareMinDayMon.Name = "txtCareMinDayMon";
             this.txtCareMinDayMon.Size = new System.Drawing.Size(78, 27);
@@ -349,7 +349,7 @@
             // txtCareMinDaySun
             // 
             this.txtCareMinDaySun.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtCareMinDaySun.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtCareMinDaySun.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtCareMinDaySun.Location = new System.Drawing.Point(434, 67);
             this.txtCareMinDaySun.Name = "txtCareMinDaySun";
             this.txtCareMinDaySun.Size = new System.Drawing.Size(78, 27);
@@ -359,7 +359,7 @@
             // txtNurseMaxNightHol
             // 
             this.txtNurseMaxNightHol.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMaxNightHol.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMaxNightHol.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMaxNightHol.Location = new System.Drawing.Point(218, 298);
             this.txtNurseMaxNightHol.Name = "txtNurseMaxNightHol";
             this.txtNurseMaxNightHol.Size = new System.Drawing.Size(78, 27);
@@ -379,7 +379,7 @@
             // txtNurseMinDayHol
             // 
             this.txtNurseMinDayHol.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMinDayHol.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMinDayHol.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMinDayHol.Location = new System.Drawing.Point(115, 298);
             this.txtNurseMinDayHol.Name = "txtNurseMinDayHol";
             this.txtNurseMinDayHol.Size = new System.Drawing.Size(78, 27);
@@ -389,7 +389,7 @@
             // txtNurseMaxNightSat
             // 
             this.txtNurseMaxNightSat.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMaxNightSat.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMaxNightSat.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMaxNightSat.Location = new System.Drawing.Point(218, 265);
             this.txtNurseMaxNightSat.Name = "txtNurseMaxNightSat";
             this.txtNurseMaxNightSat.Size = new System.Drawing.Size(78, 27);
@@ -409,7 +409,7 @@
             // txtNurseMinDaySat
             // 
             this.txtNurseMinDaySat.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMinDaySat.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMinDaySat.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMinDaySat.Location = new System.Drawing.Point(115, 265);
             this.txtNurseMinDaySat.Name = "txtNurseMinDaySat";
             this.txtNurseMinDaySat.Size = new System.Drawing.Size(78, 27);
@@ -419,7 +419,7 @@
             // txtNurseMaxNightFri
             // 
             this.txtNurseMaxNightFri.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMaxNightFri.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMaxNightFri.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMaxNightFri.Location = new System.Drawing.Point(218, 232);
             this.txtNurseMaxNightFri.Name = "txtNurseMaxNightFri";
             this.txtNurseMaxNightFri.Size = new System.Drawing.Size(78, 27);
@@ -429,7 +429,7 @@
             // txtNurseMaxNightThu
             // 
             this.txtNurseMaxNightThu.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMaxNightThu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMaxNightThu.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMaxNightThu.Location = new System.Drawing.Point(218, 199);
             this.txtNurseMaxNightThu.Name = "txtNurseMaxNightThu";
             this.txtNurseMaxNightThu.Size = new System.Drawing.Size(78, 27);
@@ -449,7 +449,7 @@
             // txtNurseMinDayFri
             // 
             this.txtNurseMinDayFri.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMinDayFri.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMinDayFri.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMinDayFri.Location = new System.Drawing.Point(115, 232);
             this.txtNurseMinDayFri.Name = "txtNurseMinDayFri";
             this.txtNurseMinDayFri.Size = new System.Drawing.Size(78, 27);
@@ -459,7 +459,7 @@
             // txtNurseMinDayThu
             // 
             this.txtNurseMinDayThu.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMinDayThu.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMinDayThu.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMinDayThu.Location = new System.Drawing.Point(115, 199);
             this.txtNurseMinDayThu.Name = "txtNurseMinDayThu";
             this.txtNurseMinDayThu.Size = new System.Drawing.Size(78, 27);
@@ -479,7 +479,7 @@
             // txtNurseMaxNightWed
             // 
             this.txtNurseMaxNightWed.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMaxNightWed.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMaxNightWed.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMaxNightWed.Location = new System.Drawing.Point(218, 166);
             this.txtNurseMaxNightWed.Name = "txtNurseMaxNightWed";
             this.txtNurseMaxNightWed.Size = new System.Drawing.Size(78, 27);
@@ -499,7 +499,7 @@
             // txtNurseMinDayWed
             // 
             this.txtNurseMinDayWed.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMinDayWed.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMinDayWed.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMinDayWed.Location = new System.Drawing.Point(115, 166);
             this.txtNurseMinDayWed.Name = "txtNurseMinDayWed";
             this.txtNurseMinDayWed.Size = new System.Drawing.Size(78, 27);
@@ -509,7 +509,7 @@
             // txtNurseMaxNightTue
             // 
             this.txtNurseMaxNightTue.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMaxNightTue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMaxNightTue.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMaxNightTue.Location = new System.Drawing.Point(218, 133);
             this.txtNurseMaxNightTue.Name = "txtNurseMaxNightTue";
             this.txtNurseMaxNightTue.Size = new System.Drawing.Size(78, 27);
@@ -529,7 +529,7 @@
             // txtNurseMinDayTue
             // 
             this.txtNurseMinDayTue.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMinDayTue.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMinDayTue.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMinDayTue.Location = new System.Drawing.Point(115, 133);
             this.txtNurseMinDayTue.Name = "txtNurseMinDayTue";
             this.txtNurseMinDayTue.Size = new System.Drawing.Size(78, 27);
@@ -539,7 +539,7 @@
             // txtNurseMaxNightMon
             // 
             this.txtNurseMaxNightMon.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMaxNightMon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMaxNightMon.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMaxNightMon.Location = new System.Drawing.Point(218, 100);
             this.txtNurseMaxNightMon.Name = "txtNurseMaxNightMon";
             this.txtNurseMaxNightMon.Size = new System.Drawing.Size(78, 27);
@@ -549,7 +549,7 @@
             // txtNurseMaxNightSun
             // 
             this.txtNurseMaxNightSun.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMaxNightSun.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMaxNightSun.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMaxNightSun.Location = new System.Drawing.Point(218, 67);
             this.txtNurseMaxNightSun.Name = "txtNurseMaxNightSun";
             this.txtNurseMaxNightSun.Size = new System.Drawing.Size(78, 27);
@@ -629,7 +629,7 @@
             // txtNurseMinDayMon
             // 
             this.txtNurseMinDayMon.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMinDayMon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMinDayMon.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMinDayMon.Location = new System.Drawing.Point(115, 100);
             this.txtNurseMinDayMon.Name = "txtNurseMinDayMon";
             this.txtNurseMinDayMon.Size = new System.Drawing.Size(78, 27);
@@ -639,7 +639,7 @@
             // txtNurseMinDaySun
             // 
             this.txtNurseMinDaySun.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.txtNurseMinDaySun.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtNurseMinDaySun.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txtNurseMinDaySun.Location = new System.Drawing.Point(115, 67);
             this.txtNurseMinDaySun.Name = "txtNurseMinDaySun";
             this.txtNurseMinDaySun.Size = new System.Drawing.Size(78, 27);
@@ -718,10 +718,11 @@
             this.Controls.Add(this.txtNurseMinDayMon);
             this.Controls.Add(this.txtNurseMinDaySun);
             this.Controls.Add(this.lblNurseSun);
+            this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditCountLimitDay";
-            this.Text = "様式9チェック";
+            this.Text = "曜日別勤務日数";
             this.ResumeLayout(false);
             this.PerformLayout();
 
