@@ -361,7 +361,7 @@ namespace workschedule.MainScheduleControl
             frmMainSchedule.pdHolidayCount = 8;
             iSaturdayCount = 0;
             iSundayCount = 0;
-            bSaturdayHolidayFlag = false;
+            bSaturdayHolidayFlag = true;
             // Mod End   WataruT 2020.07.14 土日祝の公休数設定変更
 
             // Mod Start WataruT 2020.07.14 土日祝の公休数設定変更
@@ -389,7 +389,10 @@ namespace workschedule.MainScheduleControl
                     case "土":
                         iSaturdayCount++;
                         if (iSaturdayCount > 4) frmMainSchedule.pdHolidayCount = frmMainSchedule.pdHolidayCount + 0.5;
-                        break;
+                        {
+                            bSaturdayHolidayFlag = false;
+                            break;
+                        }
                     case "日":
                         iSundayCount++;
                         if (iSundayCount > 4) frmMainSchedule.pdHolidayCount++;
