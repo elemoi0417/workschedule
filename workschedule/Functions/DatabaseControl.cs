@@ -2959,7 +2959,7 @@ namespace workschedule.Controls
                 _adp.Fill(dt);
 
                 // WataruT
-                OutputSQLStrings(lsSQL);
+                //OutputSQLStrings(lsSQL);
 
                 _con.Close();
 
@@ -2995,8 +2995,9 @@ namespace workschedule.Controls
                 _cmd.ExecuteNonQuery();
                 _cmd.Connection.Close();
 
-                // WataruT
+                // Mod Start WataruT 2020.07.14 SQLログ出力エラー
                 //OutputSQLStrings(lsSQL);
+                // Mod End   WataruT 2020.07.14 SQLログ出力エラー
                 return true;
 
             }
