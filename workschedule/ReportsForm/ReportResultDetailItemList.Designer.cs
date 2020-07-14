@@ -198,6 +198,8 @@
             this.Controls.Add(this.cmbWard);
             this.Controls.Add(this.lblWard);
             this.Controls.Add(this.lblTargetDate);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ReportResultDetailItemList";
             this.Text = "実績項目集計";
             this.ResumeLayout(false);

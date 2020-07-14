@@ -169,6 +169,8 @@
             this.Controls.Add(this.cmbWard);
             this.Controls.Add(this.lblWard);
             this.Controls.Add(this.lblTargetDate);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ReportYoushiki9Menu";
             this.Text = "様式9";
             this.ResumeLayout(false);

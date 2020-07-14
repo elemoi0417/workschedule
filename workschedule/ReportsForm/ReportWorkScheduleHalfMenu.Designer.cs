@@ -169,6 +169,8 @@
             this.Controls.Add(this.cmbWard);
             this.Controls.Add(this.lblWard);
             this.Controls.Add(this.lblTargetDate);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ReportWorkScheduleHalfMenu";
             this.Text = "勤務計画表(締翌日)";
             this.ResumeLayout(false);
