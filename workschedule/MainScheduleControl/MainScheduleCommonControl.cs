@@ -347,23 +347,83 @@ namespace workschedule.MainScheduleControl
         public void SetHolidayCount()
         {
             string strDayOfWeek;
+            // Add Start WataruT 2020.07.14 土日祝の公休数設定変更
+            int iSaturdayCount;
+            int iSundayCount;
+            bool bSaturdayHolidayFlag;
+            string strFormat = "yyyyMMdd";
+            DateTime dtTargetDate;
+            // Add End   WataruT 2020.07.14 土日祝の公休数設定変更
 
             // 既定の公休数を初期化
-            frmMainSchedule.pdHolidayCount = 0;
+            // Mod Start WataruT 2020.07.14 土日祝の公休数設定変更
+            //frmMainSchedule.pdHolidayCount = 0;
+            frmMainSchedule.pdHolidayCount = 8;
+            iSaturdayCount = 0;
+            iSundayCount = 0;
+            bSaturdayHolidayFlag = false;
+            // Mod End   WataruT 2020.07.14 土日祝の公休数設定変更
 
+            // Mod Start WataruT 2020.07.14 土日祝の公休数設定変更
+            //// 日曜日の数をカウント
+            //for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
+            //{
+            //    strDayOfWeek = clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay + 1), frmMainSchedule.astrHoliday);
+
+            //    switch(strDayOfWeek)
+            //    {
+            //        case "土":
+            //        case "日":
+            //        case "祝":
+            //            frmMainSchedule.pdHolidayCount++;
+            //            break;
+            //    }
+            //}
+            // 祝日マスタ関係なく土日の数をカウント
+            for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
+            {
+                dtTargetDate = DateTime.ParseExact(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay + 1), strFormat, null);
+
+                switch (dtTargetDate.ToString("ddd"))
+                {
+                    case "土":
+                        iSaturdayCount++;
+                        if (iSaturdayCount > 4) frmMainSchedule.pdHolidayCount = frmMainSchedule.pdHolidayCount + 0.5;
+                        break;
+                    case "日":
+                        iSundayCount++;
+                        if (iSundayCount > 4) frmMainSchedule.pdHolidayCount++;
+                        break;
+                }
+            }
+            // 祝日判定
             for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
             {
                 strDayOfWeek = clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay + 1), frmMainSchedule.astrHoliday);
 
-                switch(strDayOfWeek)
+                switch (strDayOfWeek)
                 {
-                    case "土":
-                    case "日":
                     case "祝":
-                        frmMainSchedule.pdHolidayCount++;
-                        break;
+                        if(DateTime.ParseExact(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay + 1), strFormat, null).ToString("ddd") == "日")
+                        {
+                            break;
+                        }
+                        if (DateTime.ParseExact(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay + 1), strFormat, null).ToString("ddd") == "土")
+                        {
+                            if (bSaturdayHolidayFlag == false)
+                            {
+                                frmMainSchedule.pdHolidayCount = frmMainSchedule.pdHolidayCount + 0.5;
+                                bSaturdayHolidayFlag = true;
+                            }   
+                            break;
+                        }else
+                        {
+                            frmMainSchedule.pdHolidayCount++;
+                            break;
+                        }
                 }
             }
+            // Mod End   WataruT 2020.07.14 土日祝の公休数設定変更
         }
 
         /// <summary>
