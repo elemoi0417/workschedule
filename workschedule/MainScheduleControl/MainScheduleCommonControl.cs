@@ -326,8 +326,15 @@ namespace workschedule.MainScheduleControl
         {
             frmMainSchedule.grdRowTotal.FirstDisplayedScrollingRowIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingRowIndex;
 
-            frmMainSchedule.grdMainHeader.FirstDisplayedScrollingColumnIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex;
-            frmMainSchedule.grdColumnTotal.FirstDisplayedScrollingColumnIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex;
+            // Mod Start WataruT 2020.07.14 計画表の縦スクロール時エラー
+            //frmMainSchedule.grdMainHeader.FirstDisplayedScrollingColumnIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex;
+            //frmMainSchedule.grdColumnTotal.FirstDisplayedScrollingColumnIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex;
+            if (frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex != 0)
+            {
+                frmMainSchedule.grdMainHeader.FirstDisplayedScrollingColumnIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex;
+                frmMainSchedule.grdColumnTotal.FirstDisplayedScrollingColumnIndex = frmMainSchedule.grdMain.FirstDisplayedScrollingColumnIndex;
+            }
+            // Mod End   WataruT 2020.07.14 計画表の縦スクロール時エラー
         }
 
         /// <summary>
