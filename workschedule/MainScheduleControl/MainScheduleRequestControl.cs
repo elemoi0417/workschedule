@@ -465,6 +465,65 @@ namespace workschedule.MainScheduleControl
                     frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Value.ToString());
                 frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(
                     clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", frmMainSchedule.piGrdMain_CurrentColumn), frmMainSchedule.astrHoliday));
+
+                // Add Start WataruT 2020.07.14 夜勤入力時、明けと休みもセットで入力
+                // "夜勤"の場合、"夜明"と"休"もセットする
+                if(iWorkKindID == 1)
+                {
+                    // 翌日も同月であれば、"夜明"をセット
+                    if(frmMainSchedule.piGrdMain_CurrentColumn + 1 < frmMainSchedule.grdMain.Columns.Count)
+                    {
+                        // 共通変数側の値をリセット
+                        for (int iWorkKind = 0; iWorkKind < frmMainSchedule.astrWorkKind.GetLength(0); iWorkKind++)
+                        {
+                            if (frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn, iWorkKind] == 1)
+                            {
+                                frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn, iWorkKind] = 0;
+                                CheckWorkKindForRowTotalData(frmMainSchedule.piGrdMain_CurrentRow, iWorkKind, -1);
+                                CheckWorkKindForColumnTotalData(frmMainSchedule.piGrdMain_CurrentColumn, iWorkKind, -1);
+                            }
+                        }
+
+                        // 共通変数側の値を設定
+                        frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn, iWorkKindID + 1] = 1;
+                        CheckWorkKindForRowTotalData(frmMainSchedule.piGrdMain_CurrentRow, iWorkKindID + 1, 1);
+                        CheckWorkKindForColumnTotalData(frmMainSchedule.piGrdMain_CurrentColumn, iWorkKindID + 1, 1);
+
+                        // メイングリッドに値、色設定をセット
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + 1, frmMainSchedule.piGrdMain_CurrentRow].Value = frmMainSchedule.astrWorkKind[iWorkKindID + 1, 1];
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + 1, frmMainSchedule.piGrdMain_CurrentRow].Style.ForeColor = clsCommonControl.GetWorkKindForeColor(
+                            frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + 1, frmMainSchedule.piGrdMain_CurrentRow].Value.ToString());
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + 1, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(
+                            clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", frmMainSchedule.piGrdMain_CurrentColumn + 1), frmMainSchedule.astrHoliday));
+                    }
+                    // 翌々日も同月であれば、"休"をセット
+                    if (frmMainSchedule.piGrdMain_CurrentColumn + 2 < frmMainSchedule.grdMain.Columns.Count)
+                    {
+                        // 共通変数側の値をリセット
+                        for (int iWorkKind = 0; iWorkKind < frmMainSchedule.astrWorkKind.GetLength(0); iWorkKind++)
+                        {
+                            if (frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn + 1, iWorkKind] == 1)
+                            {
+                                frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn + 1, iWorkKind] = 0;
+                                CheckWorkKindForRowTotalData(frmMainSchedule.piGrdMain_CurrentRow, iWorkKind, -1);
+                                CheckWorkKindForColumnTotalData(frmMainSchedule.piGrdMain_CurrentColumn + 1, iWorkKind, -1);
+                            }
+                        }
+
+                        // 共通変数側の値を設定
+                        frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn, iWorkKindID + 2] = 1;
+                        CheckWorkKindForRowTotalData(frmMainSchedule.piGrdMain_CurrentRow, iWorkKindID + 2, 1);
+                        CheckWorkKindForColumnTotalData(frmMainSchedule.piGrdMain_CurrentColumn + 1, iWorkKindID + 2, 1);
+
+                        // メイングリッドに値、色設定をセット
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + 2, frmMainSchedule.piGrdMain_CurrentRow].Value = frmMainSchedule.astrWorkKind[iWorkKindID + 2, 1];
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + 2, frmMainSchedule.piGrdMain_CurrentRow].Style.ForeColor = clsCommonControl.GetWorkKindForeColor(
+                            frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + 2, frmMainSchedule.piGrdMain_CurrentRow].Value.ToString());
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + 2, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(
+                            clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", frmMainSchedule.piGrdMain_CurrentColumn + 2), frmMainSchedule.astrHoliday));
+                    }
+                }
+                // Add End   WataruT 2020.07.14 夜勤入力時、明けと休みもセットで入力
             }
             else
             {

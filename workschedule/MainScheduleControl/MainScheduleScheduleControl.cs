@@ -1856,14 +1856,45 @@ namespace workschedule.MainScheduleControl
         public void ChangeMainGridData(int iWorkKindID)
         {
             // 希望シフト判定
-            if (clsCommonControl.GetRequestFlag(
-                frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor) == "1")
+            // Mod Start WataruT 2020.07.14 夜勤入力時、明けと休みもセットで入力
+            //if (clsCommonControl.GetRequestFlag(
+            //    frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor) == "1")
+            //{
+            //    if (MessageBox.Show("変更箇所が希望シフトとなりますが、よろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.No)
+            //    {
+            //        return;
+            //    }
+            //}
+            // "夜勤"
+            if (iWorkKindID == 1)
             {
-                if (MessageBox.Show("変更箇所が希望シフトとなりますが、よろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                for(int iTargetColumnCount = 0; iTargetColumnCount < 2; iTargetColumnCount++)
                 {
-                    return;
+                    if(frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount < frmMainSchedule.grdMain.Columns.Count)
+                    {
+                        if (clsCommonControl.GetRequestFlag(frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor) == "1")
+                        {
+                            if (MessageBox.Show("変更箇所が希望シフトとなりますが、よろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                            {
+                                return;
+                            }
+                            break;
+                        }
+                    }
                 }
             }
+            // "夜勤"以外
+            else
+            {
+                if (clsCommonControl.GetRequestFlag(frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor) == "1")
+                {
+                    if (MessageBox.Show("変更箇所が希望シフトとなりますが、よろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.No)
+                    {
+                        return;
+                    }
+                }
+            }
+            // Mod End   WataruT 2020.07.14 夜勤入力時、明けと休みもセットで入力
 
             // 共通変数側の値をリセット
             for (int iWorkKind = 0; iWorkKind < frmMainSchedule.astrWorkKind.GetLength(0); iWorkKind++)
@@ -1886,6 +1917,39 @@ namespace workschedule.MainScheduleControl
                 frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Value.ToString());
             frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(
                 clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", frmMainSchedule.piGrdMain_CurrentColumn), frmMainSchedule.astrHoliday));
+
+            // Add Start WataruT 2020.07.14 夜勤入力時、明けと休みもセットで入力
+            if(iWorkKindID == 1)
+            {
+                for(int iTargetColumnCount = 1; iTargetColumnCount <= 2; iTargetColumnCount++)
+                {
+                    if(frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount < frmMainSchedule.grdMain.Columns.Count)
+                    {
+                        // 共通変数側の値をリセット
+                        for (int iWorkKind = 0; iWorkKind < frmMainSchedule.astrWorkKind.GetLength(0); iWorkKind++)
+                        {
+                            if (frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount - 1, iWorkKind] == 1)
+                            {
+                                frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount - 1, iWorkKind] = 0;
+                                CheckWorkKindForRowTotalData(frmMainSchedule.piGrdMain_CurrentRow, iWorkKind, -1);
+                                CheckWorkKindForColumnTotalData(frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount - 1, iWorkKind, -1, frmMainSchedule.astrScheduleStaff[frmMainSchedule.piGrdMain_CurrentRow, 0]);
+                            }
+                        }
+                        // 共通変数側の値を設定
+                        frmMainSchedule.aiData[frmMainSchedule.piGrdMain_CurrentRow, frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount - 1, iWorkKindID + iTargetColumnCount] = 1;
+                        CheckWorkKindForRowTotalData(frmMainSchedule.piGrdMain_CurrentRow, iWorkKindID + iTargetColumnCount, 1);
+                        CheckWorkKindForColumnTotalData(frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount - 1, iWorkKindID + iTargetColumnCount, 1, frmMainSchedule.astrScheduleStaff[frmMainSchedule.piGrdMain_CurrentRow, 0]);
+
+                        // メイングリッドに値、色設定をセット
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount, frmMainSchedule.piGrdMain_CurrentRow].Value = frmMainSchedule.astrWorkKind[iWorkKindID + iTargetColumnCount, 1];
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount, frmMainSchedule.piGrdMain_CurrentRow].Style.ForeColor = clsCommonControl.GetWorkKindForeColor(
+                            frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount, frmMainSchedule.piGrdMain_CurrentRow].Value.ToString());
+                        frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount, frmMainSchedule.piGrdMain_CurrentRow].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(
+                            clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", frmMainSchedule.piGrdMain_CurrentColumn + iTargetColumnCount), frmMainSchedule.astrHoliday));
+                    }
+                }
+            }
+            // Add End   WataruT 2020.07.14 夜勤入力時、明けと休みもセットで入力
 
             // 行・列の合計グリッドを再描画
             SetRowTotal();
