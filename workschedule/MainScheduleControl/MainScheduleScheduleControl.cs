@@ -1152,7 +1152,10 @@ namespace workschedule.MainScheduleControl
                 r = MyRandom.Create();
                 iRandomScheduleStaff = r.Next() % frmMainSchedule.piScheduleStaffCount;
                 iRandomDay = r.Next() % frmMainSchedule.piDayCount;
-                iRandomWorkKind = 4;
+                // Mod Start WataruT 2020.07.15 土日祝以外の半日が前公になっている
+                //iRandomWorkKind = 4;
+                iRandomWorkKind = 5;
+                // Mod End   WataruT 2020.07.15 土日祝以外の半日が前公になっている
 
                 // 対象日を文字列としてセット(YYYYMMDD)
                 strTargetDate = frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", (iRandomDay + 1)).ToString();
