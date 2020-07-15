@@ -791,7 +791,14 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    ms.id as id, ";
                 lsSQL = lsSQL + "    ms.name as name, ";
                 lsSQL = lsSQL + "    msk.name as staff_kind, ";
-                lsSQL = lsSQL + "    dss.office_flag as office_flag ";
+                // Mod Start WataruT 2020.07.15 計画表出力時のSQLエラー対応
+                //lsSQL = lsSQL + "    dss.office_flag as office_flag ";
+                lsSQL = lsSQL + "    dss.office_flag as office_flag, ";
+                lsSQL = lsSQL + "    ms.staff_kind as seq1,";
+                lsSQL = lsSQL + "    ms.staff_kind_sub as seq2,";
+                lsSQL = lsSQL + "    dss.target_month as seq3,";
+                lsSQL = lsSQL + "    dss.seq as seq4 ";
+                // Mod End   WataruT 2020.07.15 計画表出力時のSQLエラー対応
                 lsSQL = lsSQL + "FROM ";
                 lsSQL = lsSQL + "    m_staff ms, ";
                 lsSQL = lsSQL + "    m_staff_kind msk, ";
@@ -805,10 +812,16 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    dss.target_month = '" + strTargetNextMonth + "') AND";
                 lsSQL = lsSQL + "    dss.staff_kind = '" + strStaffKind + "' ";
                 lsSQL = lsSQL + "ORDER BY ";
-                lsSQL = lsSQL + "    CAST(ms.staff_kind AS SIGNED), ";
-                lsSQL = lsSQL + "    CAST(ms.staff_kind_sub AS SIGNED), ";
-                lsSQL = lsSQL + "    CAST(dss.target_month AS SIGNED), ";
-                lsSQL = lsSQL + "    CAST(dss.seq AS SIGNED);";
+                // Mod Start WataruT 2020.07.15 計画表出力時のSQLエラー対応
+                //lsSQL = lsSQL + "    CAST(ms.staff_kind AS SIGNED), ";
+                //lsSQL = lsSQL + "    CAST(ms.staff_kind_sub AS SIGNED), ";
+                //lsSQL = lsSQL + "    CAST(dss.target_month AS SIGNED), ";
+                //lsSQL = lsSQL + "    CAST(dss.seq AS SIGNED);";
+                lsSQL = lsSQL + "    CAST(seq1 AS SIGNED), ";
+                lsSQL = lsSQL + "    CAST(seq2 AS SIGNED), ";
+                lsSQL = lsSQL + "    CAST(seq3 AS SIGNED), ";
+                lsSQL = lsSQL + "    CAST(seq4 AS SIGNED) ";
+                // Mod End   WataruT 2020.07.15 計画表出力時のSQLエラー対応
 
                 dt = GetDataTable(lsSQL);
 
