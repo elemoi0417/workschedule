@@ -339,6 +339,7 @@
     <Content Include="Images\icon_check.png" />
     <Content Include="Images\icon_dustbox.png" />
     <Content Include="Images\icon_exit.png" />
+    <Content Include="Images\icon_import.png" />
     <Content Include="Images\icon_key.png" />
     <Content Include="Images\icon_save.png" />
     <Content Include="Images\icon_setting.png" />

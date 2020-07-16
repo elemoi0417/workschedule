@@ -500,6 +500,38 @@ namespace workschedule
         }
 
         /// <summary>
+        /// 「希望取込」ボタン
+        /// Add WataruT 2020.07.16 希望シフトのみ取込機能追加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnImportRequest_Click(object sender, EventArgs e)
+        {
+            // 職員登録チェック
+            if (dtScheduleStaff.Rows.Count == 0)
+            {
+                MessageBox.Show("職員登録をおこなってください。", "");
+                return;
+            }
+
+            // 常日勤チェック
+            if (clsMainScheduleCommonControl.CheckStaffDayOnly() == false)
+            {
+                MessageBox.Show("常日勤設定のない職員がいます。", "");
+                return;
+            }
+
+            // プログレスウィンドウの表示
+            clsMainScheduleCommonControl.ShowProgressDialog(true);
+
+            // シフトの自動作成
+            clsMainScheduleScheduleControl.ImportRequestData();
+
+            // プログレスウィンドウを閉じる
+            clsMainScheduleCommonControl.ShowProgressDialog(false);
+        }
+
+        /// <summary>
         /// 「帳票印刷」ボタン
         /// </summary>
         /// <param name="sender"></param>
@@ -855,6 +887,5 @@ namespace workschedule
                     e.ToolTipText = clsMainScheduleResultControl.GetToolTipText(e.ColumnIndex, e.RowIndex);
             }
         }
-
     }
 }

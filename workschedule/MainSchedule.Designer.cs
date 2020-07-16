@@ -106,6 +106,7 @@
             this.txtProgressMessage = new System.Windows.Forms.TextBox();
             this.btnSaveFirst = new System.Windows.Forms.Button();
             this.btnPrintReport = new System.Windows.Forms.Button();
+            this.btnImportRequest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdMainHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdRowTotal)).BeginInit();
@@ -142,7 +143,7 @@
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Image = global::workschedule.Properties.Resources.icon_save;
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSave.Location = new System.Drawing.Point(1121, 7);
+            this.btnSave.Location = new System.Drawing.Point(1125, 7);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 50);
             this.btnSave.TabIndex = 7;
@@ -159,7 +160,7 @@
             this.btnClose.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = global::workschedule.Properties.Resources.icon_exit;
-            this.btnClose.Location = new System.Drawing.Point(1212, 7);
+            this.btnClose.Location = new System.Drawing.Point(1214, 7);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(85, 50);
             this.btnClose.TabIndex = 8;
@@ -757,7 +758,7 @@
             this.btnMaster.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnMaster.ForeColor = System.Drawing.Color.White;
             this.btnMaster.Image = global::workschedule.Properties.Resources.icon_key;
-            this.btnMaster.Location = new System.Drawing.Point(783, 7);
+            this.btnMaster.Location = new System.Drawing.Point(829, 7);
             this.btnMaster.Name = "btnMaster";
             this.btnMaster.Size = new System.Drawing.Size(99, 50);
             this.btnMaster.TabIndex = 41;
@@ -862,7 +863,7 @@
             this.btnSaveFirst.ForeColor = System.Drawing.Color.White;
             this.btnSaveFirst.Image = global::workschedule.Properties.Resources.icon_save;
             this.btnSaveFirst.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnSaveFirst.Location = new System.Drawing.Point(1030, 7);
+            this.btnSaveFirst.Location = new System.Drawing.Point(1036, 7);
             this.btnSaveFirst.Name = "btnSaveFirst";
             this.btnSaveFirst.Size = new System.Drawing.Size(85, 50);
             this.btnSaveFirst.TabIndex = 47;
@@ -879,7 +880,7 @@
             this.btnPrintReport.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnPrintReport.ForeColor = System.Drawing.Color.White;
             this.btnPrintReport.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintReport.Image")));
-            this.btnPrintReport.Location = new System.Drawing.Point(888, 7);
+            this.btnPrintReport.Location = new System.Drawing.Point(934, 7);
             this.btnPrintReport.Name = "btnPrintReport";
             this.btnPrintReport.Size = new System.Drawing.Size(97, 50);
             this.btnPrintReport.TabIndex = 48;
@@ -888,12 +889,30 @@
             this.btnPrintReport.UseVisualStyleBackColor = false;
             this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
             // 
+            // btnImportRequest
+            // 
+            this.btnImportRequest.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnImportRequest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnImportRequest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImportRequest.Font = new System.Drawing.Font("Meiryo UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnImportRequest.ForeColor = System.Drawing.Color.White;
+            this.btnImportRequest.Image = global::workschedule.Properties.Resources.icon_import;
+            this.btnImportRequest.Location = new System.Drawing.Point(727, 7);
+            this.btnImportRequest.Name = "btnImportRequest";
+            this.btnImportRequest.Size = new System.Drawing.Size(97, 50);
+            this.btnImportRequest.TabIndex = 49;
+            this.btnImportRequest.Text = "希望\r\n取込";
+            this.btnImportRequest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImportRequest.UseVisualStyleBackColor = false;
+            this.btnImportRequest.Click += new System.EventHandler(this.btnImportRequest_Click);
+            // 
             // MainSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1309, 688);
+            this.Controls.Add(this.btnImportRequest);
             this.Controls.Add(this.btnPrintReport);
             this.Controls.Add(this.btnSaveFirst);
             this.Controls.Add(this.txtProgressMessage);
@@ -1009,6 +1028,7 @@
         public System.Windows.Forms.Button btnPrintReport;
         public System.Windows.Forms.ToolStripMenuItem tsmiWorkKind17_Schedule;
         public System.Windows.Forms.ToolStripMenuItem tsmiWorkKind17_Request;
+        public System.Windows.Forms.Button btnImportRequest;
     }
 }
 

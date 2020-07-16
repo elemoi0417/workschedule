@@ -1295,6 +1295,246 @@ namespace workschedule.MainScheduleControl
         }
 
         /// <summary>
+        /// 希望シフトの取込のみ処理
+        /// Add WataruT 2020.07.16 希望シフトのみ取込機能追加
+        /// </summary>
+        public void ImportRequestData()
+        {
+            DataTable dtScheduleDetail;
+            DataTable dt;
+            DataRow dr;
+
+            // データ数を変数にセット
+            frmMainSchedule.piScheduleStaffCount = frmMainSchedule.dtScheduleStaff.Rows.Count;
+            frmMainSchedule.piDayCount = clsCommonControl.GetTargetMonthDays(frmMainSchedule.lblTargetMonth.Text);
+            frmMainSchedule.piWorkKindCount = frmMainSchedule.dtWorkKind.Rows.Count;
+
+            //グリッドの描画処理停止
+            frmMainSchedule.grdMain.SuspendLayout();
+            frmMainSchedule.grdMainHeader.SuspendLayout();
+
+            // グリッドの初期化
+            frmMainSchedule.grdMain.DataSource = null;
+
+            // 初期データをセット
+            for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
+            {
+                for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.piScheduleStaffCount; iScheduleStaff++)
+                {
+                    for (int iWorkKind = 0; iWorkKind < frmMainSchedule.piWorkKindCount; iWorkKind++)
+                    {
+                        frmMainSchedule.aiData[iScheduleStaff, iDay, iWorkKind] = 0;
+                        frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay] = 0;
+                        if (iWorkKind < 3)
+                            frmMainSchedule.adRowTotalData[iScheduleStaff, iWorkKind] = 0;
+                    }
+                }
+                for (int iWorkKind = 0; iWorkKind < 6; iWorkKind++)
+                {
+                    frmMainSchedule.adColumnTotalData[iDay, iWorkKind] = 0;
+                }
+            }
+
+            // 希望シフトをセット
+            SetRequestData();
+
+            //
+            // --- メイングリッドヘッダ ---
+            //
+
+            // DataTableを初期化
+            dt = new DataTable();
+
+            // DataTableにカラムヘッダを作成
+            dt.Columns.Add("NAME", Type.GetType("System.String"));
+            for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+            {
+                dt.Columns.Add(iDay.ToString(), Type.GetType("System.String"));
+            }
+
+            // DataTableにデータをセット
+            for (int iRow = 0; iRow < 2; iRow++)
+            {
+                dr = dt.NewRow();
+
+                // 1行目：日にちをセット
+                if (iRow == 0)
+                {
+                    for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+                    {
+                        dr[iDay.ToString()] = iDay.ToString();
+                    }
+                }
+                // 2行目："氏名"と曜日をセット
+                else
+                {
+                    dr["NAME"] = "氏名";
+                    for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+                    {
+                        dr[iDay.ToString()] = clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay), frmMainSchedule.astrHoliday);
+                    }
+                }
+                dt.Rows.Add(dr);
+            }
+
+            // グリッドにデータをセット
+            frmMainSchedule.grdMainHeader.DataSource = dt;
+
+            // デザイン設定
+            for (int iRow = 0; iRow < 2; iRow++)
+            {
+                // 列幅・色(職員)
+                frmMainSchedule.grdMainHeader.Columns[0].Width = GRID_WIDTH_COLUMN_STAFF;
+                frmMainSchedule.grdMainHeader[0, iRow].Style.ForeColor = Color.Black;
+                frmMainSchedule.grdMainHeader[0, iRow].Style.BackColor = SystemColors.Control;
+
+                for (int iColumn = 1; iColumn <= frmMainSchedule.piDayCount; iColumn++)
+                {
+                    // 列幅
+                    frmMainSchedule.grdMainHeader.Columns[iColumn].Width = GRID_WIDTH_COLUMN_DATA;
+
+                    // 色(日付、曜日)
+                    frmMainSchedule.grdMainHeader[iColumn, iRow].Style.ForeColor = clsCommonControl.GetWeekNameForeColor(frmMainSchedule.grdMainHeader[iColumn, iRow].Value.ToString());
+                    frmMainSchedule.grdMainHeader[iColumn, iRow].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(clsCommonControl.GetWeekName(
+                        frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iColumn), frmMainSchedule.astrHoliday));
+                }
+            }
+
+            //
+            // --- メイングリッドデータ ---
+            //
+
+            // DataTableを初期化
+            dt = new DataTable();
+
+            // DataTableにカラムヘッダを作成
+            dt.Columns.Add("NAME", Type.GetType("System.String"));
+            for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+            {
+                dt.Columns.Add(iDay.ToString(), Type.GetType("System.String"));
+            }
+
+            // DataTableにデータをセット
+            for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.piScheduleStaffCount; iScheduleStaff++)
+            {
+                dr = dt.NewRow();
+
+                dr["NAME"] = frmMainSchedule.astrScheduleStaff[iScheduleStaff, 1];
+
+                // 病棟、職員ID、職種、対象年月から勤務予定データを取得
+                dtScheduleDetail = clsDatabaseControl.GetScheduleDetail_Ward_Staff_StaffKind_TargetMonth(frmMainSchedule.cmbWard.SelectedValue.ToString(),
+                    frmMainSchedule.astrScheduleStaff[iScheduleStaff, 0], frmMainSchedule.pstrStaffKind, frmMainSchedule.pstrTargetMonth);
+
+                // 既存データがある場合
+                if (dtScheduleDetail.Rows.Count != 0)
+                {
+                    for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+                    {
+                        // 希望シフトのデータの場合
+                        if (frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay - 1] == 1)
+                        {
+                            for (int iWorkKind = 0; iWorkKind < frmMainSchedule.piWorkKindCount; iWorkKind++)
+                            {
+                                if (frmMainSchedule.aiData[iScheduleStaff, iDay - 1, iWorkKind] == 1)
+                                {
+                                    // 対象となる勤務種類(略称)
+                                    dr[iDay.ToString()] = frmMainSchedule.astrWorkKind[iWorkKind, 1];
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            dr[iDay.ToString()] = dtScheduleDetail.Rows[iDay - 1]["name_short"];
+                            frmMainSchedule.aiData[iScheduleStaff, iDay - 1, int.Parse(dtScheduleDetail.Rows[iDay - 1]["work_kind"].ToString()) - 1] = 1;
+                            frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay - 1] = 0;
+                            CheckWorkKindForRowTotalData(iScheduleStaff, int.Parse(dtScheduleDetail.Rows[iDay - 1]["work_kind"].ToString()) - 1, 1);
+                            CheckWorkKindForColumnTotalData(iDay - 1, int.Parse(dtScheduleDetail.Rows[iDay - 1]["work_kind"].ToString()) - 1, 1, frmMainSchedule.astrScheduleStaff[iScheduleStaff, 0]);
+                        }
+                    }
+                }
+                // 既存データがない場合
+                else
+                {
+                    for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+                    {
+                        dr[iDay.ToString()] = frmMainSchedule.astrWorkKind[0, 1];
+                        frmMainSchedule.aiData[iScheduleStaff, iDay - 1, 0] = 1;
+                        frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay - 1] = 0;
+                        CheckWorkKindForRowTotalData(iScheduleStaff, 0, 1);
+                        CheckWorkKindForColumnTotalData(iDay - 1, 0, 1, frmMainSchedule.astrScheduleStaff[iScheduleStaff, 0]);
+                    }
+                }
+
+                dt.Rows.Add(dr);
+            }
+
+            // メイングリッドにデータをセット
+            frmMainSchedule.grdMain.DataSource = dt;
+
+            // 職員氏名欄のデザイン設定
+            for (int i = 0; i < frmMainSchedule.piScheduleStaffCount; i++)
+            {
+                frmMainSchedule.grdMain[0, i].Style.ForeColor = clsCommonControl.GetSexForeColor(clsDatabaseControl.GetStaff_Sex(frmMainSchedule.astrScheduleStaff[i, 0]));
+                frmMainSchedule.grdMain[0, i].Style.BackColor = SystemColors.Control;
+            }
+
+            // 列幅(職員)
+            frmMainSchedule.grdMain.Columns[0].Width = GRID_WIDTH_COLUMN_STAFF;
+
+            // 勤務種類データのデザイン設定
+            for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+            {
+                //列幅
+                frmMainSchedule.grdMain.Columns[iDay].Width = GRID_WIDTH_COLUMN_DATA;
+
+                // 文字の色
+                for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.piScheduleStaffCount; iScheduleStaff++)
+                {
+                    frmMainSchedule.grdMain[iDay, iScheduleStaff].Style.ForeColor = clsCommonControl.GetWorkKindForeColor(frmMainSchedule.grdMain[iDay, iScheduleStaff].Value.ToString());
+                    frmMainSchedule.grdMain[iDay, iScheduleStaff].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(clsCommonControl.GetWeekName(
+                        frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay), frmMainSchedule.astrHoliday));
+                }
+            }
+
+            // 希望シフトのセルのみ太文字にする
+            for (int iDay = 0; iDay < frmMainSchedule.grdMain.ColumnCount - 1; iDay++)
+            {
+                for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.grdMain.RowCount; iScheduleStaff++)
+                {
+                    if (frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay] == 1)
+                    {
+                        frmMainSchedule.grdMain[iDay + 1, iScheduleStaff].Style.Font = new Font(frmMainSchedule.grdMain.Font, FontStyle.Bold);
+                        frmMainSchedule.grdMain[iDay + 1, iScheduleStaff].Style.BackColor = Color.Gold;
+                    }
+                }
+            }
+
+            // 先頭列のみ固定とする
+            if (frmMainSchedule.grdMain.Rows.Count > 0)
+            {
+                frmMainSchedule.grdMain.Rows[0].Frozen = true;
+            }
+
+            // 表示していない職種の列合計値を取得
+            SetColumnTotalOtherStaffKindCount();
+
+            // 行の合計グリッドをセット
+            SetRowTotal();
+
+            // 列の合計グリッドをセット
+            SetColumnTotal();
+
+            // グリッドの選択状態を解除
+            frmMainSchedule.grdMain.CurrentCell = null;
+            frmMainSchedule.grdMainHeader.CurrentCell = null;
+
+            //グリッドの描画再開
+            frmMainSchedule.grdMain.ResumeLayout();
+            frmMainSchedule.grdMainHeader.ResumeLayout();
+        }
+
+        /// <summary>
         /// 行の合計をグリッドにセット
         /// </summary>
         private void SetRowTotal()
@@ -1823,6 +2063,17 @@ namespace workschedule.MainScheduleControl
             DataTable dt;
             int iTargetDay;
             dt = clsDatabaseControl.GetRequestShift_Ward(frmMainSchedule.cmbWard.SelectedValue.ToString(), frmMainSchedule.pstrTargetMonth);
+
+            // Add Start WataruT 2020.07.16 希望シフトのみ取込機能追加
+            for(int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.dtScheduleStaff.Rows.Count; iScheduleStaff++)
+            {
+                for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
+                {
+                    // 対象日の希望シフトフラグを無効とする
+                    frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay] = 0;
+                }
+            }
+            // Add End   WataruT 2020.07.16 希望シフトのみ取込機能追加
 
             foreach (DataRow row in dt.Rows)
             {

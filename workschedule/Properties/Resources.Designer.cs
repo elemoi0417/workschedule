@@ -177,6 +177,16 @@ namespace workschedule.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap icon_import {
+            get {
+                object obj = ResourceManager.GetObject("icon_import", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap icon_key {
             get {
                 object obj = ResourceManager.GetObject("icon_key", resourceCulture);
