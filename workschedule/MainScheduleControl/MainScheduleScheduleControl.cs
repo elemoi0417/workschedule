@@ -1019,7 +1019,6 @@ namespace workschedule.MainScheduleControl
             }
             // **************************************************************************************************
 
-
             // **************************************************************************************************
             // ランダムデータの作成(土日祝以外の公休)(連勤チェックあり)
             for (int i = 0; i < 30000; i++)
@@ -1518,7 +1517,10 @@ namespace workschedule.MainScheduleControl
                     break;
                 case 4: // 公休(午前)
                 case 5: // 公休(午後)
-                case 10:// 代有
+                //Mod Start WataruT 2020.07.16 代有の公休計算対応
+                //case 10:// 代有
+                case 9:// 代有
+                //Mod End   WataruT 2020.07.16 代有の公休計算対応
                     frmMainSchedule.adRowTotalData[iScheduleStaff, 0] += dAddNumber * 0.5;
                     break;
                 case 1: // 夜勤
