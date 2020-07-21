@@ -362,6 +362,9 @@ namespace workschedule
                 btnAutoCreate.Visible = false;
                 btnCheckContinueWork.Visible = false;
                 btnSaveFirst.Visible = false;
+                // Add Start WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
+                btnImportRequest.Visible = false;
+                // Add End   WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 1;
@@ -398,6 +401,9 @@ namespace workschedule
                 btnAutoCreate.Visible = true;
                 btnCheckContinueWork.Visible = true;
                 btnSaveFirst.Visible = true;
+                // Add Start WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
+                btnImportRequest.Visible = true;
+                // Add End   WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 2;
@@ -434,6 +440,9 @@ namespace workschedule
                 btnAutoCreate.Visible = false;
                 btnCheckContinueWork.Visible = false;
                 btnSaveFirst.Visible = false;
+                // Add Start WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
+                btnImportRequest.Visible = false;
+                // Add End   WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 3;
