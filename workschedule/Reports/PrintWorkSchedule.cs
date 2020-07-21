@@ -4,6 +4,9 @@ using System.Data;
 using System.IO;
 using System.Windows.Forms;
 using workschedule.Controls;
+// Add Start WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
+using workschedule.Functions;
+// Add End   WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
 
 namespace workschedule.Reports
 {
@@ -11,6 +14,9 @@ namespace workschedule.Reports
     {
         // 使用クラス宣言
         DatabaseControl clsDatabaseControl = new DatabaseControl();
+        // Add Start WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
+        CommonControl clsCommonControl = new CommonControl();
+        // Add End   WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
 
         // 定数
         const int COLUMN_CREATE_YEAR1 = 1;
@@ -65,6 +71,9 @@ namespace workschedule.Reports
         
         string[,] astrScheduleStaffNurse;           // 職員マスタ配列(人数、ID・氏名・職種)
         string[,] astrScheduleStaffCare;            // 職員マスタ配列(人数、ID・氏名・職種)
+        // Add Start WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
+        string[] astrHoliday;                       // 祝日マスタ配列
+        // Add End   WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
 
         /// <summary>
         /// クラス初期化
@@ -141,8 +150,20 @@ namespace workschedule.Reports
                     xlSheet.Cells[ROW_NURSE_DAY_OF_WEEK1, COLUMN_NURSE_DAY_OF_WEEK1 + i].Value = dtTargetMonth.AddDays(double.Parse(i.ToString())).ToString("ddd") + "曜";
                     xlSheet.Cells[ROW_NURSE_DAY_OF_WEEK2, COLUMN_NURSE_DAY_OF_WEEK2 + i].Value = dtTargetMonth.AddDays(double.Parse(i.ToString())).ToString("ddd") + "曜";
                     xlSheet.Cells[ROW_CARE_DAY_OF_WEEK, COLUMN_CARE_DAY_OF_WEEK + i].Value = dtTargetMonth.AddDays(double.Parse(i.ToString())).ToString("ddd") + "曜";
-                }
 
+                    // Add Start WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
+                    if (clsCommonControl.GetWeekName(dtTargetMonth.AddDays(i).ToString("yyyyMMdd"), astrHoliday) == "祝" || 
+                        clsCommonControl.GetWeekName(dtTargetMonth.AddDays(i).ToString("yyyyMMdd"), astrHoliday) == "日")
+                    {
+                        for(int iStaffCount = 0; iStaffCount < 2 * (ROW_NURSE_TOTAL_ROW - 1); iStaffCount++)
+                        {
+                            xlSheet.Cells[ROW_NURSE_DAY_START1 + 2 + iStaffCount, COLUMN_NURSE_DAY_START1 + i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Gray125;
+                            xlSheet.Cells[ROW_NURSE_DAY_START2 + 2 + iStaffCount, COLUMN_NURSE_DAY_START2 + i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Gray125;
+                            xlSheet.Cells[ROW_CARE_DAY_START + 2 + iStaffCount, COLUMN_CARE_DAY_START + i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Gray125;
+                        }
+                    }
+                    // Add End   WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
+                }
                 // == 看護師・准看護師 ==
 
                 // 複数ページ対応とするか判定
@@ -517,6 +538,16 @@ namespace workschedule.Reports
                 astrScheduleStaffCare[i, 1] = dt.Rows[i]["name"].ToString();
                 astrScheduleStaffCare[i, 2] = dt.Rows[i]["staff_kind"].ToString();
             }
+            
+            // Add Start WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
+            /// 祝日マスタ
+            dt = clsDatabaseControl.GetHoliday();
+            astrHoliday = new string[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                astrHoliday[i] = dt.Rows[i]["holiday"].ToString();
+            }
+            // Add End   WataruT 2020.07.21 出力した計画表の日曜と祝日の背景色を変更
         }
 
         /// <summary>
