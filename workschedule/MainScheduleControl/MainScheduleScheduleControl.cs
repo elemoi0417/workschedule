@@ -2403,5 +2403,21 @@ namespace workschedule.MainScheduleControl
 
             return false;
         }
+
+        /// <summary>
+        /// 勤務予定初回データを削除
+        /// Add WataruT 2020.07.21 初回登録解除機能追加
+        /// </summary>
+        public void DeleteScheduleFirstData()
+        {
+            string strScheduleNo;
+            
+            // 対象の予定番号を取得
+            strScheduleNo = clsDatabaseControl.GetScheduleFirstHeader_TargetScheduleNo(frmMainSchedule.cmbWard.SelectedValue.ToString(), frmMainSchedule.pstrTargetMonth, frmMainSchedule.pstrStaffKind);
+
+            // 勤務予定初回データの削除
+            clsDatabaseControl.DeleteScheduleFirstHeader_ScheduleNo(strScheduleNo);
+            clsDatabaseControl.DeleteScheduleFirstDetail_ScheduleNo(strScheduleNo);
+        }
     }
 }

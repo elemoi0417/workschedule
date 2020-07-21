@@ -186,6 +186,24 @@ namespace workschedule
         /// <param name="e"></param>
         private void btnSaveFirst_Click(object sender, EventArgs e)
         {
+            // Add Start WataruT 2020.07.21 初回登録解除機能追加
+            if (btnSaveFirst.Text == "登録\r\n解除")
+            {
+                if(MessageBox.Show("初回登録を解除しますがよろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    // 初回予定データを削除
+                    clsMainScheduleScheduleControl.DeleteScheduleFirstData();
+
+                    // 完了メッセージの表示
+                    MessageBox.Show("解除完了", "");
+
+                    // 初回登録ボタンの状態変更
+                    clsMainScheduleCommonControl.CheckScheduleFirstFlag();
+                }
+                return;
+            }
+            // Add End   WataruT 2020.07.21 初回登録解除機能追加
+
             // 確認メッセージ
             if (MessageBox.Show("初回データとして登録しますがよろしいですか？","",MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
@@ -288,6 +306,11 @@ namespace workschedule
 
             // グリッドにデータをセット
             SetMainGridData();
+
+            //Add Start WataruT 2020.07.21 初回登録解除機能追加
+            // 初回登録ボタンの制御
+            clsMainScheduleCommonControl.CheckScheduleFirstFlag();
+            //Add End   WataruT 2020.07.21 初回登録解除機能追加
         }
 
         /// <summary>
@@ -311,6 +334,11 @@ namespace workschedule
 
             // グリッドにデータをセット
             SetMainGridData();
+
+            //Add Start WataruT 2020.07.21 初回登録解除機能追加
+            // 初回登録ボタンの制御
+            clsMainScheduleCommonControl.CheckScheduleFirstFlag();
+            //Add End   WataruT 2020.07.21 初回登録解除機能追加
         }
 
         /// <summary>
@@ -444,6 +472,11 @@ namespace workschedule
 
                 // グリッドにデータをセット
                 SetMainGridData();
+
+                //Add Start WataruT 2020.07.21 初回登録解除機能追加
+                // 初回登録ボタンの制御
+                clsMainScheduleCommonControl.CheckScheduleFirstFlag();
+                //Add End   WataruT 2020.07.21 初回登録解除機能追加
             }
         }
 
@@ -470,6 +503,11 @@ namespace workschedule
 
                 // グリッドにデータをセット
                 SetMainGridData();
+
+                //Add Start WataruT 2020.07.21 初回登録解除機能追加
+                // 初回登録ボタンの制御
+                clsMainScheduleCommonControl.CheckScheduleFirstFlag();
+                //Add End   WataruT 2020.07.21 初回登録解除機能追加
             }
         }
 

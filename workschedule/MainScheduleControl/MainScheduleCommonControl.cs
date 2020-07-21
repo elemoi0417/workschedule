@@ -447,9 +447,26 @@ namespace workschedule.MainScheduleControl
 
             // 初回予定フラグにより、「初回登録」ボタンの有効性を切り替える
             if (frmMainSchedule.pbScheduleFirstFlag)
-                frmMainSchedule.btnSaveFirst.Enabled = false;
+                // Mod Start WataruT 2020.07.21 初回登録解除機能追加
+                //frmMainSchedule.btnSaveFirst.Enabled = false;
+                if (frmMainSchedule.pstrLoginWard == "00")
+                {
+                    frmMainSchedule.btnSaveFirst.Text = "登録\r\n解除";
+                    frmMainSchedule.btnSaveFirst.Enabled = true;
+                }
+                else
+                {
+                    frmMainSchedule.btnSaveFirst.Enabled = false;
+                }
+            // Mod End   WataruT 2020.07.21 初回登録解除機能追加
             else
+            // Mod Start WataruT 2020.07.21 初回登録解除機能追加
+            //frmMainSchedule.btnSaveFirst.Enabled = true;
+            {
+                frmMainSchedule.btnSaveFirst.Text = "初回\r\n登録";
                 frmMainSchedule.btnSaveFirst.Enabled = true;
+            }
+            // Mod End   WataruT 2020.07.21 初回登録解除機能追加
 
         }
 
