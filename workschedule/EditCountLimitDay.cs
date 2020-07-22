@@ -47,6 +47,10 @@ namespace workschedule
 
             // メッセージ表示
             MessageBox.Show("登録完了");
+
+            // Add Start WataruT 2020.07.22 曜日別勤務人数で保存したらウィンドウを閉じる
+            Close();
+            // Add End   WataruT 2020.07.22 曜日別勤務人数で保存したらウィンドウを閉じる
         }
 
         /// <summary>
