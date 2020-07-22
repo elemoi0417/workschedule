@@ -58,8 +58,10 @@ namespace workschedule.Reports
         const int ROW_NURSE_STAFF_START1 = 6;
         const int ROW_NURSE_STAFF_START2 = 53;
         const int ROW_CARE_STAFF_START = 100;
-
-        const int ROW_NURSE_TOTAL_ROW = 20;
+        // Mod Start WataruT 2020.07.22 勤務表(月初)の2ページ目印字不具合対応
+        //const int ROW_NURSE_TOTAL_ROW = 20;
+        const int ROW_NURSE_TOTAL_ROW = 19;
+        // Mod End   WataruT 2020.07.22 勤務表(月初)の2ページ目印字不具合対応
 
         // 変数
         string pstrTargetWardCode;
@@ -155,7 +157,10 @@ namespace workschedule.Reports
                     if (clsCommonControl.GetWeekName(dtTargetMonth.AddDays(i).ToString("yyyyMMdd"), astrHoliday) == "祝" || 
                         clsCommonControl.GetWeekName(dtTargetMonth.AddDays(i).ToString("yyyyMMdd"), astrHoliday) == "日")
                     {
-                        for(int iStaffCount = 0; iStaffCount < 2 * (ROW_NURSE_TOTAL_ROW - 1); iStaffCount++)
+                        // Mod Start WataruT 2020.07.22 勤務表(月初)の2ページ目印字不具合対応
+                        //for (int iStaffCount = 0; iStaffCount < 2 * (ROW_NURSE_TOTAL_ROW - 1); iStaffCount++)
+                        for (int iStaffCount = 0; iStaffCount < 2 * ROW_NURSE_TOTAL_ROW; iStaffCount++)
+                        // Mod End   WataruT 2020.07.22 勤務表(月初)の2ページ目印字不具合対応
                         {
                             xlSheet.Cells[ROW_NURSE_DAY_START1 + 2 + iStaffCount, COLUMN_NURSE_DAY_START1 + i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Gray125;
                             xlSheet.Cells[ROW_NURSE_DAY_START2 + 2 + iStaffCount, COLUMN_NURSE_DAY_START2 + i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Gray125;
@@ -254,17 +259,30 @@ namespace workschedule.Reports
                     // 職種、順番、職員氏名
                     for (int iStaff = ROW_NURSE_TOTAL_ROW; iStaff < astrScheduleStaffNurse.GetLength(0); iStaff++)
                     {
+                        // Mod Start WataruT 2020.07.22 勤務表(月初)の2ページ目印字不具合対応
+                        //// 種別
+                        //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2].Value = astrScheduleStaffNurse[iStaff, 2];
+                        //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2].Value = "";
+
+                        //// 順番
+                        //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2 + 2].Value = iStaff + 1;
+                        //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2 + 2].Value = "";
+
+                        //// 氏名
+                        //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2 + 3].Value = astrScheduleStaffNurse[iStaff, 1];
+                        //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2 + 3].Value = "";
                         // 種別
-                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2].Value = astrScheduleStaffNurse[iStaff, 2];
-                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2].Value = "";
+                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2].Value = astrScheduleStaffNurse[iStaff, 2];
+                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2].Value = "";
 
                         // 順番
-                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2 + 2].Value = iStaff + 1;
-                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2 + 2].Value = "";
+                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2 + 2].Value = iStaff + 1;
+                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2 + 2].Value = "";
 
                         // 氏名
-                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2 + 3].Value = astrScheduleStaffNurse[iStaff, 1];
-                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2 + 3].Value = "";
+                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_STAFF_START2 + 3].Value = astrScheduleStaffNurse[iStaff, 1];
+                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_STAFF_START2 + 3].Value = "";
+                        // Mod End   WataruT 2020.07.22 勤務表(月初)の2ページ目印字不具合対応
                     }
 
                     // 初回予定データ、最終実績データ
