@@ -748,6 +748,11 @@ namespace workschedule
                 case "入職前":
                     ChangeMainGridData(16);
                     break;
+                // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                case "5.25":
+                    ChangeMainGridData(17);
+                    break;
+                // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
             }
         }
 
@@ -811,6 +816,11 @@ namespace workschedule
                 case "入職前":
                     ChangeMainGridData(16);
                     break;
+                // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                case "5.25":
+                    ChangeMainGridData(17);
+                    break;
+                // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
             }
         }
 

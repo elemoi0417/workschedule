@@ -1780,6 +1780,9 @@ namespace workschedule.MainScheduleControl
             switch (iWorkKind)
             {
                 case 0: // 日勤
+                // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                case 17: // 5.25
+                // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
                     frmMainSchedule.adColumnTotalData[iDay, 0] += dAddNumber;
                     break;
                 case 4: // 公休(午前)
@@ -1806,6 +1809,7 @@ namespace workschedule.MainScheduleControl
                 case 2: // 夜明
                     frmMainSchedule.adColumnTotalData[iDay, 2] += dAddNumber;
                     break;
+
             }
         }
 

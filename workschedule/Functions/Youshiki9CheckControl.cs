@@ -207,14 +207,23 @@ namespace workschedule.Functions
         /// <returns></returns>
         public string GetCheck5_Schedule(DataTable dtYoushiki9Check_Schedule)
         {
-            int iTotalWorkHours = 0;
+            // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+            //int iTotalWorkHours = 0;
+            double dTotalWorkHours = 0;
+            // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
 
             foreach (DataRow dr in dtYoushiki9Check_Schedule.Rows)
             {
-                iTotalWorkHours += int.Parse(dr["work_time"].ToString());
+                // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                //iTotalWorkHours += int.Parse(dr["work_time"].ToString());
+                dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
             }
 
-            return iTotalWorkHours.ToString();
+            // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+            //return iTotalWorkHours.ToString();
+            return dTotalWorkHours.ToString();
+            // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
         }
 
         /// <summary>
@@ -223,7 +232,10 @@ namespace workschedule.Functions
         /// <returns></returns>
         public string GetCheck6_Schedule(DataTable dtYoushiki9Check_Schedule)
         {
-            int iTotalWorkHours = 0;
+            // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+            //int iTotalWorkHours = 0;
+            double dTotalWorkHours = 0;
+            // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
             string strTargetDay = "";
             int iNightCount = 0;
             int iNightAfterCount = 0;
@@ -246,25 +258,37 @@ namespace workschedule.Functions
                         case "02":      // 夜勤
                             if(iNightCount != 2)
                             {
-                                iTotalWorkHours += int.Parse(dr["work_time"].ToString());
+                                // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                                //iTotalWorkHours += int.Parse(dr["work_time"].ToString());
+                                dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
                                 iNightCount++;
                             }
                             break;
                         case "03":      // 夜明
                             if (iNightAfterCount != 2)
                             {
-                                iTotalWorkHours += int.Parse(dr["work_time"].ToString());
+                                // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                                //iTotalWorkHours += int.Parse(dr["work_time"].ToString());
+                                dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
                                 iNightAfterCount++;
                             }
                             break;
                         default:
-                            iTotalWorkHours += int.Parse(dr["work_time"].ToString());
+                            // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                            //iTotalWorkHours += int.Parse(dr["work_time"].ToString());
+                            dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                            // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
                             break;
                     }
                 }   
             }
 
-            return iTotalWorkHours.ToString();
+            // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+            //return iTotalWorkHours.ToString();
+            return dTotalWorkHours.ToString();
+            // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
         }
 
         /// <summary>

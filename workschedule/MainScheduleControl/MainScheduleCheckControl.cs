@@ -574,6 +574,9 @@ namespace workschedule.MainScheduleControl
                 case "5":   // 公休(午後)
                 case "7":   // 有休(午前)
                 case "8":   // 有休(午後)
+                // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                case "17":  // 5.25
+                // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
                     return true;
                 default:
                     return false;

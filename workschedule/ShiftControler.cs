@@ -69,6 +69,14 @@ namespace workschedule
                 case "早出":
                     frmMainSchedule.ChangeMainGridData(15);
                     break;
+                // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                case "入職前":
+                    frmMainSchedule.ChangeMainGridData(16);
+                    break;
+                case "5.25":
+                    frmMainSchedule.ChangeMainGridData(17);
+                    break;
+                // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
             }
 
             if (frmMainSchedule.piDayCount != frmMainSchedule.piGrdMain_CurrentColumn)
