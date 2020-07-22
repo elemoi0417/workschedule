@@ -231,14 +231,17 @@ namespace workschedule.MainScheduleControl
             }
 
             // 先頭列のみ固定とする
-            // MOD START WataruT 2020.07.13 対象年月と対象病棟切り替え時、エラーが発生する
-            //frmMainSchedule.grdMain.Rows[0].Frozen = true;
-            if (frmMainSchedule.grdMain.Rows.Count > 0)
-            {
-                frmMainSchedule.grdMain.Rows[0].Frozen = true;
-            }
-            // MOD END   WataruT 2020.07.13 対象年月と対象病棟切り替え時、エラーが発生する
-            
+            // Mod Start WataruT 2020.07.22 計画表の先頭行のみ固定される不具合修正
+            //// MOD START WataruT 2020.07.13 対象年月と対象病棟切り替え時、エラーが発生する
+            ////frmMainSchedule.grdMain.Rows[0].Frozen = true;
+            //if (frmMainSchedule.grdMain.Rows.Count > 0)
+            //{
+            //    frmMainSchedule.grdMain.Rows[0].Frozen = true;
+            //}
+            //// MOD END   WataruT 2020.07.13 対象年月と対象病棟切り替え時、エラーが発生する
+            frmMainSchedule.grdMain.Columns[0].Frozen = true;
+            // Mod End   WataruT 2020.07.22 計画表の先頭行のみ固定される不具合修正
+
             // 表示していない職種の列合計値を取得
             SetColumnTotalOtherStaffKindCount();
 
