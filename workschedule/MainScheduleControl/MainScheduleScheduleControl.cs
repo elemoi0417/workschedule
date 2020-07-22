@@ -1670,9 +1670,12 @@ namespace workschedule.MainScheduleControl
                     if (iWorkKind == 0)
                     {
                         // 6病棟で土日祝かつ救急指定日の場合
-                        if (frmMainSchedule.cmbWard.SelectedValue.ToString() == "06" &&
+                        // Mod Start WataruT 2020.07.22 救急指定日の人数調整処理の不具合
+                        //if (frmMainSchedule.cmbWard.SelectedValue.ToString() == "06" &&
+                        if (frmMainSchedule.cmbWard.SelectedValue.ToString() == "06" && frmMainSchedule.pstrStaffKind == "01" &&
                         (iDayOfWeekNum == 0 || iDayOfWeekNum == 6 || iDayOfWeekNum == 7) &&
                         CheckEmergencyDate(String.Format("{0:D2}", iDay)))
+                        // Mod End   WataruT 2020.07.22 救急指定日の人数調整処理の不具合
                         {
                             strCountLimitDay = "/" + (int.Parse(frmMainSchedule.astrCountLimitDay[iDayOfWeekNum, 0]) + 1).ToString();
                         }
