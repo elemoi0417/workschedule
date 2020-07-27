@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainSchedule));
             this.btnAutoCreate = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -69,6 +69,7 @@
             this.tsmiWorkKind15_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind16_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind17_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind18_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmsMain_Request = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiShiftControler = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -90,6 +91,7 @@
             this.tsmiWorkKind15_Request = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind16_Request = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind17_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind18_Request = new System.Windows.Forms.ToolStripMenuItem();
             this.grdRowTotalHeader = new System.Windows.Forms.DataGridView();
             this.grdColumnTotal = new System.Windows.Forms.DataGridView();
             this.btnYoushiki9 = new System.Windows.Forms.Button();
@@ -107,8 +109,14 @@
             this.btnSaveFirst = new System.Windows.Forms.Button();
             this.btnPrintReport = new System.Windows.Forms.Button();
             this.btnImportRequest = new System.Windows.Forms.Button();
-            this.tsmiWorkKind18_Schedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind18_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind22_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind21_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind20_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind19_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind22_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind21_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind20_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind19_Request = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.grdMainHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdRowTotal)).BeginInit();
@@ -235,14 +243,14 @@
             this.grdMainHeader.AllowUserToResizeColumns = false;
             this.grdMainHeader.AllowUserToResizeRows = false;
             this.grdMainHeader.ColumnHeadersVisible = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdMainHeader.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdMainHeader.DefaultCellStyle = dataGridViewCellStyle1;
             this.grdMainHeader.Location = new System.Drawing.Point(0, 62);
             this.grdMainHeader.Name = "grdMainHeader";
             this.grdMainHeader.ReadOnly = true;
@@ -258,14 +266,14 @@
             this.grdMain.AllowUserToResizeColumns = false;
             this.grdMain.AllowUserToResizeRows = false;
             this.grdMain.ColumnHeadersVisible = false;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdMain.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdMain.DefaultCellStyle = dataGridViewCellStyle2;
             this.grdMain.Location = new System.Drawing.Point(0, 106);
             this.grdMain.Name = "grdMain";
             this.grdMain.ReadOnly = true;
@@ -284,14 +292,14 @@
             this.grdRowTotal.AllowUserToResizeColumns = false;
             this.grdRowTotal.AllowUserToResizeRows = false;
             this.grdRowTotal.ColumnHeadersVisible = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdRowTotal.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdRowTotal.DefaultCellStyle = dataGridViewCellStyle3;
             this.grdRowTotal.Location = new System.Drawing.Point(1184, 106);
             this.grdRowTotal.Name = "grdRowTotal";
             this.grdRowTotal.ReadOnly = true;
@@ -465,9 +473,13 @@
             this.tsmiWorkKind15_Schedule,
             this.tsmiWorkKind16_Schedule,
             this.tsmiWorkKind17_Schedule,
-            this.tsmiWorkKind18_Schedule});
+            this.tsmiWorkKind18_Schedule,
+            this.tsmiWorkKind19_Schedule,
+            this.tsmiWorkKind20_Schedule,
+            this.tsmiWorkKind21_Schedule,
+            this.tsmiWorkKind22_Schedule});
             this.tsmiWorkKindOtherMenu_Schedule.Name = "tsmiWorkKindOtherMenu_Schedule";
-            this.tsmiWorkKindOtherMenu_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKindOtherMenu_Schedule.Size = new System.Drawing.Size(130, 22);
             this.tsmiWorkKindOtherMenu_Schedule.Text = "その他";
             // 
             // tsmiWorkKind10_Schedule
@@ -526,6 +538,13 @@
             this.tsmiWorkKind17_Schedule.Text = "入職前";
             this.tsmiWorkKind17_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
+            // tsmiWorkKind18_Schedule
+            // 
+            this.tsmiWorkKind18_Schedule.Name = "tsmiWorkKind18_Schedule";
+            this.tsmiWorkKind18_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind18_Schedule.Text = "5.25";
+            this.tsmiWorkKind18_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
             // ctmsMain_Request
             // 
             this.ctmsMain_Request.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -547,75 +566,75 @@
             // tsmiShiftControler
             // 
             this.tsmiShiftControler.Name = "tsmiShiftControler";
-            this.tsmiShiftControler.Size = new System.Drawing.Size(180, 22);
+            this.tsmiShiftControler.Size = new System.Drawing.Size(157, 22);
             this.tsmiShiftControler.Text = "入力パレット表示";
             this.tsmiShiftControler.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
             // 
             // tsmiWorkKind1_Request
             // 
             this.tsmiWorkKind1_Request.Name = "tsmiWorkKind1_Request";
-            this.tsmiWorkKind1_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind1_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind1_Request.Text = "日勤";
             this.tsmiWorkKind1_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind2_Request
             // 
             this.tsmiWorkKind2_Request.Name = "tsmiWorkKind2_Request";
-            this.tsmiWorkKind2_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind2_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind2_Request.Text = "夜勤";
             this.tsmiWorkKind2_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind3_Request
             // 
             this.tsmiWorkKind3_Request.Name = "tsmiWorkKind3_Request";
-            this.tsmiWorkKind3_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind3_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind3_Request.Text = "夜明";
             this.tsmiWorkKind3_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind4_Request
             // 
             this.tsmiWorkKind4_Request.Name = "tsmiWorkKind4_Request";
-            this.tsmiWorkKind4_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind4_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind4_Request.Text = "公休(1日)";
             this.tsmiWorkKind4_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind5_Request
             // 
             this.tsmiWorkKind5_Request.Name = "tsmiWorkKind5_Request";
-            this.tsmiWorkKind5_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind5_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind5_Request.Text = "公休(午前)";
             this.tsmiWorkKind5_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind6_Request
             // 
             this.tsmiWorkKind6_Request.Name = "tsmiWorkKind6_Request";
-            this.tsmiWorkKind6_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind6_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind6_Request.Text = "公休(午後)";
             this.tsmiWorkKind6_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind7_Request
             // 
             this.tsmiWorkKind7_Request.Name = "tsmiWorkKind7_Request";
-            this.tsmiWorkKind7_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind7_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind7_Request.Text = "有休(1日)";
             this.tsmiWorkKind7_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind8_Request
             // 
             this.tsmiWorkKind8_Request.Name = "tsmiWorkKind8_Request";
-            this.tsmiWorkKind8_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind8_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind8_Request.Text = "有休(午前)";
             this.tsmiWorkKind8_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind9_Request
             // 
             this.tsmiWorkKind9_Request.Name = "tsmiWorkKind9_Request";
-            this.tsmiWorkKind9_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind9_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKind9_Request.Text = "有休(午後)";
             this.tsmiWorkKind9_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
@@ -630,7 +649,11 @@
             this.tsmiWorkKind15_Request,
             this.tsmiWorkKind16_Request,
             this.tsmiWorkKind17_Request,
-            this.tsmiWorkKind18_Request});
+            this.tsmiWorkKind18_Request,
+            this.tsmiWorkKind19_Request,
+            this.tsmiWorkKind20_Request,
+            this.tsmiWorkKind21_Request,
+            this.tsmiWorkKind22_Request});
             this.tsmiWorkKindOtherMenu_Request.Name = "tsmiWorkKindOtherMenu_Request";
             this.tsmiWorkKindOtherMenu_Request.Size = new System.Drawing.Size(157, 22);
             this.tsmiWorkKindOtherMenu_Request.Text = "その他";
@@ -691,6 +714,13 @@
             this.tsmiWorkKind17_Request.Text = "入職前";
             this.tsmiWorkKind17_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
+            // tsmiWorkKind18_Request
+            // 
+            this.tsmiWorkKind18_Request.Name = "tsmiWorkKind18_Request";
+            this.tsmiWorkKind18_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind18_Request.Text = "5.25";
+            this.tsmiWorkKind18_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
             // grdRowTotalHeader
             // 
             this.grdRowTotalHeader.AllowUserToAddRows = false;
@@ -698,14 +728,14 @@
             this.grdRowTotalHeader.AllowUserToResizeColumns = false;
             this.grdRowTotalHeader.AllowUserToResizeRows = false;
             this.grdRowTotalHeader.ColumnHeadersVisible = false;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdRowTotalHeader.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdRowTotalHeader.DefaultCellStyle = dataGridViewCellStyle4;
             this.grdRowTotalHeader.Location = new System.Drawing.Point(1184, 62);
             this.grdRowTotalHeader.Name = "grdRowTotalHeader";
             this.grdRowTotalHeader.ReadOnly = true;
@@ -721,14 +751,14 @@
             this.grdColumnTotal.AllowUserToResizeColumns = false;
             this.grdColumnTotal.AllowUserToResizeRows = false;
             this.grdColumnTotal.ColumnHeadersVisible = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdColumnTotal.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdColumnTotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.grdColumnTotal.Location = new System.Drawing.Point(0, 573);
             this.grdColumnTotal.Name = "grdColumnTotal";
             this.grdColumnTotal.ReadOnly = true;
@@ -910,19 +940,61 @@
             this.btnImportRequest.UseVisualStyleBackColor = false;
             this.btnImportRequest.Click += new System.EventHandler(this.btnImportRequest_Click);
             // 
-            // tsmiWorkKind18_Schedule
+            // tsmiWorkKind22_Schedule
             // 
-            this.tsmiWorkKind18_Schedule.Name = "tsmiWorkKind18_Schedule";
-            this.tsmiWorkKind18_Schedule.Size = new System.Drawing.Size(180, 22);
-            this.tsmiWorkKind18_Schedule.Text = "5.25";
-            this.tsmiWorkKind18_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            this.tsmiWorkKind22_Schedule.Name = "tsmiWorkKind22_Schedule";
+            this.tsmiWorkKind22_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind22_Schedule.Text = "7";
+            this.tsmiWorkKind22_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
-            // tsmiWorkKind18_Request
+            // tsmiWorkKind21_Schedule
             // 
-            this.tsmiWorkKind18_Request.Name = "tsmiWorkKind18_Request";
-            this.tsmiWorkKind18_Request.Size = new System.Drawing.Size(180, 22);
-            this.tsmiWorkKind18_Request.Text = "5.25";
-            this.tsmiWorkKind18_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            this.tsmiWorkKind21_Schedule.Name = "tsmiWorkKind21_Schedule";
+            this.tsmiWorkKind21_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind21_Schedule.Text = "6.25";
+            this.tsmiWorkKind21_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind20_Schedule
+            // 
+            this.tsmiWorkKind20_Schedule.Name = "tsmiWorkKind20_Schedule";
+            this.tsmiWorkKind20_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind20_Schedule.Text = "6";
+            this.tsmiWorkKind20_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind19_Schedule
+            // 
+            this.tsmiWorkKind19_Schedule.Name = "tsmiWorkKind19_Schedule";
+            this.tsmiWorkKind19_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind19_Schedule.Text = "2";
+            this.tsmiWorkKind19_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind22_Request
+            // 
+            this.tsmiWorkKind22_Request.Name = "tsmiWorkKind22_Request";
+            this.tsmiWorkKind22_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind22_Request.Text = "7";
+            this.tsmiWorkKind22_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind21_Request
+            // 
+            this.tsmiWorkKind21_Request.Name = "tsmiWorkKind21_Request";
+            this.tsmiWorkKind21_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind21_Request.Text = "6.25";
+            this.tsmiWorkKind21_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind20_Request
+            // 
+            this.tsmiWorkKind20_Request.Name = "tsmiWorkKind20_Request";
+            this.tsmiWorkKind20_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind20_Request.Text = "6";
+            this.tsmiWorkKind20_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind19_Request
+            // 
+            this.tsmiWorkKind19_Request.Name = "tsmiWorkKind19_Request";
+            this.tsmiWorkKind19_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind19_Request.Text = "2";
+            this.tsmiWorkKind19_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // MainSchedule
             // 
@@ -1049,6 +1121,14 @@
         public System.Windows.Forms.Button btnImportRequest;
         private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind18_Schedule;
         private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind18_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind19_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind20_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind21_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind22_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind19_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind20_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind21_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind22_Request;
     }
 }
 

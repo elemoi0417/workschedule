@@ -753,6 +753,20 @@ namespace workschedule
                     ChangeMainGridData(17);
                     break;
                 // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
+                // Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case "2":
+                    ChangeMainGridData(18);
+                    break;
+                case "6":
+                    ChangeMainGridData(19);
+                    break;
+                case "6.25":
+                    ChangeMainGridData(20);
+                    break;
+                case "7":
+                    ChangeMainGridData(21);
+                    break;
+                // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
             }
         }
 
@@ -821,6 +835,20 @@ namespace workschedule
                     ChangeMainGridData(17);
                     break;
                 // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
+                // Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case "2":
+                    ChangeMainGridData(18);
+                    break;
+                case "6":
+                    ChangeMainGridData(19);
+                    break;
+                case "6.25":
+                    ChangeMainGridData(20);
+                    break;
+                case "7":
+                    ChangeMainGridData(21);
+                    break;
+                // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
             }
         }
 

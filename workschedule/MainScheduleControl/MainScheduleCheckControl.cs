@@ -577,6 +577,12 @@ namespace workschedule.MainScheduleControl
                 // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
                 case "17":  // 5.25
                 // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
+                // Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case "18":  // 2
+                case "19":  // 6
+                case "20":  // 6.25
+                case "21":  // 7
+                // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
                     return true;
                 default:
                     return false;

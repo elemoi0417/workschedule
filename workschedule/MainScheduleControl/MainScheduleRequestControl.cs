@@ -725,12 +725,20 @@ namespace workschedule.MainScheduleControl
                 // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
                 case 17: // 5.25
                 // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
+                // Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case 19: // 6
+                case 20: // 6.25
+                case 21: // 7
+                // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
                     frmMainSchedule.adColumnTotalData[iDay, 0] += dAddNumber;
                     break;
                 case 4: // 公休(午前)
                 case 5: // 公休(午後)
                 case 7: // 有休(午前)
                 case 8: // 有休(午後)
+                // Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case 18: // 2
+                // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
                     frmMainSchedule.adColumnTotalData[iDay, 0] += dAddNumber * 0.5;
                     break;
                 case 1: // 夜勤
