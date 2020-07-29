@@ -196,7 +196,7 @@
             this.btnWorkKind10.Name = "btnWorkKind10";
             this.btnWorkKind10.Size = new System.Drawing.Size(49, 29);
             this.btnWorkKind10.TabIndex = 38;
-            this.btnWorkKind10.Text = "代有";
+            this.btnWorkKind10.Text = "公有";
             this.btnWorkKind10.UseVisualStyleBackColor = false;
             this.btnWorkKind10.Click += new System.EventHandler(this.btnWorkKind_Click);
             // 

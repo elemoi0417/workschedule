@@ -631,7 +631,7 @@ namespace workschedule.MainScheduleControl
                         {
                             case 3: // 公休(1日)
                             case 6: // 有休(1日)
-                            case 9: // 代有
+                            case 9: // 公有　// Mod WataruT 2020.07.29 代有を公有に文言変更
                                 dAddNumber -= 1;
                                 break;
                         }

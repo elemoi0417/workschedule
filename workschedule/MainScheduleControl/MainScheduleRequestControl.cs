@@ -699,9 +699,10 @@ namespace workschedule.MainScheduleControl
                     break;
                 case 4: // 公休(午前)
                 case 5: // 公休(午後)
+
                 //Mod Start WataruT 2020.07.16 代有の公休計算対応
                 //case 10:// 代有
-                case 9:// 代有
+                case 9:// 公有　// Mod WataruT 2020.07.29 代有を公有に文言変更
                 //Mod End   WataruT 2020.07.16 代有の公休計算対応
                     frmMainSchedule.adRowTotalData[iScheduleStaff, 0] += dAddNumber * 0.5;
                     break;

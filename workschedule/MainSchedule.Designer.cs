@@ -486,7 +486,7 @@
             // 
             this.tsmiWorkKind10_Schedule.Name = "tsmiWorkKind10_Schedule";
             this.tsmiWorkKind10_Schedule.Size = new System.Drawing.Size(180, 22);
-            this.tsmiWorkKind10_Schedule.Text = "代有";
+            this.tsmiWorkKind10_Schedule.Text = "公有";
             this.tsmiWorkKind10_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind11_Schedule
@@ -662,7 +662,7 @@
             // 
             this.tsmiWorkKind10_Request.Name = "tsmiWorkKind10_Request";
             this.tsmiWorkKind10_Request.Size = new System.Drawing.Size(180, 22);
-            this.tsmiWorkKind10_Request.Text = "代有";
+            this.tsmiWorkKind10_Request.Text = "公有";
             this.tsmiWorkKind10_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind11_Request

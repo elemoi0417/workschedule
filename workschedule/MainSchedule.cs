@@ -724,7 +724,10 @@ namespace workschedule
                 case "有休(午後)":
                     ChangeMainGridData(8);
                     break;
-                case "代有":
+                // Mod Start WataruT 2020.07.29 代有を公有に文言変更
+                //case "代有":
+                case "公有":
+                // Mod End   WataruT 2020.07.29 代有を公有に文言変更
                     ChangeMainGridData(9);
                     break;
                 case "遅出":
@@ -806,7 +809,10 @@ namespace workschedule
                 case "有休(午後)":
                     ChangeMainGridData(8);
                     break;
-                case "代有":
+                // Mod Start WataruT 2020.07.29 代有を公有に文言変更
+                //case "代有":
+                case "公有":
+                // Mod End   WataruT 2020.07.29 代有を公有に文言変更
                     ChangeMainGridData(9);
                     break;
                 case "遅出":
