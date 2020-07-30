@@ -68,7 +68,10 @@ namespace workschedule.MainScheduleControl
                             frmMainSchedule.adRowTotalData[iScheduleStaff, iWorkKind] = 0;
                     }
                 }
-                for (int iWorkKind = 0; iWorkKind < 6; iWorkKind++)
+                // Mod Start WataruT 2020.07.30 遅出の表示対応
+                //for (int iWorkKind = 0; iWorkKind < 6; iWorkKind++)
+                for(int iWorkKind = 0; iWorkKind < 7; iWorkKind++)
+                // Mod End   WataruT 2020.07.30 遅出の表示対応
                 {
                     frmMainSchedule.adColumnTotalData[iDay, iWorkKind] = 0;
                 }
@@ -322,6 +325,9 @@ namespace workschedule.MainScheduleControl
                 frmMainSchedule.adColumnTotalData[iDay, 3] = 0;
                 frmMainSchedule.adColumnTotalData[iDay, 4] = 0;
                 frmMainSchedule.adColumnTotalData[iDay, 5] = 0;
+                // Add Start WataruT 2020.07.30 遅出の表示対応
+                frmMainSchedule.adColumnTotalData[iDay, 6] = 0;
+                // Add End   WataruT 2020.07.30 遅出の表示対応
             }
 
             // 土日祝タブー職員の公休を土日祝にセット
@@ -1332,7 +1338,10 @@ namespace workschedule.MainScheduleControl
                             frmMainSchedule.adRowTotalData[iScheduleStaff, iWorkKind] = 0;
                     }
                 }
-                for (int iWorkKind = 0; iWorkKind < 6; iWorkKind++)
+                // Mod Start WataruT 2020.07.30 遅出の表示対応
+                //for (int iWorkKind = 0; iWorkKind < 6; iWorkKind++)
+                for(int iWorkKind = 0; iWorkKind < 7; iWorkKind++)
+                // Mod End   WataruT 2020.07.30 遅出の表示対応
                 {
                     frmMainSchedule.adColumnTotalData[iDay, iWorkKind] = 0;
                 }
@@ -1659,7 +1668,10 @@ namespace workschedule.MainScheduleControl
             }
 
             // 初期データをセット
-            for (int iWorkKind = 0; iWorkKind < 6; iWorkKind++)
+            // Mod Start WataruT 2020.07.30 遅出の表示対応
+            //for (int iWorkKind = 0; iWorkKind < 6; iWorkKind++)
+            for(int iWorkKind = 0; iWorkKind < 7; iWorkKind++)
+            // Mod End   WataruT 2020.07.30 遅出の表示対応
             {
                 DataRow dr = dt.NewRow();
                 dr["NAME"] = clsCommonControl.GetWorkKindTotalName(iWorkKind);
@@ -1827,6 +1839,11 @@ namespace workschedule.MainScheduleControl
                 case 2: // 夜明
                     frmMainSchedule.adColumnTotalData[iDay, 2] += dAddNumber;
                     break;
+                // Add Start WataruT 2020.07.30 遅出の表示対応
+                case 10: // 遅出
+                    frmMainSchedule.adColumnTotalData[iDay, 6] += dAddNumber;
+                    break;
+                // Add End   WataruT 2020.07.30 遅出の表示対応
 
             }
         }
@@ -2409,6 +2426,17 @@ namespace workschedule.MainScheduleControl
             {
                 frmMainSchedule.adColumnTotalData[int.Parse(row["day"].ToString()), 5]++;
             }
+            // Add Start WataruT 2020.07.30 遅出の表示対応
+            // 遅出の勤務情報を取得
+            dt = clsDatabaseControl.GetScheduleDetail_Ward_StaffKind_TargetMonth_WorkKind(frmMainSchedule.cmbWard.SelectedValue.ToString(), strOtherStaffKind,
+                frmMainSchedule.pstrTargetMonth, "11");
+
+            // データをカウント
+            foreach (DataRow row in dt.Rows)
+            {
+                frmMainSchedule.adColumnTotalData[int.Parse(row["day"].ToString()), 6]++;
+            }
+            // Add End   WataruT 2020.07.30 遅出の表示対応
         }
 
         /// <summary>

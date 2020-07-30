@@ -750,7 +750,5 @@ namespace workschedule.MainScheduleControl
                     break;
             }
         }
-
-
     }
 }

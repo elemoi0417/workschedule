@@ -270,6 +270,19 @@ namespace workschedule
                     frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, (piScheduleStaff + 1) * 3 - 2].Value = string.Format("{0:F2}", dTempTime);
                     frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, (piScheduleStaff + 1) * 3 - 1].Value = string.Format("{0:F2}", dTempTime);
                     break;
+                // Add Start WataruT 2020.07.30 遅出の表示対応
+                // 遅出
+                case "11":
+                    if (2.0 - dOtherTime < 0)
+                        dTempTime = 0;
+                    else
+                        dTempTime = 2.0 - dOtherTime;
+                    frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, (piScheduleStaff + 1) * 3 - 3].Value = string.Format("{0:F2}", dTempTime);
+                    frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, (piScheduleStaff + 1) * 3 - 2].Value = "6.00";
+                    frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, (piScheduleStaff + 1) * 3 - 1].Value = "6.00";
+                    break;
+
+                // Add End   WataruT 2020.07.30 遅出の表示対応
                 default:
                     if (clsDatabaseControl.GetWorkKind_WorkTime(cmbWorkKind.SelectedValue.ToString()) == "")
                         frmMainSchedule.grdMain[frmMainSchedule.piGrdMain_CurrentColumn, (piScheduleStaff + 1) * 3 - 3].Value = "";

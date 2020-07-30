@@ -1208,6 +1208,47 @@ namespace workschedule.Controls
         }
 
         /// <summary>
+        /// 対象病棟、対象年月、対象職種、対象勤務の勤務情報を取得
+        /// Add WataruT 2020.07.30 遅出の表示対応
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetScheduleDetail_Ward_StaffKind_TargetMonth_WorkKind(string strWard, string strStaffKind, string strTargetMonth, string strWorkKind)
+        {
+            try
+            {
+                string lsSQL;
+                DataTable dt;
+
+                lsSQL = "SELECT ";
+                lsSQL = lsSQL + "    DATE_FORMAT(dsd.target_date, '%e') - 1 as day, ";
+                lsSQL = lsSQL + "    dsd.* ";
+                lsSQL = lsSQL + "FROM ";
+                lsSQL = lsSQL + "    d_schedule_staff as dss, ";
+                lsSQL = lsSQL + "    d_schedule_header as dsh, ";
+                lsSQL = lsSQL + "    d_schedule_detail as dsd ";
+                lsSQL = lsSQL + "WHERE ";
+                lsSQL = lsSQL + "    dss.ward = dsh.ward AND ";
+                lsSQL = lsSQL + "    dss.target_month = dsh.target_month AND ";
+                lsSQL = lsSQL + "    dsh.schedule_no = dsd.schedule_no AND ";
+                lsSQL = lsSQL + "    dss.ward = '" + strWard + "' AND ";
+                lsSQL = lsSQL + "    dss.staff_id = dsd.staff AND ";
+                lsSQL = lsSQL + "    dss.target_month = '" + strTargetMonth + "' AND ";
+                lsSQL = lsSQL + "    dss.staff_kind = '" + strStaffKind + "' AND ";
+                lsSQL = lsSQL + "    dsd.work_kind = '" + strWorkKind + "';";
+
+                dt = GetDataTable(lsSQL);
+
+                return dt;
+
+            }
+            catch (MySqlException me)
+            {
+                Console.WriteLine("ERROR: " + me.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 勤務実績のデータ番号の最大値を取得
         /// </summary>
         /// <returns></returns>

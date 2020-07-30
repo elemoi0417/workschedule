@@ -532,8 +532,28 @@ namespace workschedule.MainScheduleControl
                     // 対象職員の場合
                     if(row["staff"].ToString() == frmMainSchedule.astrScheduleStaff[iScheduleStaff, 0])
                     {
+                        // Mod Start WataruT 2020.07.30 遅出の表示対応
+                        //// 夜勤または夜明の場合
+                        //if (row["work_kind"].ToString() == "02" || row["work_kind"].ToString() == "03")
+                        // 遅出の場合
+                        if (row["work_kind"].ToString() == "11")
+                        {
+                            // 日勤データ
+                            frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 3].Value = "2.00";
+                            CheckWorkKindForRowTotalData(iScheduleStaff, 0, 2);
+                            CheckWorkKindForColumnTotalData(iTargetColumn - 1, 0, 2);
+                            // 夜勤データ
+                            frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value = "6.00";
+                            CheckWorkKindForRowTotalData(iScheduleStaff, 1, 6);
+                            CheckWorkKindForColumnTotalData(iTargetColumn - 1, 1, 6);
+                            // 総夜勤データ
+                            frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 1].Value = "6.00";
+                            CheckWorkKindForRowTotalData(iScheduleStaff, 2, 6);
+                            CheckWorkKindForColumnTotalData(iTargetColumn - 1, 2, 6);
+                        }
                         // 夜勤または夜明の場合
-                        if(row["work_kind"].ToString() == "02" || row["work_kind"].ToString() == "03")
+                        else if(row["work_kind"].ToString() == "02" || row["work_kind"].ToString() == "03")
+                        // Mod End   WataruT 2020.07.30 遅出の表示対応
                         {
                             // 夜勤データ
                             if (frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value.ToString() != "")
@@ -802,7 +822,6 @@ namespace workschedule.MainScheduleControl
                 frmMainSchedule.astrResultWorkKind[iScheduleStaff, iDay - 2] = "";
             }
         }
-
 
         /// <summary>
         /// 変更フラグによる背景色をセット

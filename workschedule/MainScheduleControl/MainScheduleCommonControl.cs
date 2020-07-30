@@ -92,7 +92,10 @@ namespace workschedule.MainScheduleControl
             frmMainSchedule.aiDataRequestFlag = new int[frmMainSchedule.piScheduleStaffCount, frmMainSchedule.piDayCount];
             frmMainSchedule.aiDataNow = new int[frmMainSchedule.piScheduleStaffCount, frmMainSchedule.piDayCount];
             frmMainSchedule.adRowTotalData = new double[frmMainSchedule.piScheduleStaffCount, 3];
-            frmMainSchedule.adColumnTotalData = new double[frmMainSchedule.piDayCount, 6];
+            // Mod Start WataruT 2020.07.30 遅出の表示対応
+            //frmMainSchedule.adColumnTotalData = new double[frmMainSchedule.piDayCount, 6];
+            frmMainSchedule.adColumnTotalData = new double[frmMainSchedule.piDayCount, 7];
+            // Mod End   WataruT 2020.07.30 遅出の表示対応
             frmMainSchedule.astrWorkKind = new string[frmMainSchedule.piWorkKindCount, 2];
             frmMainSchedule.astrStaffKind = new string[iStaffKindCount, 3];
             frmMainSchedule.astrStaffPosition = new string[iStaffPositionCount];
@@ -296,13 +299,21 @@ namespace workschedule.MainScheduleControl
                     frmMainSchedule.grdMainHeader.Location = new Point(0, 62);
                     frmMainSchedule.grdMainHeader.Size = new Size(1227, 44);
                     frmMainSchedule.grdMain.Location = new Point(0, 106);
-                    frmMainSchedule.grdMain.Size = new Size(1227, 451);
+                    // Mod Start WataruT 2020.07.30 遅出の表示対応
+                    //frmMainSchedule.grdMain.Size = new Size(1227, 451);
+                    frmMainSchedule.grdMain.Size = new Size(1227, 434);
+                    // Mod End   WataruT 2020.07.30 遅出の表示対応
                     frmMainSchedule.grdRowTotalHeader.Location = new Point(1227, 62);
                     frmMainSchedule.grdRowTotalHeader.Size = new Size(81, 44);
                     frmMainSchedule.grdRowTotal.Location = new Point(1227, 106);
-                    frmMainSchedule.grdRowTotal.Size = new Size(81, 451);
-                    frmMainSchedule.grdColumnTotal.Location = new Point(0, 557);
-                    frmMainSchedule.grdColumnTotal.Size = new Size(1227, 132);
+                    // Mod Start WataruT 2020.07.30 遅出の表示対応
+                    //frmMainSchedule.grdRowTotal.Size = new Size(81, 451);
+                    //frmMainSchedule.grdColumnTotal.Location = new Point(0, 557);
+                    //frmMainSchedule.grdColumnTotal.Size = new Size(1227, 132);
+                    frmMainSchedule.grdRowTotal.Size = new Size(81, 434);
+                    frmMainSchedule.grdColumnTotal.Location = new Point(0, 540);
+                    frmMainSchedule.grdColumnTotal.Size = new Size(1227, 148);
+                    // Mod End   WataruT 2020.07.30 遅出の表示対応
                     break;
                 case 3: // 実績
                     frmMainSchedule.grdMainHeader.Location = new Point(0, 62);
@@ -509,6 +520,9 @@ namespace workschedule.MainScheduleControl
                         case "5":   // 公休(午後)
                         case "7":   // 有休(午前)
                         case "8":   // 有休(午後)
+                        // Add Start WataruT 2020.07.30 遅出の表示対応
+                        case "10":  // 遅出
+                        // Add End WataruT 2020.07.30 遅出の表示対応
                         // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
                         case "17":  // 5.25
                         // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加

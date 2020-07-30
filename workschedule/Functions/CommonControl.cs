@@ -215,6 +215,10 @@ namespace workschedule.Functions
                     return "夜 勤 (女 性)";
                 case 5:
                     return "夜勤 新人以外";
+                // Add Start WataruT 2020.07.30 遅出の表示対応
+                case 6:
+                    return "遅　出　計";
+                // Add End   WataruT 2020.07.30 遅出の表示対応
                 default:
                     return "";
             }
