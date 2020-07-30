@@ -627,6 +627,43 @@ namespace workschedule.Controls
         }
 
         /// <summary>
+        /// 対象年月、対象職種の勤務予定者の常日勤マスタ取得
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetStaffDayOnly_Ward_TargetMonth(string strWard, string strStaffKind, string strTargetMonth)
+        {
+            try
+            {
+                string lsSQL;
+                DataTable dt;
+
+                lsSQL = "SELECT ";
+                lsSQL = lsSQL + "    dsdo.* ";
+                lsSQL = lsSQL + "FROM ";
+                lsSQL = lsSQL + "    d_staff_day_only as dsdo, ";
+                lsSQL = lsSQL + "    d_schedule_staff as dss ";
+                lsSQL = lsSQL + "WHERE ";
+                lsSQL = lsSQL + "    dsdo.ward = dss.ward AND ";
+                lsSQL = lsSQL + "    dsdo.staff_kind = dss.staff_kind AND ";
+                lsSQL = lsSQL + "    dsdo.staff = dss.staff_id AND ";
+                lsSQL = lsSQL + "    dsdo.ward = '" + strWard + "' AND ";
+                lsSQL = lsSQL + "    dsdo.staff_kind = '" + strStaffKind + "' AND ";
+                lsSQL = lsSQL + "    dss.target_month = " + strTargetMonth + ";";
+
+                dt = GetDataTable(lsSQL);
+
+                return dt;
+
+            }
+            catch (MySqlException me)
+            {
+                Console.WriteLine("ERROR: " + me.Message);
+                return null;
+            }
+        }
+
+
+        /// <summary>
         /// 対象の勤務種類の勤務時間を取得
         /// </summary>
         /// <returns></returns>

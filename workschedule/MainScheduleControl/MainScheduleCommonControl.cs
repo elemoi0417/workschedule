@@ -51,7 +51,11 @@ namespace workschedule.MainScheduleControl
             // 各種データテーブル取得_2
             frmMainSchedule.dtScheduleStaff = clsDatabaseControl.GetScheduleStaff_List(frmMainSchedule.cmbWard.SelectedValue.ToString(), 
                 frmMainSchedule.lblTargetMonth.Text.Substring(0, 4) + frmMainSchedule.lblTargetMonth.Text.Substring(5, 2), frmMainSchedule.pstrStaffKind);
-            frmMainSchedule.dtStaffDayOnly = clsDatabaseControl.GetStaffDayOnly_Ward(frmMainSchedule.cmbWard.SelectedValue.ToString(), frmMainSchedule.pstrStaffKind);
+            //Mod Start WataruT 2020.07.30 勤務職員の変更後の常日勤設定不具合対応
+            //frmMainSchedule.dtStaffDayOnly = clsDatabaseControl.GetStaffDayOnly_Ward(frmMainSchedule.cmbWard.SelectedValue.ToString(), frmMainSchedule.pstrStaffKind);
+            frmMainSchedule.dtStaffDayOnly = clsDatabaseControl.GetStaffDayOnly_Ward_TargetMonth(frmMainSchedule.cmbWard.SelectedValue.ToString(), frmMainSchedule.pstrStaffKind,
+                frmMainSchedule.lblTargetMonth.Text.Substring(0, 4) + frmMainSchedule.lblTargetMonth.Text.Substring(5, 2));
+            //Mod End   WataruT 2020.07.30 勤務職員の変更後の常日勤設定不具合対応
             frmMainSchedule.dtCountLimitDay = clsDatabaseControl.GetCountLimitDay_Ward(frmMainSchedule.cmbWard.SelectedValue.ToString(), frmMainSchedule.pstrStaffKind);
             frmMainSchedule.dtEmergencyDate = clsDatabaseControl.GetEmergencyDate_TargetMonth(frmMainSchedule.lblTargetMonth.Text.Substring(0, 4) + "-" + frmMainSchedule.lblTargetMonth.Text.Substring(5, 2));
 
