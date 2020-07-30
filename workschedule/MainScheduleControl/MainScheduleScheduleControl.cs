@@ -1730,9 +1730,13 @@ namespace workschedule.MainScheduleControl
                         strColumnTotal = frmMainSchedule.grdColumnTotal[iDay, iWorkKind].Value.ToString();
                         strCountLimitDay = frmMainSchedule.grdColumnTotal[iDay, iWorkKind].Value.ToString();
                     }
-                    
+
                     // 背景色
-                    frmMainSchedule.grdColumnTotal[iDay, iWorkKind].Style.BackColor = clsCommonControl.GetColumnTotalBackColor(double.Parse(strColumnTotal), int.Parse(strCountLimitDay), iWorkKind);
+                    // Mod Start WataruT 2020.07.30 土日祝の日勤計の色変更
+                    //frmMainSchedule.grdColumnTotal[iDay, iWorkKind].Style.BackColor = clsCommonControl.GetColumnTotalBackColor(double.Parse(strColumnTotal), int.Parse(strCountLimitDay), iWorkKind);
+                    frmMainSchedule.grdColumnTotal[iDay, iWorkKind].Style.BackColor = clsCommonControl.GetColumnTotalBackColor(double.Parse(strColumnTotal), int.Parse(strCountLimitDay), iWorkKind,
+                        clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay), frmMainSchedule.astrHoliday));
+                    // Mod End   WataruT 2020.07.30 土日祝の日勤計の色変更
                 }
             }
 

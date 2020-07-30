@@ -352,16 +352,26 @@ namespace workschedule.Functions
         /// 列合計の色を返す
         /// </summary>
         /// <returns></returns>
-        public Color GetColumnTotalBackColor(double dColumnTotal, int iLimitCount, int iWorkKind)
+        // Mod Start WataruT 2020.07.30 土日祝の日勤計の色変更
+        //public Color GetColumnTotalBackColor(double dColumnTotal, int iLimitCount, int iWorkKind)
+        public Color GetColumnTotalBackColor(double dColumnTotal, int iLimitCount, int iWorkKind, string strWeekName)
+        // Mod End   WataruT 2020.07.30 土日祝の日勤計の色変更
         {
-            switch(iWorkKind)
+            switch (iWorkKind)
             {
                 // 日勤
                 case 0:
                     // 合計が制限値を上回る場合
                     if (dColumnTotal > iLimitCount)
                     {
-                        return Color.White;
+                        // Mod Start WataruT 2020.07.30 土日祝の日勤計の色変更
+                        //return Color.White;
+                        if (strWeekName == "土" || strWeekName == "日" || strWeekName == "祝")
+                            return Color.DodgerBlue;
+                        else
+                            return Color.White;
+                        // Mod End  WataruT 2020.07.30 土日祝の日勤計の色変更
+
                     }
                     // 合計が制限値と同じ場合
                     else if (dColumnTotal == iLimitCount)
