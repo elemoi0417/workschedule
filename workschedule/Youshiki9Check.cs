@@ -391,7 +391,10 @@ namespace workschedule
 
             if (drWardYoushiki9Flag["flag_check1"].ToString() == "1")
             {
-                txtResultDifference_Check1.Text = (double.Parse(txtResult_Check1.Text) - double.Parse(txtBorder_Check1.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check1.Text = (double.Parse(txtResult_Check1.Text) - double.Parse(txtBorder_Check1.Text)).ToString();
+                txtResultDifference_Check1.Text = (decimal.Parse(txtResult_Check1.Text) - decimal.Parse(txtBorder_Check1.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check1.Text) >= 0)
                     txtResultDifference_Check1.ForeColor = Color.Blue;
                 else
@@ -402,7 +405,10 @@ namespace workschedule
 
             if (drWardYoushiki9Flag["flag_check2"].ToString() == "1")
             {
-                txtResultDifference_Check2.Text = (double.Parse(txtResult_Check2.Text) - double.Parse(txtBorder_Check2.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check2.Text = (double.Parse(txtResult_Check2.Text) - double.Parse(txtBorder_Check2.Text)).ToString();
+                txtResultDifference_Check2.Text = (decimal.Parse(txtResult_Check2.Text) - decimal.Parse(txtBorder_Check2.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check2.Text) >= 0)
                     txtResultDifference_Check2.ForeColor = Color.Blue;
                 else
@@ -413,7 +419,10 @@ namespace workschedule
 
             if (drWardYoushiki9Flag["flag_check3"].ToString() == "1")
             {
-                txtResultDifference_Check3.Text = (double.Parse(txtResult_Check3.Text) - double.Parse(txtBorder_Check3.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check3.Text = (double.Parse(txtResult_Check3.Text) - double.Parse(txtBorder_Check3.Text)).ToString();
+                txtResultDifference_Check3.Text = (decimal.Parse(txtResult_Check3.Text) - decimal.Parse(txtBorder_Check3.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check3.Text) >= 0)
                     txtResultDifference_Check3.ForeColor = Color.Blue;
                 else
@@ -424,7 +433,10 @@ namespace workschedule
 
             if (drWardYoushiki9Flag["flag_check4"].ToString() == "1")
             {
-                txtResultDifference_Check4.Text = (double.Parse(txtResult_Check4.Text) - double.Parse(txtBorder_Check4.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check4.Text = (double.Parse(txtResult_Check4.Text) - double.Parse(txtBorder_Check4.Text)).ToString();
+                txtResultDifference_Check4.Text = (decimal.Parse(txtResult_Check4.Text) - decimal.Parse(txtBorder_Check4.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check4.Text) >= 0)
                     txtResultDifference_Check4.ForeColor = Color.Blue;
                 else
@@ -435,7 +447,10 @@ namespace workschedule
             
             if (drWardYoushiki9Flag["flag_check5"].ToString() == "1")
             {
-                txtResultDifference_Check5.Text = (double.Parse(txtResult_Check5.Text) - double.Parse(txtBorder_Check5.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check5.Text = (double.Parse(txtResult_Check5.Text) - double.Parse(txtBorder_Check5.Text)).ToString();
+                txtResultDifference_Check5.Text = (decimal.Parse(txtResult_Check5.Text) - decimal.Parse(txtBorder_Check5.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check5.Text) >= 0)
                     txtResultDifference_Check5.ForeColor = Color.Blue;
                 else
@@ -446,7 +461,10 @@ namespace workschedule
 
             if (drWardYoushiki9Flag["flag_check6"].ToString() == "1")
             {
-                txtResultDifference_Check6.Text = (double.Parse(txtResult_Check6.Text) - double.Parse(txtBorder_Check6.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check6.Text = (double.Parse(txtResult_Check6.Text) - double.Parse(txtBorder_Check6.Text)).ToString();
+                txtResultDifference_Check6.Text = (decimal.Parse(txtResult_Check6.Text) - decimal.Parse(txtBorder_Check6.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check6.Text) >= 0)
                     txtResultDifference_Check6.ForeColor = Color.Blue;
                 else
@@ -457,7 +475,10 @@ namespace workschedule
 
             if (drWardYoushiki9Flag["flag_check7"].ToString() == "1")
             {
-                txtResultDifference_Check7.Text = (double.Parse(txtResult_Check7.Text) - double.Parse(txtBorder_Check7.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check7.Text = (double.Parse(txtResult_Check7.Text) - double.Parse(txtBorder_Check7.Text)).ToString();
+                txtResultDifference_Check7.Text = (decimal.Parse(txtResult_Check7.Text) - decimal.Parse(txtBorder_Check7.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check7.Text) >= 0)
                     txtResultDifference_Check7.ForeColor = Color.Blue;
                 else
@@ -468,7 +489,10 @@ namespace workschedule
 
             if (drWardYoushiki9Flag["flag_check8"].ToString() == "1")
             {
-                txtResultDifference_Check8.Text = (double.Parse(txtResult_Check8.Text) - double.Parse(txtBorder_Check8.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check8.Text = (double.Parse(txtResult_Check8.Text) - double.Parse(txtBorder_Check8.Text)).ToString();
+                txtResultDifference_Check8.Text = (decimal.Parse(txtResult_Check8.Text) - decimal.Parse(txtBorder_Check8.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check8.Text) >= 0)
                     txtResultDifference_Check8.ForeColor = Color.Blue;
                 else
@@ -479,7 +503,10 @@ namespace workschedule
 
             if (drWardYoushiki9Flag["flag_check9"].ToString() == "1")
             {
-                txtResultDifference_Check9.Text = (double.Parse(txtResult_Check9.Text) - double.Parse(txtBorder_Check9.Text)).ToString();
+                // Mod Start WataruT 2020.08.04 様式9チェックの計算ずれ対応
+                //txtResultDifference_Check9.Text = (double.Parse(txtResult_Check9.Text) - double.Parse(txtBorder_Check9.Text)).ToString();
+                txtResultDifference_Check9.Text = (decimal.Parse(txtResult_Check9.Text) - decimal.Parse(txtBorder_Check9.Text)).ToString();
+                // Mod End   WataruT 2020.08.04 様式9チェックの計算ずれ対応
                 if (double.Parse(txtResultDifference_Check9.Text) >= 0)
                     txtResultDifference_Check9.ForeColor = Color.Blue;
                 else
