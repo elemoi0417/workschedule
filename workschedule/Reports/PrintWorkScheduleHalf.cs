@@ -151,7 +151,6 @@ namespace workschedule.Reports
             WriteCellValue(xlSheet, COLUMN_WARD2, ROW_WARD2, "第" + pstrTargetWard);
             WriteCellValue(xlSheet, COLUMN_WARD3, ROW_WARD3, "第" + pstrTargetWard);
 
-
             // == 日付・曜日 ==
 
             // 当月
@@ -179,7 +178,6 @@ namespace workschedule.Reports
                 WriteCellValue(xlSheet, COLUMN_NURSE_DAY_OF_WEEK2 + iTargetMonthDay + i, ROW_NURSE_DAY_OF_WEEK2, dtTargetNextMonth.AddDays(double.Parse(i.ToString())).ToString("ddd") + "曜");
                 WriteCellValue(xlSheet, COLUMN_CARE_DAY_OF_WEEK + iTargetMonthDay + i, ROW_CARE_DAY_OF_WEEK, dtTargetNextMonth.AddDays(double.Parse(i.ToString())).ToString("ddd") + "曜");
             }
-
 
             // == 看護師・准看護師 ==
 
@@ -277,7 +275,10 @@ namespace workschedule.Reports
                                             astrScheduleStaffNurse[iStaff, 0], "01", dtTargetNextMonth.ToString("yyyyMM"));
 
                     // 1日から順に処理
-                    for (int iDay = 0; iDay <= 15; iDay++)
+                    // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                    //for (int iDay = 0; iDay <= 15; iDay++)
+                    for (int iDay = 0; iDay < 15; iDay++)
+                    // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                     {
                         // データなしフラグを初期化
                         bNoDataFlag = false;
@@ -298,18 +299,27 @@ namespace workschedule.Reports
                                         if (DateTime.Parse(row2["target_date"].ToString()).Day == iDay + 1)
                                         {
                                             // 初回計画データ
-                                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
 
                                             // 最終計画データと異なる場合
                                             if (row["name_short"].ToString() == row2["name_short"].ToString())
                                             {
                                                 // 最終計画データの勤務種類は空欄とする
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                             }
                                             else
                                             {
                                                 // 最終計画データの勤務種類をセット
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                             }
                                             break;
                                         }
@@ -323,9 +333,15 @@ namespace workschedule.Reports
                         else if (bNoDataFlag == false)
                         {
                             // 初回計画データ
-                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
+                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
+                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
+                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                             // 最終計画データ
-                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                         }
                     }
                 }
@@ -441,18 +457,27 @@ namespace workschedule.Reports
                                         if (DateTime.Parse(row2["target_date"].ToString()).Day == iDay + 1)
                                         {
                                             // 初回計画データ
-                                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, row["name_short"].ToString());
+                                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, row["name_short"].ToString());
+                                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, row["name_short"].ToString());
+                                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
 
                                             // 最終計画データと異なる場合
                                             if (row["name_short"].ToString() == row2["name_short"].ToString())
                                             {
                                                 // 最終計画データの勤務種類は空欄とする
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, "");
+                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, "");
+                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, "");
+                                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                             }
                                             else
                                             {
                                                 // 最終計画データの勤務種類をセット
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                             }
                                             break;
                                         }
@@ -466,9 +491,15 @@ namespace workschedule.Reports
                         else if (bNoDataFlag == false)
                         {
                             // 初回計画データ
-                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, "");
+                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, "");
+                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, "");
+                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                             // 最終計画データ
-                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, "");
+                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, "");
+                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, "");
+                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                         }
                     }
                 }
@@ -590,18 +621,27 @@ namespace workschedule.Reports
                                         if (DateTime.Parse(row2["target_date"].ToString()).Day == iDay + 1)
                                         {
                                             // 初回計画データ
-                                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
 
                                             // 最終計画データと異なる場合
                                             if (row["name_short"].ToString() == row2["name_short"].ToString())
                                             {
                                                 // 最終計画データの勤務種類は空欄とする
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                             }
                                             else
                                             {
                                                 // 最終計画データの勤務種類をセット
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                             }
                                             break;
                                         }
@@ -615,9 +655,15 @@ namespace workschedule.Reports
                         else if (bNoDataFlag == false)
                         {
                             // 初回計画データ
-                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
+                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
+                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
+                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                             // 最終計画データ
-                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                            WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                         }
                     }
                 }
@@ -734,18 +780,27 @@ namespace workschedule.Reports
                                     if (DateTime.Parse(row2["target_date"].ToString()).Day == iDay + 1)
                                     {
                                         // 初回計画データ
-                                        WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                        // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                        //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                        WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, row["name_short"].ToString());
+                                        // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
 
                                         // 最終計画データと異なる場合
                                         if (row["name_short"].ToString() == row2["name_short"].ToString())
                                         {
                                             // 最終計画データの勤務種類は空欄とする
-                                            WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, "");
+                                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                            //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, "");
+                                            WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, "");
+                                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                         }
                                         else
                                         {
                                             // 最終計画データの勤務種類をセット
-                                            WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                            //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                         }
                                         break;
                                     }
@@ -759,9 +814,15 @@ namespace workschedule.Reports
                     else if (bNoDataFlag == false)
                     {
                         // 初回計画データ
-                        WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, "");
+                        // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                        //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, "");
+                        WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, "");
+                        // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                         // 最終計画データ
-                        WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, "");
+                        // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                        //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, "");
+                        WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, "");
+                        // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
                     }
                 }
             }

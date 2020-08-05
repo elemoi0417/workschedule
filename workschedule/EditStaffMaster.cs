@@ -92,7 +92,6 @@ namespace workschedule
             SetStaffList();
         }
 
-
         /// <summary>
         /// 「閉じる」ボタン
         /// </summary>
