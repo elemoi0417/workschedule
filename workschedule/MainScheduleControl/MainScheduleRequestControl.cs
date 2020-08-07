@@ -731,6 +731,10 @@ namespace workschedule.MainScheduleControl
                 case 20: // 6.25
                 case 21: // 7
                 // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
+                // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                case 22: // 遅刻
+                case 23: // 早退
+                // Add End   WataruT 2020.08.06 遅刻・早退入力対応
                     frmMainSchedule.adColumnTotalData[iDay, 0] += dAddNumber;
                     break;
                 case 4: // 公休(午前)

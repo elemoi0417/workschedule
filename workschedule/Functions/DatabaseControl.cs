@@ -662,7 +662,6 @@ namespace workschedule.Controls
             }
         }
 
-
         /// <summary>
         /// 対象の勤務種類の勤務時間を取得
         /// </summary>
@@ -1630,6 +1629,104 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    rh.ward = '" + strTargetWard + "' AND ";
                 lsSQL = lsSQL + "    rh.target_month = '" + strTargetMonth + "' AND ";
                 lsSQL = lsSQL + "    (rd.other3_work_kind <> '委員会のため' AND rd.other3_work_kind <> '外出のため' AND rd.other3_work_kind <> '研修のため' AND rd.other3_work_kind <> '') ";
+                lsSQL = lsSQL + "ORDER BY ";
+                lsSQL = lsSQL + "    target_date, staff_name;";
+
+                dt = GetDataTable(lsSQL);
+
+                return dt;
+
+            }
+            catch (MySqlException me)
+            {
+                Console.WriteLine("ERROR: " + me.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 対象病棟、対象年月の勤務詳細項目絞り込みで特定職員のデータ取得(勤務表時間計算用)
+        /// Add WataruT 2020.08.06 遅刻・早退入力対応
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(string strTargetWard, string strTargetMonth, string strWorkKindName, string strID)
+        {
+            try
+            {
+                string lsSQL;
+                DataTable dt;
+
+                lsSQL = "SELECT ";
+                lsSQL = lsSQL + "    s.name as staff_name, ";
+                lsSQL = lsSQL + "    sk.name as staff_kind_name, ";
+                lsSQL = lsSQL + "    DATE_FORMAT(rd.target_date, '%m月%d日') as target_date, ";
+                lsSQL = lsSQL + "    rd.target_date as target_date_basic, ";    // Add WataruT 2020.08.06 遅刻・早退入力対応
+                lsSQL = lsSQL + "    rd.other1_work_kind as work_kind, ";
+                lsSQL = lsSQL + "    rd.other1_start_time as start_time, ";
+                lsSQL = lsSQL + "    rd.other1_end_time as end_time, ";
+                lsSQL = lsSQL + "    time(rd.other1_end_time - rd.other1_start_time) as total_time ";
+                lsSQL = lsSQL + "FROM ";
+                lsSQL = lsSQL + "    m_staff s, ";
+                lsSQL = lsSQL + "    m_staff_kind sk, ";
+                lsSQL = lsSQL + "    d_result_header rh, ";
+                lsSQL = lsSQL + "    d_result_detail rd ";
+                lsSQL = lsSQL + "WHERE ";
+                lsSQL = lsSQL + "    s.id = rd.staff AND ";
+                lsSQL = lsSQL + "    s.staff_kind = sk.id AND ";
+                lsSQL = lsSQL + "    s.staff_kind_sub = sk.sub_id AND ";
+                lsSQL = lsSQL + "    rh.result_no = rd.result_no AND ";
+                lsSQL = lsSQL + "    s.id = '" + strID + "' AND ";
+                lsSQL = lsSQL + "    rh.ward = '" + strTargetWard + "' AND ";
+                lsSQL = lsSQL + "    rh.target_month = '" + strTargetMonth + "' AND ";
+                lsSQL = lsSQL + "    rd.other1_work_kind = '" + strWorkKindName + "' ";
+                lsSQL = lsSQL + "UNION ALL ";
+                lsSQL = lsSQL + "SELECT ";
+                lsSQL = lsSQL + "    s.name as staff_name, ";
+                lsSQL = lsSQL + "    sk.name as staff_kind_name, ";
+                lsSQL = lsSQL + "    DATE_FORMAT(rd.target_date, '%m月%d日') as target_date, ";
+                lsSQL = lsSQL + "    rd.target_date as target_date_basic, ";    // Add WataruT 2020.08.06 遅刻・早退入力対応
+                lsSQL = lsSQL + "    rd.other2_work_kind as work_kind, ";
+                lsSQL = lsSQL + "    rd.other2_start_time as start_time, ";
+                lsSQL = lsSQL + "    rd.other2_end_time as end_time, ";
+                lsSQL = lsSQL + "    time(rd.other2_end_time - rd.other2_start_time) as total_time ";
+                lsSQL = lsSQL + "FROM ";
+                lsSQL = lsSQL + "    m_staff s, ";
+                lsSQL = lsSQL + "    m_staff_kind sk, ";
+                lsSQL = lsSQL + "    d_result_header rh, ";
+                lsSQL = lsSQL + "    d_result_detail rd ";
+                lsSQL = lsSQL + "WHERE ";
+                lsSQL = lsSQL + "    s.id = rd.staff AND ";
+                lsSQL = lsSQL + "    s.staff_kind = sk.id AND ";
+                lsSQL = lsSQL + "    s.staff_kind_sub = sk.sub_id AND ";
+                lsSQL = lsSQL + "    rh.result_no = rd.result_no AND ";
+                lsSQL = lsSQL + "    s.id = '" + strID + "' AND ";
+                lsSQL = lsSQL + "    rh.ward = '" + strTargetWard + "' AND ";
+                lsSQL = lsSQL + "    rh.target_month = '" + strTargetMonth + "' AND ";
+                lsSQL = lsSQL + "    rd.other2_work_kind = '" + strWorkKindName + "' ";
+                lsSQL = lsSQL + "UNION ALL ";
+                lsSQL = lsSQL + "SELECT ";
+                lsSQL = lsSQL + "    s.name as staff_name, ";
+                lsSQL = lsSQL + "    sk.name as staff_kind_name, ";
+                lsSQL = lsSQL + "    DATE_FORMAT(rd.target_date, '%m月%d日') as target_date, ";
+                lsSQL = lsSQL + "    rd.target_date as target_date_basic, ";    // Add WataruT 2020.08.06 遅刻・早退入力対応
+                lsSQL = lsSQL + "    rd.other3_work_kind as work_kind, ";
+                lsSQL = lsSQL + "    rd.other3_start_time as start_time, ";
+                lsSQL = lsSQL + "    rd.other3_end_time as end_time, ";
+                lsSQL = lsSQL + "    time(rd.other3_end_time - rd.other3_start_time) as total_time ";
+                lsSQL = lsSQL + "FROM ";
+                lsSQL = lsSQL + "    m_staff s, ";
+                lsSQL = lsSQL + "    m_staff_kind sk, ";
+                lsSQL = lsSQL + "    d_result_header rh, ";
+                lsSQL = lsSQL + "    d_result_detail rd ";
+                lsSQL = lsSQL + "WHERE ";
+                lsSQL = lsSQL + "    s.id = rd.staff AND ";
+                lsSQL = lsSQL + "    s.staff_kind = sk.id AND ";
+                lsSQL = lsSQL + "    s.staff_kind_sub = sk.sub_id AND ";
+                lsSQL = lsSQL + "    rh.result_no = rd.result_no AND ";
+                lsSQL = lsSQL + "    s.id = '" + strID + "' AND ";
+                lsSQL = lsSQL + "    rh.ward = '" + strTargetWard + "' AND ";
+                lsSQL = lsSQL + "    rh.target_month = '" + strTargetMonth + "' AND ";
+                lsSQL = lsSQL + "    rd.other3_work_kind = '" + strWorkKindName + "' ";
                 lsSQL = lsSQL + "ORDER BY ";
                 lsSQL = lsSQL + "    target_date, staff_name;";
 

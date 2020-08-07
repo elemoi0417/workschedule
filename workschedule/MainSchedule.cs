@@ -770,6 +770,14 @@ namespace workschedule
                     ChangeMainGridData(21);
                     break;
                 // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
+                // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                case "遅刻":
+                    ChangeMainGridData(22);
+                    break;
+                case "早退":
+                    ChangeMainGridData(23);
+                    break;
+                // Add End   WataruT 2020.08.06 遅刻・早退入力対応
             }
         }
 
@@ -855,6 +863,14 @@ namespace workschedule
                     ChangeMainGridData(21);
                     break;
                 // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
+                // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                case "遅刻":
+                    ChangeMainGridData(22);
+                    break;
+                case "早退":
+                    ChangeMainGridData(23);
+                    break;
+                // Add End   WataruT 2020.08.06 遅刻・早退入力対応
             }
         }
 

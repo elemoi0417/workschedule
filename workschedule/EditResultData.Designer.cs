@@ -651,6 +651,7 @@
             "委員会のため",
             "外出のため",
             "研修のため",
+            "遅刻・早退のため",
             "その他(※手入力してください)"});
             this.cmbOther1WorkKind.Location = new System.Drawing.Point(136, 190);
             this.cmbOther1WorkKind.Name = "cmbOther1WorkKind";
@@ -666,6 +667,7 @@
             "委員会のため",
             "外出のため",
             "研修のため",
+            "遅刻・早退のため",
             "その他(※手入力してください)"});
             this.cmbOther2WorkKind.Location = new System.Drawing.Point(136, 270);
             this.cmbOther2WorkKind.Name = "cmbOther2WorkKind";
@@ -681,6 +683,7 @@
             "委員会のため",
             "外出のため",
             "研修のため",
+            "遅刻・早退のため",
             "その他(※手入力してください)"});
             this.cmbOther3WorkKind.Location = new System.Drawing.Point(136, 350);
             this.cmbOther3WorkKind.Name = "cmbOther3WorkKind";

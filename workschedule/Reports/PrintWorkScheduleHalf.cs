@@ -5,6 +5,7 @@ using workschedule.Controls;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System.IO;
+using OfficeOpenXml.FormulaParsing.ExpressionGraph;
 
 namespace workschedule.Reports
 {
@@ -106,10 +107,12 @@ namespace workschedule.Reports
         {
             int iTargetMonthDay;
             bool bNoDataFlag;
+            string strLateEarlyTime;     // Add WataruT 2020.08.06 遅刻・早退入力対応
             DateTime dtTargetMonth = DateTime.ParseExact(pstrTargetYear + pstrTargetMonth + "01", "yyyyMMdd", null);
             DateTime dtTargetNextMonth = DateTime.ParseExact(pstrTargetNextYear + pstrTargetNextMonth + "01", "yyyyMMdd", null);
             DataTable dtScheduleDetail;
             DataTable dtScheduleFirstDetail;
+            DataTable dtResultDetailItem;       // Add WataruT 2020.08.06 遅刻・早退入力対応
             SaveFileDialog sfd = new SaveFileDialog();
 
             iTargetMonthDay = DateTime.DaysInMonth(int.Parse(pstrTargetYear), int.Parse(pstrTargetMonth)) - 15;
@@ -210,6 +213,10 @@ namespace workschedule.Reports
                         astrScheduleStaffNurse[iStaff, 0], "01", dtTargetMonth.ToString("yyyyMM"));
                     dtScheduleFirstDetail = clsDatabaseControl.GetScheduleFirstDetail_Ward_Staff_StaffKind_TargetMonth(pstrTargetWardCode,
                                             astrScheduleStaffNurse[iStaff, 0], "01", dtTargetMonth.ToString("yyyyMM"));
+                    // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                    dtResultDetailItem = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(pstrTargetWardCode, pstrTargetYear + pstrTargetMonth, 
+                                            "遅刻・早退のため", astrScheduleStaffNurse[iStaff, 0]);
+                    // Add End   WataruT 2020.08.06 遅刻・早退入力対応
 
                     // 1日から順に処理
                     for (int iDay = 15; iDay < DateTime.DaysInMonth(dtTargetMonth.Year, dtTargetMonth.Month); iDay++)
@@ -243,8 +250,22 @@ namespace workschedule.Reports
                                             }
                                             else
                                             {
-                                                // 最終計画データの勤務種類をセット
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 - 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod Start WataruT 2020.08.06 遅刻・早退入力対応
+                                                //// 最終計画データの勤務種類をセット
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 - 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // 遅刻・早退か判定
+                                                if (CheckWorkKindLateEarly(row2["name_short"].ToString()) == true)
+                                                {
+                                                    // 遅刻・早退の実績時間を取得
+                                                    strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
+                                                    // 遅刻・早退の実績時間を取得
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 - 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, strLateEarlyTime + "H" + row2["name_short"].ToString());
+                                                }
+                                                else
+                                                {
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 - 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                }
+                                                // Mod End   WataruT 2020.08.06 遅刻・早退入力対応
                                             }
                                             break;
                                         }
@@ -273,6 +294,10 @@ namespace workschedule.Reports
                         astrScheduleStaffNurse[iStaff, 0], "01", dtTargetNextMonth.ToString("yyyyMM"));
                     dtScheduleFirstDetail = clsDatabaseControl.GetScheduleFirstDetail_Ward_Staff_StaffKind_TargetMonth(pstrTargetWardCode,
                                             astrScheduleStaffNurse[iStaff, 0], "01", dtTargetNextMonth.ToString("yyyyMM"));
+                    // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                    dtResultDetailItem = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(pstrTargetWardCode, pstrTargetNextYear + pstrTargetNextMonth,
+                                            "遅刻・早退のため", astrScheduleStaffNurse[iStaff, 0]);
+                    // Add End   WataruT 2020.08.06 遅刻・早退入力対応
 
                     // 1日から順に処理
                     // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
@@ -315,11 +340,25 @@ namespace workschedule.Reports
                                             }
                                             else
                                             {
-                                                // 最終計画データの勤務種類をセット
-                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod Start WataruT 2020.08.06 遅刻・早退入力対応
+                                                //// 最終計画データの勤務種類をセット
+                                                //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                ////WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
                                                 // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                // 遅刻・早退か判定
+                                                if (CheckWorkKindLateEarly(row2["name_short"].ToString()) == true)
+                                                {
+                                                    // 遅刻・早退の実績時間を取得
+                                                    strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
+                                                    // 遅刻・早退の実績時間を取得
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, strLateEarlyTime + "H" + row2["name_short"].ToString());
+                                                }
+                                                else
+                                                {
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                }
+                                                // Mod End   WataruT 2020.08.06 遅刻・早退入力対応
                                             }
                                             break;
                                         }
@@ -371,6 +410,10 @@ namespace workschedule.Reports
                         astrScheduleStaffNurse[iStaff, 0], "01", dtTargetMonth.ToString("yyyyMM"));
                     dtScheduleFirstDetail = clsDatabaseControl.GetScheduleFirstDetail_Ward_Staff_StaffKind_TargetMonth(pstrTargetWardCode,
                                             astrScheduleStaffNurse[iStaff, 0], "01", dtTargetMonth.ToString("yyyyMM"));
+                    // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                    dtResultDetailItem = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(pstrTargetWardCode, pstrTargetYear + pstrTargetMonth,
+                                            "遅刻・早退のため", astrScheduleStaffNurse[iStaff, 0]);
+                    // Add End   WataruT 2020.08.06 遅刻・早退入力対応
 
                     // 1日から順に処理
                     for (int iDay = 15; iDay < DateTime.DaysInMonth(dtTargetMonth.Year, dtTargetMonth.Month); iDay++)
@@ -404,8 +447,22 @@ namespace workschedule.Reports
                                             }
                                             else
                                             {
-                                                // 最終計画データの勤務種類をセット
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 - 15 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod Start WataruT 2020.08.06 遅刻・早退入力対応
+                                                //// 最終計画データの勤務種類をセット
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 - 15 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // 遅刻・早退か判定
+                                                if (CheckWorkKindLateEarly(row2["name_short"].ToString()) == true)
+                                                {
+                                                    // 遅刻・早退の実績時間を取得
+                                                    strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
+                                                    // 遅刻・早退の実績時間を取得
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 - 15 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, strLateEarlyTime + "H" + row2["name_short"].ToString());
+                                                }
+                                                else
+                                                {
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 - 15 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                }
+                                                // Mod End   WataruT 2020.08.06 遅刻・早退入力対応
                                             }
                                             break;
                                         }
@@ -434,6 +491,10 @@ namespace workschedule.Reports
                         astrScheduleStaffNurse[iStaff, 0], "01", dtTargetNextMonth.ToString("yyyyMM"));
                     dtScheduleFirstDetail = clsDatabaseControl.GetScheduleFirstDetail_Ward_Staff_StaffKind_TargetMonth(pstrTargetWardCode,
                                             astrScheduleStaffNurse[iStaff, 0], "01", dtTargetNextMonth.ToString("yyyyMM"));
+                    // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                    dtResultDetailItem = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(pstrTargetWardCode, pstrTargetNextYear + pstrTargetNextMonth,
+                                            "遅刻・早退のため", astrScheduleStaffNurse[iStaff, 0]);
+                    // Add End   WataruT 2020.08.06 遅刻・早退入力対応
 
                     // 1日から順に処理
                     for (int iDay = 0; iDay < 15; iDay++)
@@ -473,11 +534,26 @@ namespace workschedule.Reports
                                             }
                                             else
                                             {
-                                                // 最終計画データの勤務種類をセット
-                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
-                                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                // Mod Start WataruT 2020.08.06 遅刻・早退入力対応
+                                                //// 最終計画データの勤務種類をセット
+                                                //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                ////WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                // 遅刻・早退か判定
+                                                if (CheckWorkKindLateEarly(row2["name_short"].ToString()) == true)
+                                                {
+                                                    // 遅刻・早退の実績時間を取得
+                                                    strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
+                                                    // 遅刻・早退の実績時間を取得
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, strLateEarlyTime + "H" + row2["name_short"].ToString());
+                                                }
+                                                else
+                                                {
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, row2["name_short"].ToString());
+                                                }
+                                                // Mod End   WataruT 2020.08.06 遅刻・早退入力対応
+                                                
                                             }
                                             break;
                                         }
@@ -535,6 +611,10 @@ namespace workschedule.Reports
                         astrScheduleStaffNurse[iStaff, 0], "01", dtTargetMonth.ToString("yyyyMM"));
                     dtScheduleFirstDetail = clsDatabaseControl.GetScheduleFirstDetail_Ward_Staff_StaffKind_TargetMonth(pstrTargetWardCode,
                                             astrScheduleStaffNurse[iStaff, 0], "01", dtTargetMonth.ToString("yyyyMM"));
+                    // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                    dtResultDetailItem = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(pstrTargetWardCode, pstrTargetYear + pstrTargetMonth,
+                                            "遅刻・早退のため", astrScheduleStaffNurse[iStaff, 0]);
+                    // Add End   WataruT 2020.08.06 遅刻・早退入力対応
 
                     // 1日から順に処理
                     for (int iDay = 15; iDay < DateTime.DaysInMonth(dtTargetMonth.Year, dtTargetMonth.Month); iDay++)
@@ -568,8 +648,22 @@ namespace workschedule.Reports
                                             }
                                             else
                                             {
-                                                // 最終計画データの勤務種類をセット
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 - 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // Mod Start WataruT 2020.08.06 遅刻・早退入力対応
+                                                //// 最終計画データの勤務種類をセット
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 - 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                // 遅刻・早退か判定
+                                                if (CheckWorkKindLateEarly(row2["name_short"].ToString()) == true)
+                                                {
+                                                    // 遅刻・早退の実績時間を取得
+                                                    strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
+                                                    // 遅刻・早退の実績時間を取得
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 - 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, strLateEarlyTime + "H" + row2["name_short"].ToString());
+                                                }
+                                                else
+                                                {
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 - 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                }
+                                                // Mod End   WataruT 2020.08.06 遅刻・早退入力対応
                                             }
                                             break;
                                         }
@@ -598,6 +692,10 @@ namespace workschedule.Reports
                         astrScheduleStaffNurse[iStaff, 0], "01", dtTargetNextMonth.ToString("yyyyMM"));
                     dtScheduleFirstDetail = clsDatabaseControl.GetScheduleFirstDetail_Ward_Staff_StaffKind_TargetMonth(pstrTargetWardCode,
                                             astrScheduleStaffNurse[iStaff, 0], "01", dtTargetNextMonth.ToString("yyyyMM"));
+                    // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                    dtResultDetailItem = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(pstrTargetWardCode, pstrTargetNextYear + pstrTargetNextMonth,
+                                            "遅刻・早退のため", astrScheduleStaffNurse[iStaff, 0]);
+                    // Add End   WataruT 2020.08.06 遅刻・早退入力対応
 
                     // 1日から順に処理
                     for (int iDay = 0; iDay < 15; iDay++)
@@ -637,11 +735,25 @@ namespace workschedule.Reports
                                             }
                                             else
                                             {
-                                                // 最終計画データの勤務種類をセット
-                                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
-                                                WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
-                                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                // Mod Start WataruT 2020.08.06 遅刻・早退入力対応
+                                                //// 最終計画データの勤務種類をセット
+                                                //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                ////WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                                // 遅刻・早退か判定
+                                                if (CheckWorkKindLateEarly(row2["name_short"].ToString()) == true)
+                                                {
+                                                    // 遅刻・早退の実績時間を取得
+                                                    strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
+                                                    // 遅刻・早退の実績時間を取得
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, strLateEarlyTime + "H" + row2["name_short"].ToString());
+                                                }
+                                                else
+                                                {
+                                                    WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                                }
+                                                // Mod End   WataruT 2020.08.06 遅刻・早退入力対応
                                             }
                                             break;
                                         }
@@ -694,7 +806,10 @@ namespace workschedule.Reports
                     astrScheduleStaffCare[iStaff, 0], "02", dtTargetMonth.ToString("yyyyMM"));
                 dtScheduleFirstDetail = clsDatabaseControl.GetScheduleFirstDetail_Ward_Staff_StaffKind_TargetMonth(pstrTargetWardCode,
                                         astrScheduleStaffCare[iStaff, 0], "02", dtTargetMonth.ToString("yyyyMM"));
-
+                // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                dtResultDetailItem = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(pstrTargetWardCode, pstrTargetYear + pstrTargetMonth,
+                                        "遅刻・早退のため", astrScheduleStaffCare[iStaff, 0]);
+                // Add End   WataruT 2020.08.06 遅刻・早退入力対応
                 // 1日から順に処理
                 for (int iDay = 15; iDay < DateTime.DaysInMonth(dtTargetMonth.Year, dtTargetMonth.Month); iDay++)
                 {
@@ -727,8 +842,22 @@ namespace workschedule.Reports
                                         }
                                         else
                                         {
-                                            // 最終計画データの勤務種類をセット
-                                            WriteCellValue(xlSheet, COLUMN_CARE_DAY_START - 15 + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            // Mod Start WataruT 2020.08.06 遅刻・早退入力対応
+                                            //// 最終計画データの勤務種類をセット
+                                            //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START - 15 + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            // 遅刻・早退か判定
+                                            if (CheckWorkKindLateEarly(row2["name_short"].ToString()) == true)
+                                            {
+                                                // 遅刻・早退の実績時間を取得
+                                                strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
+                                                // 遅刻・早退の実績時間を取得
+                                                WriteCellValue(xlSheet, COLUMN_CARE_DAY_START - 15 + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, strLateEarlyTime + "H" + row2["name_short"].ToString());
+                                            }
+                                            else
+                                            {
+                                                WriteCellValue(xlSheet, COLUMN_CARE_DAY_START - 15 + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            }
+                                            // Mod End   WataruT 2020.08.06 遅刻・早退入力対応
                                         }
                                         break;
                                     }
@@ -757,6 +886,10 @@ namespace workschedule.Reports
                     astrScheduleStaffCare[iStaff, 0], "02", dtTargetNextMonth.ToString("yyyyMM"));
                 dtScheduleFirstDetail = clsDatabaseControl.GetScheduleFirstDetail_Ward_Staff_StaffKind_TargetMonth(pstrTargetWardCode,
                                         astrScheduleStaffCare[iStaff, 0], "02", dtTargetNextMonth.ToString("yyyyMM"));
+                // Add Start WataruT 2020.08.06 遅刻・早退入力対応
+                dtResultDetailItem = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Staff(pstrTargetWardCode, pstrTargetNextYear + pstrTargetNextMonth,
+                                        "遅刻・早退のため", astrScheduleStaffCare[iStaff, 0]);
+                // Add End   WataruT 2020.08.06 遅刻・早退入力対応
 
                 // 1日から順に処理
                 for (int iDay = 0; iDay < 15; iDay++)
@@ -796,11 +929,25 @@ namespace workschedule.Reports
                                         }
                                         else
                                         {
-                                            // 最終計画データの勤務種類をセット
-                                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                            //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
-                                            WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
-                                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                            // Mod Start WataruT 2020.08.06 遅刻・早退入力対応
+                                            //// 最終計画データの勤務種類をセット
+                                            //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                            ////WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                            // 遅刻・早退か判定
+                                            if (CheckWorkKindLateEarly(row2["name_short"].ToString()) == true)
+                                            {
+                                                // 遅刻・早退の実績時間を取得
+                                                strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
+                                                // 遅刻・早退の実績時間を取得
+                                                WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, strLateEarlyTime + "H" + row2["name_short"].ToString());
+                                            }
+                                            else
+                                            {
+                                                WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, row2["name_short"].ToString());
+                                            }
+                                            // Mod End   WataruT 2020.08.06 遅刻・早退入力対応
                                         }
                                         break;
                                     }
@@ -931,5 +1078,42 @@ namespace workschedule.Reports
             cell.SetCellValue(value);
         }
 
+        /// <summary>
+        /// 遅刻・早退かチェック
+        /// Add WataruT 2020.08.06 遅刻・早退入力対応
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckWorkKindLateEarly(string strWorkKind)
+        {
+            // 遅刻・早退か判定
+            if (strWorkKind == "遅刻" || strWorkKind == "早退")
+                return true;
+            else
+                return false;
+        }
+
+        /// <summary>
+        /// その他業務の合計時間を返す
+        /// Add WataruT 2020.08.06 遅刻・早退入力対応
+        /// </summary>
+        private string GetOtherWorkTimeTotal(DataTable dtResultDetailItem, int iTargetDay)
+        {
+            string strTotalTime;                                // 合計時間
+            double dOtherWorkTimeTotal = 0;                     // 計算時の一時変数
+
+            foreach(DataRow row in dtResultDetailItem.Rows)
+            {
+                if(DateTime.Parse(row["target_date_basic"].ToString()).Day == iTargetDay)
+                {
+                    dOtherWorkTimeTotal += double.Parse(DateTime.Parse(row["total_time"].ToString()).Hour.ToString()) +
+                                          double.Parse(DateTime.Parse(row["total_time"].ToString()).Minute.ToString()) / 60;
+                }
+            }
+
+            // 数字を文字列に変換
+            strTotalTime = dOtherWorkTimeTotal.ToString();
+
+            return strTotalTime;
+        }
     }
 }
