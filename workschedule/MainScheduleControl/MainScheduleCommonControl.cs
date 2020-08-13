@@ -301,23 +301,36 @@ namespace workschedule.MainScheduleControl
                     break;
                 case 2: // 予定
                     frmMainSchedule.grdMainHeader.Location = new Point(0, 62);
-                    frmMainSchedule.grdMainHeader.Size = new Size(1227, 44);
+                    // Mod Start WataruT 2020.08.13 予定画面の合計値が省略されてしまう
+                    //frmMainSchedule.grdMainHeader.Size = new Size(1227, 44);
+                    frmMainSchedule.grdMainHeader.Size = new Size(1191, 44);
+                    // Mod End   WataruT 2020.08.13 予定画面の合計値が省略されてしまう
                     frmMainSchedule.grdMain.Location = new Point(0, 106);
-                    // Mod Start WataruT 2020.07.30 遅出の表示対応
-                    //frmMainSchedule.grdMain.Size = new Size(1227, 451);
-                    frmMainSchedule.grdMain.Size = new Size(1227, 434);
-                    // Mod End   WataruT 2020.07.30 遅出の表示対応
-                    frmMainSchedule.grdRowTotalHeader.Location = new Point(1227, 62);
-                    frmMainSchedule.grdRowTotalHeader.Size = new Size(81, 44);
-                    frmMainSchedule.grdRowTotal.Location = new Point(1227, 106);
-                    // Mod Start WataruT 2020.07.30 遅出の表示対応
-                    //frmMainSchedule.grdRowTotal.Size = new Size(81, 451);
-                    //frmMainSchedule.grdColumnTotal.Location = new Point(0, 557);
-                    //frmMainSchedule.grdColumnTotal.Size = new Size(1227, 132);
-                    frmMainSchedule.grdRowTotal.Size = new Size(81, 434);
+                    // Mod Start WataruT 2020.08.13 予定画面の合計値が省略されてしまう
+                    //// Mod Start WataruT 2020.07.30 遅出の表示対応
+                    ////frmMainSchedule.grdMain.Size = new Size(1227, 451);
+                    //frmMainSchedule.grdMain.Size = new Size(1227, 434);
+                    //// Mod End   WataruT 2020.07.30 遅出の表示対応
+                    //frmMainSchedule.grdRowTotalHeader.Location = new Point(1227, 62);
+                    //frmMainSchedule.grdRowTotalHeader.Size = new Size(81, 44);
+                    //frmMainSchedule.grdRowTotal.Location = new Point(1227, 106);
+                    //// Mod Start WataruT 2020.07.30 遅出の表示対応
+                    ////frmMainSchedule.grdRowTotal.Size = new Size(81, 451);
+                    ////frmMainSchedule.grdColumnTotal.Location = new Point(0, 557);
+                    ////frmMainSchedule.grdColumnTotal.Size = new Size(1227, 132);
+                    //frmMainSchedule.grdRowTotal.Size = new Size(81, 434);
+                    //// Mod End   WataruT 2020.07.30 遅出の表示対応
+                    frmMainSchedule.grdMain.Size = new Size(1191, 434);
+                    frmMainSchedule.grdRowTotalHeader.Location = new Point(1209, 62);
+                    frmMainSchedule.grdRowTotalHeader.Size = new Size(102, 44);
+                    frmMainSchedule.grdRowTotal.Location = new Point(1209, 106);
+                    frmMainSchedule.grdRowTotal.Size = new Size(102, 417);
+                    // Mod End   WataruT 2020.08.13 予定画面の合計値が省略されてしまう
                     frmMainSchedule.grdColumnTotal.Location = new Point(0, 540);
-                    frmMainSchedule.grdColumnTotal.Size = new Size(1227, 148);
-                    // Mod End   WataruT 2020.07.30 遅出の表示対応
+                    // Mod Start WataruT 2020.08.13 予定画面の合計値が省略されてしまう
+                    //frmMainSchedule.grdColumnTotal.Size = new Size(1227, 148);
+                    frmMainSchedule.grdColumnTotal.Size = new Size(1191, 148);
+                    // Mod End   WataruT 2020.08.13 予定画面の合計値が省略されてしまう
                     break;
                 case 3: // 実績
                     frmMainSchedule.grdMainHeader.Location = new Point(0, 62);

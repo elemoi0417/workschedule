@@ -11,9 +11,15 @@ namespace workschedule.MainScheduleControl
     class MainScheduleScheduleControl
     {
         // 共通変数
-        const int GRID_WIDTH_COLUMN_STAFF = 90;
-        const int GRID_WIDTH_COLUMN_DATA = 36;
-        const int GRID_WIDTH_COLUMN_DATA_ROWTOTAL = 27;
+        // Mod Start WataruT 2020.08.13 予定画面の合計値が省略されてしまう
+        //const int GRID_WIDTH_COLUMN_STAFF = 90;
+        //const int GRID_WIDTH_COLUMN_DATA = 36;
+        //const int GRID_WIDTH_COLUMN_DATA_ROWTOTAL = 27;
+        const int GRID_WIDTH_COLUMN_STAFF = 88;
+        const int GRID_WIDTH_COLUMN_DATA = 44;
+        const int GRID_WIDTH_COLUMN_DATA_ROWTOTAL = 33;
+        // Mod End   WataruT 2020.08.13 予定画面の合計値が省略されてしまう
+
 
         // 親フォーム
         MainSchedule frmMainSchedule;
@@ -138,6 +144,10 @@ namespace workschedule.MainScheduleControl
                         frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iColumn), frmMainSchedule.astrHoliday));
                 }
             }
+            // Add Start WataruT 2020.08.13 予定画面の合計値が省略されてしまう
+            // 列ヘッダの1列目のみ固定
+            frmMainSchedule.grdMainHeader.Columns[0].Frozen = true;
+            // Add End   WataruT 2020.08.13 予定画面の合計値が省略されてしまう
 
             //
             // --- メイングリッドデータ ---
@@ -253,6 +263,17 @@ namespace workschedule.MainScheduleControl
 
             // 列の合計グリッドをセット
             SetColumnTotal();
+
+            // Add Start WataruT 2020.08.13 予定画面の合計値が省略されてしまう
+            if (frmMainSchedule.piScheduleStaffCount >= 20)
+            {
+                frmMainSchedule.grdMain.Size = new Size(1208, 434);
+            }
+            else
+            {
+                frmMainSchedule.grdMain.Size = new Size(1191, 434);
+            }
+            // Add End   WataruT 2020.08.13 予定画面の合計値が省略されてしまう
 
             // グリッドの選択状態を解除
             frmMainSchedule.grdMain.CurrentCell = null;
