@@ -98,7 +98,10 @@ namespace workschedule.Reports
         /// <param name="orderNo"></param>
         public void SaveFile()
         {
-            bool bNoDataFlag;
+            // Mod Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+            //bool bNoDataFlag;
+            bool bNoDataFlag = false;
+            // Mod End   WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
             DateTime dtTargetMonth = DateTime.ParseExact(pstrTargetYear + pstrTargetMonth + "01", "yyyyMMdd", null);
             DataTable dtScheduleDetail;
             DataTable dtScheduleFirstDetail;
@@ -247,10 +250,33 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
-                                // 初回計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
-                                // 最終計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                // Mod Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+                                //// 初回計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                //// 最終計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 予定データ
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                }
+                                // Mod End   WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
                             }
                         }
                     }
@@ -340,10 +366,33 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
-                                // 初回計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 + iDay].Value = "";
-                                // 最終計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iDay].Value = "";
+                                // Mod Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+                                //// 初回計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 + iDay].Value = "";
+                                //// 最終計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iDay].Value = "";
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 予定データ
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iDay].Value = "";
+                                }
+                                // Mod End   WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
                             }
                         }
                     }
@@ -423,10 +472,34 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
-                                // 初回計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
-                                // 最終計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                // Mod Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+                                //// 初回計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                //// 最終計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 予定データ
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                }
+                                // Mod End   WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+
                             }
                         }
                     }
@@ -502,10 +575,33 @@ namespace workschedule.Reports
                         // 初回計画データがない場合
                         else if (bNoDataFlag == false)
                         {
-                            // 初回計画データ
-                            xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START + iDay].Value = "";
-                            // 最終計画データ
-                            xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iDay].Value = "";
+                            // Mod Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+                            //// 初回計画データ
+                            //xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START + iDay].Value = "";
+                            //// 最終計画データ
+                            //xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iDay].Value = "";
+                            // 予定データがあるか確認
+                            if (dtScheduleDetail.Rows.Count != 0)
+                            {
+                                // 予定データを順に確認
+                                foreach (DataRow row in dtScheduleDetail.Rows)
+                                {
+                                    // 対象日と一致する
+                                    if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                    {
+                                        // 予定データ
+                                        xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START + iDay].Value = row["name_short"].ToString();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // 初回計画データ
+                                xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START + iDay].Value = "";
+                                // 最終計画データ
+                                xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iDay].Value = "";
+                            }
+                            // Mod End   WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
                         }
                     }
                 }
@@ -518,6 +614,15 @@ namespace workschedule.Reports
                 {
                     xlSheet.DeleteRow(48, 47, true);
                 }
+
+                // Add Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+                if(bNoDataFlag == false)
+                {
+                    xlSheet.Cells[3, 6].Value = "※作成中の勤務表です";
+                    xlSheet.Cells[50, 6].Value = "※作成中の勤務表です";
+                    xlSheet.Cells[97, 6].Value = "※作成中の勤務表です";
+                }
+                // Add End   WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
 
                 // ファイルを保存
                 xlFile.SaveAs(new FileInfo(sfd.FileName));
