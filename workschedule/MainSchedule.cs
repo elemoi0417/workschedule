@@ -58,11 +58,15 @@ namespace workschedule
         public string[,] astrCountLimitDay;                 // 対象日の制限値マスタ配列(曜日、日勤(最小)・夜勤(最大))
 
         public int[,,] aiData;                              // 編集用グリッドデータ配列(職員、日にち、勤務種類）
+        public int[,,] aiDataKeep;                          // キープ用編集データ配列(職員、日にち、勤務種類）// Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
         public int[,] aiNightLastMonthFlag;                 // 前月の夜勤フラグ(職員、日にち)
         public int[,] aiDataRequestFlag;                    // 編集用グリッドデータ配列_希望(職員、日にち）
+        public int[,] aiDataKeepRequestFlag;                // 編集用グリッドデータ配列_希望(職員、日にち） // Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
         public int[,] aiDataNow;                            // 職員別の各日付の現時点の勤務種類データ(職員、日にち）
         public double[,] adRowTotalData;                    // 職員ごとのシフト合計データ配列(職員、勤務種類)
         public double[,] adColumnTotalData;                 // 日にちごとのシフト合計データ配列(日にち、勤務種類)
+        public double[,] adRowTotalDataKeep;                // キープ用職員ごとのシフト合計データ配列(職員、勤務種類) // Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+        public double[,] adColumnTotalDataKeep;             // キープ用日にちごとのシフト合計データ配列(日にち、勤務種類) // Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
 
         public string[,,,] astrResultOtherWorkTime;         // 実績データのその他業務情報(職員、日にち、種類番号、業務名・開始時刻・終了時刻)
         public string[,] astrResultWorkKind;                // 実績データの勤務種類ID(職員、日にち）
@@ -304,6 +308,11 @@ namespace workschedule
             pstrTargetMonth = dt.ToString("yyyyMM");
             lblTargetMonth.Text = dt.ToString("yyyy年MM月");
 
+            // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+            // [予定]なら「戻す」ボタンを無効化
+            if (piDataKind == 2) btnReturnKeep.Enabled = false;
+            // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+
             // グリッドにデータをセット
             SetMainGridData();
 
@@ -331,6 +340,11 @@ namespace workschedule
             // 各変数に値をセット
             pstrTargetMonth = dt.ToString("yyyyMM");
             lblTargetMonth.Text = dt.ToString("yyyy年MM月");
+
+            // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+            // [予定]なら「戻す」ボタンを無効化
+            if(piDataKind == 2) btnReturnKeep.Enabled = false;
+            // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
 
             // グリッドにデータをセット
             SetMainGridData();
@@ -365,6 +379,10 @@ namespace workschedule
                 // Add Start WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
                 btnImportRequest.Visible = false;
                 // Add End   WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
+                // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                btnKeepData.Visible = false;
+                btnReturnKeep.Visible = false;
+                // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 1;
@@ -404,6 +422,11 @@ namespace workschedule
                 // Add Start WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
                 btnImportRequest.Visible = true;
                 // Add End   WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
+                // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                btnKeepData.Visible = true;
+                btnReturnKeep.Visible = true;
+                btnReturnKeep.Enabled = false;
+                // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 2;
@@ -443,6 +466,10 @@ namespace workschedule
                 // Add Start WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
                 btnImportRequest.Visible = false;
                 // Add End   WataruT 2020.07.21 希望シフト反映ボタンの表示不具合
+                // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                btnKeepData.Visible = false;
+                btnReturnKeep.Visible = false;
+                // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 3;
@@ -479,6 +506,11 @@ namespace workschedule
                 // ActiveControlを初期化
                 ActiveControl = null;
 
+                // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                // [予定]なら「戻す」ボタンを無効化
+                if (piDataKind == 2) btnReturnKeep.Enabled = false;
+                // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+
                 // グリッドにデータをセット
                 SetMainGridData();
 
@@ -509,6 +541,11 @@ namespace workschedule
                 
                 // ActiveControlを初期化
                 ActiveControl = null;
+
+                // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                // [予定]なら「戻す」ボタンを無効化
+                if (piDataKind == 2) btnReturnKeep.Enabled = false;
+                // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
 
                 // グリッドにデータをセット
                 SetMainGridData();
@@ -592,6 +629,39 @@ namespace workschedule
             this.Show();
         }
 
+        /// <summary>
+        /// 「キープ」ボタン
+        /// Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnKeepData_Click(object sender, EventArgs e)
+        {
+            // メイングリッドのデータをキープ用配列にセット
+            clsMainScheduleScheduleControl.KeepScheduleData();
+
+            // メッセージ表示
+            MessageBox.Show("データをキープしました。");
+
+            // 「戻す」ボタンを有効化
+            btnReturnKeep.Enabled = true;
+        }
+
+        /// <summary>
+        /// 「戻す」ボタン
+        /// Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReturnKeep_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("キープしているデータに戻しますがよろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // キープ用配列をメイン変数にセット
+                clsMainScheduleScheduleControl.SetKeepData();
+            }
+        }
+
         // --- 各種イベント ---
 
         /// <summary>
@@ -637,6 +707,11 @@ namespace workschedule
         {
             if(pbActivateFlag == true)
             {
+                // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                // [予定]なら「戻す」ボタンを無効化
+                if (piDataKind == 2) btnReturnKeep.Enabled = false;
+                // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+
                 // グリッドにデータをセット
                 SetMainGridData();
             }

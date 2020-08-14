@@ -92,14 +92,24 @@ namespace workschedule.MainScheduleControl
             frmMainSchedule.pstrTargetMonth = frmMainSchedule.lblTargetMonth.Text.Substring(0, 4) + frmMainSchedule.lblTargetMonth.Text.Substring(5, 2);
 
             frmMainSchedule.aiData = new int[frmMainSchedule.piScheduleStaffCount, frmMainSchedule.piDayCount, frmMainSchedule.piWorkKindCount];
+            // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+            frmMainSchedule.aiDataKeep = new int[frmMainSchedule.piScheduleStaffCount, frmMainSchedule.piDayCount, frmMainSchedule.piWorkKindCount];
+            // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
             frmMainSchedule.aiNightLastMonthFlag = new int[frmMainSchedule.piScheduleStaffCount, frmMainSchedule.piDayCount];
             frmMainSchedule.aiDataRequestFlag = new int[frmMainSchedule.piScheduleStaffCount, frmMainSchedule.piDayCount];
+            // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+            frmMainSchedule.aiDataKeepRequestFlag = new int[frmMainSchedule.piScheduleStaffCount, frmMainSchedule.piDayCount];
+            // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
             frmMainSchedule.aiDataNow = new int[frmMainSchedule.piScheduleStaffCount, frmMainSchedule.piDayCount];
             frmMainSchedule.adRowTotalData = new double[frmMainSchedule.piScheduleStaffCount, 3];
             // Mod Start WataruT 2020.07.30 遅出の表示対応
             //frmMainSchedule.adColumnTotalData = new double[frmMainSchedule.piDayCount, 6];
             frmMainSchedule.adColumnTotalData = new double[frmMainSchedule.piDayCount, 7];
             // Mod End   WataruT 2020.07.30 遅出の表示対応
+            // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+            frmMainSchedule.adRowTotalDataKeep = new double[frmMainSchedule.piScheduleStaffCount, 3];
+            frmMainSchedule.adColumnTotalDataKeep = new double[frmMainSchedule.piDayCount, 7];
+            // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
             frmMainSchedule.astrWorkKind = new string[frmMainSchedule.piWorkKindCount, 2];
             frmMainSchedule.astrStaffKind = new string[iStaffKindCount, 3];
             frmMainSchedule.astrStaffPosition = new string[iStaffPositionCount];

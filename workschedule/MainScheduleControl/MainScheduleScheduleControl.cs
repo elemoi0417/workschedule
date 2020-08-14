@@ -275,6 +275,11 @@ namespace workschedule.MainScheduleControl
             }
             // Add End   WataruT 2020.08.13 予定画面の合計値が省略されてしまう
 
+            // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+            // 「戻す」ボタンを無効化
+            frmMainSchedule.btnReturnKeep.Enabled = false;
+            // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+
             // グリッドの選択状態を解除
             frmMainSchedule.grdMain.CurrentCell = null;
             frmMainSchedule.grdMainHeader.CurrentCell = null;
@@ -2493,6 +2498,161 @@ namespace workschedule.MainScheduleControl
             // 勤務予定初回データの削除
             clsDatabaseControl.DeleteScheduleFirstHeader_ScheduleNo(strScheduleNo);
             clsDatabaseControl.DeleteScheduleFirstDetail_ScheduleNo(strScheduleNo);
+        }
+
+        /// <summary>
+        /// キープデータを各種グリッドにセット
+        /// Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+        /// </summary>
+        public void SetKeepDataToMainGrid()
+        {
+            // DataTableの初期化
+            DataTable dt = new DataTable();
+
+            //グリッドの描画処理停止
+            frmMainSchedule.grdMain.SuspendLayout();
+
+            // グリッドの初期化
+            frmMainSchedule.grdMain.DataSource = null;
+
+            // DataTableにカラムヘッダを作成
+            dt.Columns.Add("NAME", Type.GetType("System.String"));
+            for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+            {
+                dt.Columns.Add(iDay.ToString(), Type.GetType("System.String"));
+            }
+
+            // DataTableにデータをセット
+            for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.piScheduleStaffCount; iScheduleStaff++)
+            {
+                DataRow nr = dt.NewRow();
+
+                // 職員氏名
+                nr["NAME"] = frmMainSchedule.astrScheduleStaff[iScheduleStaff, 1];
+
+                // 勤務種類
+                for (int iDay = 1; iDay <= frmMainSchedule.piDayCount; iDay++)
+                {
+                    for (int iWorkKind = 0; iWorkKind < frmMainSchedule.piWorkKindCount; iWorkKind++)
+                    {
+                        if (frmMainSchedule.aiData[iScheduleStaff, iDay - 1, iWorkKind] == 1)
+                        {
+                            // 対象となる勤務種類(略称)
+                            nr[iDay.ToString()] = frmMainSchedule.astrWorkKind[iWorkKind, 1];
+                            break;
+                        }
+                    }
+                }
+                dt.Rows.Add(nr);
+            }
+
+            // メイングリッドにデータをセット
+            frmMainSchedule.grdMain.DataSource = dt;
+
+            // デザイン設定(列：職員)
+            for (int i = 0; i < frmMainSchedule.piScheduleStaffCount; i++)
+            {
+                frmMainSchedule.grdMain[0, i].Style.ForeColor = clsCommonControl.GetSexForeColor(frmMainSchedule.astrScheduleStaff[i, 2]);
+                frmMainSchedule.grdMain[0, i].Style.BackColor = SystemColors.Control;
+            }
+
+            // 列幅(職員)
+            frmMainSchedule.grdMain.Columns[0].Width = GRID_WIDTH_COLUMN_STAFF;
+
+            // デザイン設定(列：日付)
+            for (int i = 1; i <= frmMainSchedule.piDayCount; i++)
+            {
+                // 列幅
+                frmMainSchedule.grdMain.Columns[i].Width = GRID_WIDTH_COLUMN_DATA;
+
+                // 文字色、背景色
+                for (int i2 = 0; i2 < frmMainSchedule.piScheduleStaffCount; i2++)
+                {
+                    frmMainSchedule.grdMain[i, i2].Style.ForeColor = clsCommonControl.GetWorkKindForeColor(frmMainSchedule.grdMain[i, i2].Value.ToString());
+                    frmMainSchedule.grdMain[i, i2].Style.BackColor = clsCommonControl.GetWeekNameBackgroundColor(
+                        clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", i), frmMainSchedule.astrHoliday));
+                }
+            }
+
+            // 希望シフトのセルのみ太文字にして背景色も変更する
+            for (int iDay = 0; iDay < frmMainSchedule.grdMain.ColumnCount - 1; iDay++)
+            {
+                for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.grdMain.RowCount; iScheduleStaff++)
+                {
+                    if (frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay] == 1)
+                    {
+                        frmMainSchedule.grdMain[iDay + 1, iScheduleStaff].Style.Font = new Font(frmMainSchedule.grdMain.Font, FontStyle.Bold);
+                        frmMainSchedule.grdMain[iDay + 1, iScheduleStaff].Style.BackColor = Color.Gold;
+                    }
+                }
+            }
+
+            // 先頭列のみ固定とする
+            frmMainSchedule.grdMain.Columns[0].Frozen = true;
+
+            // 行の合計グリッドをセット
+            SetRowTotal();
+
+            // 列の合計グリッドをセット
+            SetColumnTotal();
+
+            //グリッドの描画再開
+            frmMainSchedule.grdMain.ResumeLayout();
+        }
+
+        /// <summary>
+        /// 現在表示中の予定データをキープ配列にセット
+        /// Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+        /// </summary>
+        public void KeepScheduleData()
+        {
+            // 現時点のデータをキープ用配列にセット
+            for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
+            {
+                for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.piScheduleStaffCount; iScheduleStaff++)
+                {
+                    for (int iWorkKind = 0; iWorkKind < frmMainSchedule.piWorkKindCount; iWorkKind++)
+                    {
+                        frmMainSchedule.aiDataKeep[iScheduleStaff, iDay, iWorkKind] = frmMainSchedule.aiData[iScheduleStaff, iDay, iWorkKind];
+                        frmMainSchedule.aiDataKeepRequestFlag[iScheduleStaff, iDay] = frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay];
+                        if (iWorkKind < 3)
+                            frmMainSchedule.adRowTotalDataKeep[iScheduleStaff, iWorkKind] = frmMainSchedule.adRowTotalData[iScheduleStaff, iWorkKind];
+                    }
+                }
+                for (int iWorkKind = 0; iWorkKind < 7; iWorkKind++)
+                {
+                    frmMainSchedule.adColumnTotalDataKeep[iDay, iWorkKind] = frmMainSchedule.adColumnTotalData[iDay, iWorkKind];
+                }
+            }
+        }
+
+        /// <summary>
+        /// キープデータをメイン変数にセット
+        /// Add WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+        /// </summary>
+        public void SetKeepData()
+        {
+            // キープデータをメイン変数に反映させる
+            for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
+            {
+                for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.piScheduleStaffCount; iScheduleStaff++)
+                {
+                    for (int iWorkKind = 0; iWorkKind < frmMainSchedule.piWorkKindCount; iWorkKind++)
+                    {
+                        frmMainSchedule.aiData[iScheduleStaff, iDay, iWorkKind] = frmMainSchedule.aiDataKeep[iScheduleStaff, iDay, iWorkKind];
+                        frmMainSchedule.aiDataRequestFlag[iScheduleStaff, iDay] = frmMainSchedule.aiDataKeepRequestFlag[iScheduleStaff, iDay];
+                        if (iWorkKind < 3)
+                            frmMainSchedule.adRowTotalData[iScheduleStaff, iWorkKind] = frmMainSchedule.adRowTotalDataKeep[iScheduleStaff, iWorkKind];
+                    }
+                }
+                for (int iWorkKind = 0; iWorkKind < 7; iWorkKind++)
+                {
+                    frmMainSchedule.adColumnTotalData[iDay, iWorkKind] = frmMainSchedule.adColumnTotalDataKeep[iDay, iWorkKind];
+                }
+            }
+
+            // 各種グリッドにデータを反映させる
+            SetKeepDataToMainGrid();
         }
     }
 }
