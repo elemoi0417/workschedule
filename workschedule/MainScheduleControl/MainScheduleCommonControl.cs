@@ -517,12 +517,61 @@ namespace workschedule.MainScheduleControl
             int iContinueStartDay;
             int iContinueEndDay;
             int iTargetWorkKind = 0;
+            int iBeforeMonthTargetDayCount; // Add WataruT 2020.08.14 連勤チェックで前月末データも対象とする
+            string strTargetBeforeMonth;    // Add WataruT 2020.08.14 連勤チェックで前月末データも対象とする
+            DataTable dtScheduleDetail;     // Add WataruT 2020.08.14 連勤チェックで前月末データも対象とする
+
+            // Add Start WataruT 2020.08.14 連勤チェックで前月末データも対象とする
+            // 前月を取得
+            strTargetBeforeMonth = DateTime.ParseExact(frmMainSchedule.pstrTargetMonth + "01", "yyyyMMdd", null).AddMonths(-1).ToString("yyyyMM");
+            // Add End   WataruT 2020.08.14 連勤チェックで前月末データも対象とする
 
             // 連勤チェック
-            for(int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.astrScheduleStaff.GetLength(0); iScheduleStaff++)
-            {
+            for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.astrScheduleStaff.GetLength(0); iScheduleStaff++)
+            {  
                 // 開始日を初期化
                 iContinueStartDay = 0;
+
+                // Add Start WataruT 2020.08.14 連勤チェックで前月末データも対象とする
+                // 対象日数を初期化
+                iBeforeMonthTargetDayCount = 0;
+
+                // 前月のデータを取得
+                dtScheduleDetail = clsDatabaseControl.GetScheduleDetail_Ward_Staff_StaffKind_TargetMonth(frmMainSchedule.cmbWard.SelectedValue.ToString(),
+                    frmMainSchedule.astrScheduleStaff[iScheduleStaff, 0], frmMainSchedule.pstrStaffKind, strTargetBeforeMonth);
+                // 前月末のデータがあればカウント
+                if(dtScheduleDetail.Rows.Count >= 5)
+                {
+                    for(int iDay = dtScheduleDetail.Rows.Count - 5; iDay < dtScheduleDetail.Rows.Count; iDay++)
+                    {
+                        // 連勤対象となる勤務種類か判定
+                        switch ((int.Parse(dtScheduleDetail.Rows[iDay]["work_kind"].ToString()) - 1).ToString())
+                        {
+                            // 以下の勤務種類は連勤対象とする
+                            case "0":   // 日勤
+                            case "1":   // 夜勤
+                            case "2":   // 夜明
+                            case "4":   // 公休(午前)
+                            case "5":   // 公休(午後)
+                            case "7":   // 有休(午前)
+                            case "8":   // 有休(午後)
+                            case "10":  // 遅出
+                            case "17":  // 5.25
+                            case "18":  // 2
+                            case "19":  // 6
+                            case "20":  // 6.25
+                            case "21":  // 7
+                            case "22":  // 遅刻
+                            case "23":  // 早退
+                                iBeforeMonthTargetDayCount += 1;
+                                break;
+                            default:
+                                iBeforeMonthTargetDayCount = 0;
+                                break;
+                        }
+                    }
+                }
+                // Add End   WataruT 2020.08.14 連勤チェックで前月末データも対象とする
 
                 for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
                 {
@@ -569,13 +618,21 @@ namespace workschedule.MainScheduleControl
                             iContinueEndDay = iDay - 1;
 
                             // 6連勤以上であれば背景色を変更する
-                            if(iContinueEndDay - iContinueStartDay >= 5)
+                            // Mod Start WataruT 2020.08.14 連勤チェックで前月末データも対象とする
+                            //if (iContinueEndDay - iContinueStartDay >= 5)
+                            if (iContinueEndDay - iContinueStartDay + iBeforeMonthTargetDayCount >= 5)
+                            // Mod End   WataruT 2020.08.14 連勤チェックで前月末データも対象とする
                             {
-                                for(int iChangeDay = iContinueStartDay; iChangeDay <= iContinueEndDay; iChangeDay++)
+                                for (int iChangeDay = iContinueStartDay; iChangeDay <= iContinueEndDay; iChangeDay++)
                                 {
                                     frmMainSchedule.grdMain[iChangeDay + 1, iScheduleStaff].Style.BackColor = Color.Red;
                                 }
                             }
+                            
+                            // Add Start WataruT 2020.08.14 連勤チェックで前月末データも対象とする
+                            // 前月のカウントは初期化
+                            iBeforeMonthTargetDayCount = 0;
+                            // Add End   WataruT 2020.08.14 連勤チェックで前月末データも対象とする
 
                             // 開始日を初期化
                             iContinueStartDay = iDay + 1;
