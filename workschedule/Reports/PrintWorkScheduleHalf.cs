@@ -1008,29 +1008,117 @@ namespace workschedule.Reports
         private void InitializeObject()
         {
             DataTable dt;
-            
+            int iStaffCount = 0;                        // Add WataruT 2020.08.17 勤務表(締翌日)の不具合対応
+            int iStaffInsertCount = 0;                  // Add WataruT 2020.08.17 勤務表(締翌日)の不具合対応
+            bool bDummyCheckFlag;                       // Add WataruT 2020.08.17 勤務表(締翌日)の不具合対応
+            string[,] astrScheduleStaffDummy;           // Add WataruT 2020.08.17 勤務表(締翌日)の不具合対応
+
             // 様式9チェックデータ
 
             // 職員リスト一覧(看護師)
             dt = clsDatabaseControl.GetScheduleStaff_Youshiki9_Half(pstrTargetWardCode, pstrTargetYear + pstrTargetMonth, pstrTargetNextYear + pstrTargetNextMonth,"01");
 
-            astrScheduleStaffNurse = new string[dt.Rows.Count, 3];
+            // Mod Start WataruT 2020.08.17 勤務表(締翌日)の不具合対応
+            //astrScheduleStaffNurse = new string[dt.Rows.Count, 3];
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    astrScheduleStaffNurse[i, 0] = dt.Rows[i]["id"].ToString();
+            //    astrScheduleStaffNurse[i, 1] = dt.Rows[i]["name"].ToString();
+            //    astrScheduleStaffNurse[i, 2] = dt.Rows[i]["staff_kind"].ToString();
+            //}
+            astrScheduleStaffDummy = new string[dt.Rows.Count, 3];
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                astrScheduleStaffNurse[i, 0] = dt.Rows[i]["id"].ToString();
-                astrScheduleStaffNurse[i, 1] = dt.Rows[i]["name"].ToString();
-                astrScheduleStaffNurse[i, 2] = dt.Rows[i]["staff_kind"].ToString();
+                bDummyCheckFlag = false;
+                for(int j = 0; j < dt.Rows.Count; j++)
+                {
+                    if(astrScheduleStaffDummy[j, 0] == dt.Rows[i]["id"].ToString() && 
+                        astrScheduleStaffDummy[j, 1] == dt.Rows[i]["name"].ToString() && 
+                        astrScheduleStaffDummy[j, 2] == dt.Rows[i]["staff_kind"].ToString())
+                    {
+                        bDummyCheckFlag = true;
+                        break;
+                    }
+                }
+                if (bDummyCheckFlag == false)
+                {
+                    astrScheduleStaffDummy[i, 0] = dt.Rows[i]["id"].ToString();
+                    astrScheduleStaffDummy[i, 1] = dt.Rows[i]["name"].ToString();
+                    astrScheduleStaffDummy[i, 2] = dt.Rows[i]["staff_kind"].ToString();
+                    iStaffCount += 1;
+                }
+                else
+                {
+                    astrScheduleStaffDummy[i, 0] = "";
+                    astrScheduleStaffDummy[i, 1] = "";
+                    astrScheduleStaffDummy[i, 2] = "";
+                }
             }
+            astrScheduleStaffNurse = new string[iStaffCount, 3];
+            iStaffInsertCount = 0;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if(astrScheduleStaffDummy[i, 0] != "")
+                {
+                    astrScheduleStaffNurse[iStaffInsertCount, 0] = astrScheduleStaffDummy[i, 0];
+                    astrScheduleStaffNurse[iStaffInsertCount, 1] = astrScheduleStaffDummy[i, 1];
+                    astrScheduleStaffNurse[iStaffInsertCount, 2] = astrScheduleStaffDummy[i, 2];
+                    iStaffInsertCount += 1;
+                }
+            }
+            // Mod End  WataruT 2020.08.17 勤務表(締翌日)の不具合対応
 
             // 職員リスト一覧(ケア)
             dt = clsDatabaseControl.GetScheduleStaff_Youshiki9_Half(pstrTargetWardCode, pstrTargetYear + pstrTargetMonth, pstrTargetNextYear + pstrTargetNextMonth, "02");
-            astrScheduleStaffCare = new string[dt.Rows.Count, 3];
+            // Mod Start  WataruT 2020.08.17 勤務表(締翌日)の不具合対応
+            //astrScheduleStaffCare = new string[dt.Rows.Count, 3];
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    astrScheduleStaffCare[i, 0] = dt.Rows[i]["id"].ToString();
+            //    astrScheduleStaffCare[i, 1] = dt.Rows[i]["name"].ToString();
+            //    astrScheduleStaffCare[i, 2] = dt.Rows[i]["staff_kind"].ToString();
+            //}
+            astrScheduleStaffDummy = new string[dt.Rows.Count, 3];
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                astrScheduleStaffCare[i, 0] = dt.Rows[i]["id"].ToString();
-                astrScheduleStaffCare[i, 1] = dt.Rows[i]["name"].ToString();
-                astrScheduleStaffCare[i, 2] = dt.Rows[i]["staff_kind"].ToString();
+                bDummyCheckFlag = false;
+                for (int j = 0; j < dt.Rows.Count; j++)
+                {
+                    if (astrScheduleStaffDummy[j, 0] == dt.Rows[i]["id"].ToString() &&
+                        astrScheduleStaffDummy[j, 1] == dt.Rows[i]["name"].ToString() &&
+                        astrScheduleStaffDummy[j, 2] == dt.Rows[i]["staff_kind"].ToString())
+                    {
+                        bDummyCheckFlag = true;
+                        break;
+                    }
+                }
+                if (bDummyCheckFlag == false)
+                {
+                    astrScheduleStaffDummy[i, 0] = dt.Rows[i]["id"].ToString();
+                    astrScheduleStaffDummy[i, 1] = dt.Rows[i]["name"].ToString();
+                    astrScheduleStaffDummy[i, 2] = dt.Rows[i]["staff_kind"].ToString();
+                    iStaffCount += 1;
+                }
+                else
+                {
+                    astrScheduleStaffDummy[i, 0] = "";
+                    astrScheduleStaffDummy[i, 1] = "";
+                    astrScheduleStaffDummy[i, 2] = "";
+                }
             }
+            astrScheduleStaffCare = new string[iStaffCount, 3];
+            iStaffInsertCount = 0;
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                if (astrScheduleStaffDummy[i, 0] != "")
+                {
+                    astrScheduleStaffCare[i, 0] = astrScheduleStaffDummy[i, 0];
+                    astrScheduleStaffCare[i, 1] = astrScheduleStaffDummy[i, 1];
+                    astrScheduleStaffCare[i, 2] = astrScheduleStaffDummy[i, 2];
+                    iStaffInsertCount += 1;
+                }
+            }
+            // Mod End  WataruT 2020.08.17 勤務表(締翌日)の不具合対応
         }
 
         /// <summary>

@@ -855,8 +855,8 @@ namespace workschedule.Controls
                 //lsSQL = lsSQL + "    CAST(dss.seq AS SIGNED);";
                 lsSQL = lsSQL + "    CAST(seq1 AS SIGNED), ";
                 lsSQL = lsSQL + "    CAST(seq2 AS SIGNED), ";
-                lsSQL = lsSQL + "    CAST(seq3 AS SIGNED), ";
-                lsSQL = lsSQL + "    CAST(seq4 AS SIGNED) ";
+                lsSQL = lsSQL + "    CAST(dss.target_month AS SIGNED), ";
+                lsSQL = lsSQL + "    CAST(dss.seq AS SIGNED) ";
                 // Mod End   WataruT 2020.07.15 計画表出力時のSQLエラー対応
 
                 dt = GetDataTable(lsSQL);
