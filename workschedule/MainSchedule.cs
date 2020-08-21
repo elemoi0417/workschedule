@@ -817,7 +817,7 @@ namespace workschedule
                 case "欠勤":
                     ChangeMainGridData(13);
                     break;
-                case "病欠":
+                case "病休":
                     ChangeMainGridData(14);
                     break;
                 case "早出":
@@ -910,7 +910,7 @@ namespace workschedule
                 case "欠勤":
                     ChangeMainGridData(13);
                     break;
-                case "病欠":
+                case "病休":
                     ChangeMainGridData(14);
                     break;
                 case "早出":

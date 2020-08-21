@@ -529,7 +529,7 @@
             // 
             this.tsmiWorkKind15_Schedule.Name = "tsmiWorkKind15_Schedule";
             this.tsmiWorkKind15_Schedule.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind15_Schedule.Text = "病欠";
+            this.tsmiWorkKind15_Schedule.Text = "病休";
             this.tsmiWorkKind15_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind16_Schedule
@@ -749,7 +749,7 @@
             // 
             this.tsmiWorkKind15_Request.Name = "tsmiWorkKind15_Request";
             this.tsmiWorkKind15_Request.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind15_Request.Text = "病欠";
+            this.tsmiWorkKind15_Request.Text = "病休";
             this.tsmiWorkKind15_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind16_Request

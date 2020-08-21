@@ -226,7 +226,7 @@
             this.btnWorkKind15.Name = "btnWorkKind15";
             this.btnWorkKind15.Size = new System.Drawing.Size(49, 29);
             this.btnWorkKind15.TabIndex = 40;
-            this.btnWorkKind15.Text = "病欠";
+            this.btnWorkKind15.Text = "病休";
             this.btnWorkKind15.UseVisualStyleBackColor = false;
             this.btnWorkKind15.Click += new System.EventHandler(this.btnWorkKind_Click);
             // 

@@ -66,7 +66,7 @@ namespace workschedule
                 case "欠勤":
                     frmMainSchedule.ChangeMainGridData(13);
                     break;
-                case "病欠":
+                case "病休":
                     frmMainSchedule.ChangeMainGridData(14);
                     break;
                 case "早出":
