@@ -304,7 +304,10 @@ namespace workschedule.Reports
                                                         // 遅刻・早退の実績時間を取得
                                                         strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
                                                         // 遅刻・早退の実績時間を取得
-                                                        xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        // Mod Start WataruT 2020.08.21 遅刻・早退の印字処理変更
+                                                        //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = strLateEarlyTime + row2["name_short"].ToString();
+                                                        // Mod End   WataruT 2020.08.21 遅刻・早退の印字処理変更
                                                     }
                                                     else
                                                     {
@@ -397,7 +400,10 @@ namespace workschedule.Reports
                                                         // 遅刻・早退の実績時間を取得
                                                         strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
                                                         // 遅刻・早退の実績時間を取得
-                                                        xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        // Mod Start WataruT 2020.08.21 遅刻・早退の印字処理変更
+                                                        //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = strLateEarlyTime + row2["name_short"].ToString();
+                                                        // Mod End   WataruT 2020.08.21 遅刻・早退の印字処理変更
                                                     }
                                                     else
                                                     {
@@ -501,7 +507,10 @@ namespace workschedule.Reports
                                                         // 遅刻・早退の実績時間を取得
                                                         strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
                                                         // 遅刻・早退の実績時間を取得
-                                                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        // Mod Start WataruT 2020.08.21 遅刻・早退の印字処理変更
+                                                        //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = strLateEarlyTime + row2["name_short"].ToString();
+                                                        // Mod End   WataruT 2020.08.21 遅刻・早退の印字処理変更
                                                     }
                                                     else
                                                     {
@@ -591,7 +600,10 @@ namespace workschedule.Reports
                                                         // 遅刻・早退の実績時間を取得
                                                         strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
                                                         // 遅刻・早退の実績時間を取得
-                                                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        // Mod Start WataruT 2020.08.21 遅刻・早退の印字処理変更
+                                                        //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = strLateEarlyTime + row2["name_short"].ToString();
+                                                        // Mod End   WataruT 2020.08.21 遅刻・早退の印字処理変更
                                                     }
                                                     else
                                                     {
@@ -699,7 +711,10 @@ namespace workschedule.Reports
                                                         // 遅刻・早退の実績時間を取得
                                                         strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
                                                         // 遅刻・早退の実績時間を取得
-                                                        xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        // Mod Start WataruT 2020.08.21 遅刻・早退の印字処理変更
+                                                        //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = strLateEarlyTime + row2["name_short"].ToString();
+                                                        // Mod End   WataruT 2020.08.21 遅刻・早退の印字処理変更
                                                     }
                                                     else
                                                     {
@@ -789,7 +804,10 @@ namespace workschedule.Reports
                                                         // 遅刻・早退の実績時間を取得
                                                         strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
                                                         // 遅刻・早退の実績時間を取得
-                                                        xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        // Mod Start WataruT 2020.08.21 遅刻・早退の印字処理変更
+                                                        //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                        xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = strLateEarlyTime + row2["name_short"].ToString();
+                                                        // Mod End   WataruT 2020.08.21 遅刻・早退の印字処理変更
                                                     }
                                                     else
                                                     {
@@ -890,7 +908,10 @@ namespace workschedule.Reports
                                                     // 遅刻・早退の実績時間を取得
                                                     strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
                                                     // 遅刻・早退の実績時間を取得
-                                                    xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START - 15 + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                    // Mod Start WataruT 2020.08.21 遅刻・早退の印字処理変更
+                                                    //xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START - 15 + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                    xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START - 15 + iDay].Value = strLateEarlyTime + row2["name_short"].ToString();
+                                                    // Mod End   WataruT 2020.08.21 遅刻・早退の印字処理変更
                                                 }
                                                 else
                                                 {
@@ -980,7 +1001,10 @@ namespace workschedule.Reports
                                                     // 遅刻・早退の実績時間を取得
                                                     strLateEarlyTime = GetOtherWorkTimeTotal(dtResultDetailItem, iDay + 1);
                                                     // 遅刻・早退の実績時間を取得
-                                                    xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                    // Mod Start WataruT 2020.08.21 遅刻・早退の印字処理変更
+                                                    //xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = strLateEarlyTime + "H" + row2["name_short"].ToString();
+                                                    xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = strLateEarlyTime + row2["name_short"].ToString();
+                                                    // Mod End   WataruT 2020.08.21 遅刻・早退の印字処理変更
                                                 }
                                                 else
                                                 {
