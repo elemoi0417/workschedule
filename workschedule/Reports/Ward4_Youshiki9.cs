@@ -357,6 +357,13 @@ namespace workschedule.Reports
                 WriteCellValue(xlSheet, COLUMN_CARE_STAFF_START + 6, ROW_CARE_STAFF_START + (iStaff + 1) * 3 - 3, "他部署兼務");
                 WriteCellValue(xlSheet, COLUMN_CARE_STAFF_START + 6, ROW_CARE_STAFF_START + (iStaff + 1) * 3 - 2, 0);
                 WriteCellValue(xlSheet, COLUMN_CARE_STAFF_START + 6, ROW_CARE_STAFF_START + (iStaff + 1) * 3 - 1, "");
+                
+                //Add Start WataruT 2020.08.31 様式9に事務的業務の担当者フラグをセット
+                // 事務的業務
+                WriteCellValue(xlSheet, COLUMN_CARE_STAFF_START + 7, ROW_CARE_STAFF_START + (iStaff + 1) * 3 - 3, "事務的業務");
+                WriteCellValue(xlSheet, COLUMN_CARE_STAFF_START + 7, ROW_CARE_STAFF_START + (iStaff + 1) * 3 - 2, int.Parse(astrScheduleStaffCare[iStaff, 3]));
+                WriteCellValue(xlSheet, COLUMN_CARE_STAFF_START + 7, ROW_CARE_STAFF_START + (iStaff + 1) * 3 - 1, "");
+                //Add End   WataruT 2020.08.31 様式9に事務的業務の担当者フラグをセット
             }
 
             // == 実績データ ==
@@ -480,12 +487,18 @@ namespace workschedule.Reports
 
             // 職員リスト一覧(ケア)
             dt = clsDatabaseControl.GetScheduleStaff_Youshiki9(pstrWard, pstrTargetMonth, "02");
-            astrScheduleStaffCare = new string[dt.Rows.Count, 3];
+            //Mod Start WataruT 2020.08.31 様式9に事務的業務の担当者フラグをセット
+            //astrScheduleStaffCare = new string[dt.Rows.Count, 3];
+            astrScheduleStaffCare = new string[dt.Rows.Count, 4];
+            //Mod End   WataruT 2020.08.31 様式9に事務的業務の担当者フラグをセット
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 astrScheduleStaffCare[i, 0] = dt.Rows[i]["id"].ToString();
                 astrScheduleStaffCare[i, 1] = dt.Rows[i]["name"].ToString();
                 astrScheduleStaffCare[i, 2] = dt.Rows[i]["staff_kind"].ToString();
+                //Add Start WataruT 2020.08.31 様式9に事務的業務の担当者フラグをセット
+                astrScheduleStaffCare[i, 3] = dt.Rows[i]["office_flag"].ToString();
+                //Add End   WataruT 2020.08.31 様式9に事務的業務の担当者フラグをセット
             }
         }
 
