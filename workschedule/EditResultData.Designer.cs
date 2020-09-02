@@ -650,13 +650,13 @@
             "",
             "委員会のため",
             "外出のため",
-            "研修のため",
-            "遅刻・早退のため",
-            "その他(※手入力してください)"});
+            "他科受診のため",
+            "その他(※手入力可能)"});
             this.cmbOther1WorkKind.Location = new System.Drawing.Point(136, 190);
             this.cmbOther1WorkKind.Name = "cmbOther1WorkKind";
             this.cmbOther1WorkKind.Size = new System.Drawing.Size(229, 27);
             this.cmbOther1WorkKind.TabIndex = 135;
+            this.cmbOther1WorkKind.SelectedIndexChanged += new System.EventHandler(this.cmbOtherWorkKind_SelectedIndexChanged);
             // 
             // cmbOther2WorkKind
             // 
@@ -666,13 +666,13 @@
             "",
             "委員会のため",
             "外出のため",
-            "研修のため",
-            "遅刻・早退のため",
-            "その他(※手入力してください)"});
+            "他科受診のため",
+            "その他(※手入力可能)"});
             this.cmbOther2WorkKind.Location = new System.Drawing.Point(136, 270);
             this.cmbOther2WorkKind.Name = "cmbOther2WorkKind";
             this.cmbOther2WorkKind.Size = new System.Drawing.Size(229, 27);
             this.cmbOther2WorkKind.TabIndex = 136;
+            this.cmbOther2WorkKind.SelectedIndexChanged += new System.EventHandler(this.cmbOtherWorkKind_SelectedIndexChanged);
             // 
             // cmbOther3WorkKind
             // 
@@ -682,13 +682,13 @@
             "",
             "委員会のため",
             "外出のため",
-            "研修のため",
-            "遅刻・早退のため",
-            "その他(※手入力してください)"});
+            "他科受診のため",
+            "その他(※手入力可能)"});
             this.cmbOther3WorkKind.Location = new System.Drawing.Point(136, 350);
             this.cmbOther3WorkKind.Name = "cmbOther3WorkKind";
             this.cmbOther3WorkKind.Size = new System.Drawing.Size(229, 27);
             this.cmbOther3WorkKind.TabIndex = 137;
+            this.cmbOther3WorkKind.SelectedIndexChanged += new System.EventHandler(this.cmbOtherWorkKind_SelectedIndexChanged);
             // 
             // btnClear1
             // 

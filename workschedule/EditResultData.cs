@@ -235,6 +235,10 @@ namespace workschedule
                     Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text =
                         frmMainSchedule.astrResultOtherWorkTime[piScheduleStaff, frmMainSchedule.piGrdMain_CurrentColumn - 2, i - 1, 2].Substring(3, 2);
                 }
+                // Add Start WataruT 2020.09.02 業務種類の項目変更
+                if (Controls["cmbOther" + i.ToString() + "WorkKind"].Text == "")
+                    ((ComboBox)Controls["cmbOther" + i.ToString() + "WorkKind"]).SelectedIndex = 0;
+                // Add End   WataruT 2020.09.02 業務種類の項目変更
             }
         }
 
@@ -355,22 +359,26 @@ namespace workschedule
             {
                 if(Controls["cmbOther" +  i.ToString() + "WorkKind"].Text != "")
                 {
+                    // Mod Start WataruT 2020.09.02 その他業務の合計時間を全時間帯対象とする
                     // 開始時刻
-                    if (int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeHour"].Text + Controls["cmbOther" + i.ToString() + "StartTimeMinute"].Text) < 900)
-                        tsStartTime = new TimeSpan(9, 0, 0);
-                    else if(int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeHour"].Text + Controls["cmbOther" + i.ToString() + "StartTimeMinute"].Text) > 1800)
-                        tsStartTime = new TimeSpan(18, 0, 0);
-                    else
-                        tsStartTime = new TimeSpan(int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeHour"].Text), int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeMinute"].Text), 0);
+                    //if (int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeHour"].Text + Controls["cmbOther" + i.ToString() + "StartTimeMinute"].Text) < 900)
+                    //    tsStartTime = new TimeSpan(9, 0, 0);
+                    //else if(int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeHour"].Text + Controls["cmbOther" + i.ToString() + "StartTimeMinute"].Text) > 1800)
+                    //    tsStartTime = new TimeSpan(18, 0, 0);
+                    //else
+                    //    tsStartTime = new TimeSpan(int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeHour"].Text), int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeMinute"].Text), 0);
 
-                    // 終了時刻
-                    if (int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeHour"].Text + Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text) < 900)
-                        tsEndTime = new TimeSpan(9, 0, 0);
-                    else if (int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeHour"].Text + Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text) > 1800)
-                        tsEndTime = new TimeSpan(18, 0, 0);
-                    else
-                        tsEndTime = new TimeSpan(int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeHour"].Text), int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text), 0);
-                    
+                    //// 終了時刻
+                    //if (int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeHour"].Text + Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text) < 900)
+                    //    tsEndTime = new TimeSpan(9, 0, 0);
+                    //else if (int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeHour"].Text + Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text) > 1800)
+                    //    tsEndTime = new TimeSpan(18, 0, 0);
+                    //else
+                    //    tsEndTime = new TimeSpan(int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeHour"].Text), int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text), 0);
+                    tsStartTime = new TimeSpan(int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeHour"].Text), int.Parse(Controls["cmbOther" + i.ToString() + "StartTimeMinute"].Text), 0);
+                    tsEndTime = new TimeSpan(int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeHour"].Text), int.Parse(Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text), 0);
+                    // Mod End   WataruT 2020.09.02 その他業務の合計時間を全時間帯対象とする
+
                     // 時刻の差分を変数にセット
                     strTotalTime = (tsEndTime - tsStartTime).ToString();
 
@@ -506,6 +514,29 @@ namespace workschedule
                 }
             }
             return true;
+        }
+
+        /// <summary>
+        /// 勤務内容選択時、その他なら手入力可能とする
+        /// Add WataruT 2020.09.02 業務種類の項目変更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbOtherWorkKind_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbOther1WorkKind.SelectedIndex >= 0 && cmbOther1WorkKind.SelectedIndex <= 3)
+                cmbOther1WorkKind.DropDownStyle = ComboBoxStyle.DropDownList;
+            else
+                cmbOther1WorkKind.DropDownStyle = ComboBoxStyle.DropDown;
+            if (cmbOther2WorkKind.SelectedIndex >= 0 && cmbOther2WorkKind.SelectedIndex <= 3)
+                cmbOther2WorkKind.DropDownStyle = ComboBoxStyle.DropDownList;
+            else
+                cmbOther2WorkKind.DropDownStyle = ComboBoxStyle.DropDown;
+            if (cmbOther3WorkKind.SelectedIndex >= 0 && cmbOther3WorkKind.SelectedIndex <= 3)
+                cmbOther3WorkKind.DropDownStyle = ComboBoxStyle.DropDownList;
+            else
+                cmbOther3WorkKind.DropDownStyle = ComboBoxStyle.DropDown;
+
         }
     }
 }
