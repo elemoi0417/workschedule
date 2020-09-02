@@ -735,6 +735,27 @@ namespace workschedule.MainScheduleControl
                 case 22: // 遅刻
                 case 23: // 早退
                 // Add End   WataruT 2020.08.06 遅刻・早退入力対応
+                // Add Start WataruT 2020.09.02 時間数の項目を作成
+                case 27: // 4
+                case 28: // 5
+                case 29: // 6
+                case 30: // 7
+                case 34: // 3.25
+                case 35: // 4.25
+                case 36: // 5.25
+                case 37: // 6.25
+                case 38: // 7.25
+                case 42: // 3.5
+                case 43: // 4.5
+                case 44: // 5.5
+                case 45: // 6.5
+                case 46: // 7.5
+                case 50: // 3.75
+                case 51: // 4.75
+                case 52: // 5.75
+                case 53: // 6.75
+                case 54: // 7.75
+                // Add End   WataruT 2020.09.02 時間数の項目を作成
                     frmMainSchedule.adColumnTotalData[iDay, 0] += dAddNumber;
                     break;
                 case 4: // 公休(午前)
@@ -744,6 +765,20 @@ namespace workschedule.MainScheduleControl
                 // Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
                 case 18: // 2
                 // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
+                // Add Start WataruT 2020.09.02 時間数の項目を作成
+                case 24: // 1
+                case 25: // 2
+                case 26: // 3
+                case 31: // 0.25
+                case 32: // 1.25
+                case 33: // 2.25
+                case 39: // 0.5
+                case 40: // 1.5
+                case 41: // 2.5
+                case 47: // 0.75
+                case 48: // 1.75
+                case 49: // 2.75
+                // Add End   WataruT 2020.09.02 時間数の項目を作成
                     frmMainSchedule.adColumnTotalData[iDay, 0] += dAddNumber * 0.5;
                     break;
                 case 1: // 夜勤

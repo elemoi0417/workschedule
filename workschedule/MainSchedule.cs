@@ -826,25 +826,120 @@ namespace workschedule
                 case "入職前":
                     ChangeMainGridData(16);
                     break;
-                // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
-                case "5.25":
-                    ChangeMainGridData(17);
+                // Mod Start WataruT 2020.09.02 時間数の項目を作成
+                //// Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                //case "5.25":
+                //    ChangeMainGridData(17);
+                //    break;
+                //// Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
+                //// Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
+                //case "2":
+                //    ChangeMainGridData(18);
+                //    break;
+                //case "6":
+                //    ChangeMainGridData(19);
+                //    break;
+                //case "6.25":
+                //    ChangeMainGridData(20);
+                //    break;
+                //case "7":
+                //    ChangeMainGridData(21);
+                //    break;
+                //// Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case "1":
+                    ChangeMainGridData(24);
                     break;
-                // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
-                // Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
                 case "2":
-                    ChangeMainGridData(18);
+                    ChangeMainGridData(25);
+                    break;
+                case "3":
+                    ChangeMainGridData(26);
+                    break;
+                case "4":
+                    ChangeMainGridData(27);
+                    break;
+                case "5":
+                    ChangeMainGridData(28);
                     break;
                 case "6":
-                    ChangeMainGridData(19);
-                    break;
-                case "6.25":
-                    ChangeMainGridData(20);
+                    ChangeMainGridData(29);
                     break;
                 case "7":
-                    ChangeMainGridData(21);
+                    ChangeMainGridData(30);
                     break;
-                // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case "0.25":
+                    ChangeMainGridData(31);
+                    break;
+                case "1.25":
+                    ChangeMainGridData(32);
+                    break;
+                case "2.25":
+                    ChangeMainGridData(33);
+                    break;
+                case "3.25":
+                    ChangeMainGridData(34);
+                    break;
+                case "4.25":
+                    ChangeMainGridData(35);
+                    break;
+                case "5.25":
+                    ChangeMainGridData(36);
+                    break;
+                case "6.25":
+                    ChangeMainGridData(37);
+                    break;
+                case "7.25":
+                    ChangeMainGridData(38);
+                    break;
+                case "0.5":
+                    ChangeMainGridData(39);
+                    break;
+                case "1.5":
+                    ChangeMainGridData(40);
+                    break;
+                case "2.5":
+                    ChangeMainGridData(41);
+                    break;
+                case "3.5":
+                    ChangeMainGridData(42);
+                    break;
+                case "4.5":
+                    ChangeMainGridData(43);
+                    break;
+                case "5.5":
+                    ChangeMainGridData(44);
+                    break;
+                case "6.5":
+                    ChangeMainGridData(45);
+                    break;
+                case "7.5":
+                    ChangeMainGridData(46);
+                    break;
+                case "0.75":
+                    ChangeMainGridData(47);
+                    break;
+                case "1.75":
+                    ChangeMainGridData(48);
+                    break;
+                case "2.75":
+                    ChangeMainGridData(49);
+                    break;
+                case "3.75":
+                    ChangeMainGridData(50);
+                    break;
+                case "4.75":
+                    ChangeMainGridData(51);
+                    break;
+                case "5.75":
+                    ChangeMainGridData(52);
+                    break;
+                case "6.75":
+                    ChangeMainGridData(53);
+                    break;
+                case "7.75":
+                    ChangeMainGridData(54);
+                    break;
+                // Mod End   WataruT 2020.09.02 時間数の項目を作成
                 // Add Start WataruT 2020.08.06 遅刻・早退入力対応
                 case "遅刻":
                     ChangeMainGridData(22);
@@ -919,25 +1014,120 @@ namespace workschedule
                 case "入職前":
                     ChangeMainGridData(16);
                     break;
-                // Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
-                case "5.25":
-                    ChangeMainGridData(17);
+                // Mod Start WataruT 2020.09.02 時間数の項目を作成
+                //// Add Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                //case "5.25":
+                //    ChangeMainGridData(17);
+                //    break;
+                //// Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
+                //// Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
+                //case "2":
+                //    ChangeMainGridData(18);
+                //    break;
+                //case "6":
+                //    ChangeMainGridData(19);
+                //    break;
+                //case "6.25":
+                //    ChangeMainGridData(20);
+                //    break;
+                //case "7":
+                //    ChangeMainGridData(21);
+                //    break;
+                //// Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case "1":
+                    ChangeMainGridData(24);
                     break;
-                // Add End   WataruT 2020.07.22 特定の時短勤務用の項目追加
-                // Add Start WataruT 2020.07.27 特定の時短勤務用の項目追加
                 case "2":
-                    ChangeMainGridData(18);
+                    ChangeMainGridData(25);
+                    break;
+                case "3":
+                    ChangeMainGridData(26);
+                    break;
+                case "4":
+                    ChangeMainGridData(27);
+                    break;
+                case "5":
+                    ChangeMainGridData(28);
                     break;
                 case "6":
-                    ChangeMainGridData(19);
-                    break;
-                case "6.25":
-                    ChangeMainGridData(20);
+                    ChangeMainGridData(29);
                     break;
                 case "7":
-                    ChangeMainGridData(21);
+                    ChangeMainGridData(30);
                     break;
-                // Add End   WataruT 2020.07.27 特定の時短勤務用の項目追加
+                case "0.25":
+                    ChangeMainGridData(31);
+                    break;
+                case "1.25":
+                    ChangeMainGridData(32);
+                    break;
+                case "2.25":
+                    ChangeMainGridData(33);
+                    break;
+                case "3.25":
+                    ChangeMainGridData(34);
+                    break;
+                case "4.25":
+                    ChangeMainGridData(35);
+                    break;
+                case "5.25":
+                    ChangeMainGridData(36);
+                    break;
+                case "6.25":
+                    ChangeMainGridData(37);
+                    break;
+                case "7.25":
+                    ChangeMainGridData(38);
+                    break;
+                case "0.5":
+                    ChangeMainGridData(39);
+                    break;
+                case "1.5":
+                    ChangeMainGridData(40);
+                    break;
+                case "2.5":
+                    ChangeMainGridData(41);
+                    break;
+                case "3.5":
+                    ChangeMainGridData(42);
+                    break;
+                case "4.5":
+                    ChangeMainGridData(43);
+                    break;
+                case "5.5":
+                    ChangeMainGridData(44);
+                    break;
+                case "6.5":
+                    ChangeMainGridData(45);
+                    break;
+                case "7.5":
+                    ChangeMainGridData(46);
+                    break;
+                case "0.75":
+                    ChangeMainGridData(47);
+                    break;
+                case "1.75":
+                    ChangeMainGridData(48);
+                    break;
+                case "2.75":
+                    ChangeMainGridData(49);
+                    break;
+                case "3.75":
+                    ChangeMainGridData(50);
+                    break;
+                case "4.75":
+                    ChangeMainGridData(51);
+                    break;
+                case "5.75":
+                    ChangeMainGridData(52);
+                    break;
+                case "6.75":
+                    ChangeMainGridData(53);
+                    break;
+                case "7.75":
+                    ChangeMainGridData(54);
+                    break;
+                // Mod End   WataruT 2020.09.02 時間数の項目を作成
                 // Add Start WataruT 2020.08.06 遅刻・早退入力対応
                 case "遅刻":
                     ChangeMainGridData(22);

@@ -60,6 +60,41 @@
             this.tsmiWorkKind7_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind8_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind9_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKindTimeMenu1_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind25_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind26_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind27_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind28_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind29_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind30_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind31_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind32_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind33_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind34_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind35_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind36_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKindTimeMenu2_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind37_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind38_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind39_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind40_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind41_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind42_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind43_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind44_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKindTimeMenu3_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind45_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind46_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind47_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind48_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind49_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind50_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind51_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind52_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKindTimeMenu4_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind53_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind54_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind55_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKindOtherMenu_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind10_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind11_Schedule = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,11 +106,41 @@
             this.tsmiWorkKind23_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind24_Schedule = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind17_Schedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind18_Schedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind19_Schedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind20_Schedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind21_Schedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind22_Schedule = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind30_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind31_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind32_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind33_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind34_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind35_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind36_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind37_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind38_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind39_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind40_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind41_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind42_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind43_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind44_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind45_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind46_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind47_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind48_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind49_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind50_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind51_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind52_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind53_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind54_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind55_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind25_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind26_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind27_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind28_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKind29_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKindTimeMenu1_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKindTimeMenu2_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKindTimeMenu3_Request = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWorkKindTimeMenu4_Request = new System.Windows.Forms.ToolStripMenuItem();
             this.ctmsMain_Request = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiShiftControler = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -99,11 +164,6 @@
             this.tsmiWorkKind23_Request = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind24_Request = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWorkKind17_Request = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind18_Request = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind19_Request = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind20_Request = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWorkKind22_Request = new System.Windows.Forms.ToolStripMenuItem();
             this.grdRowTotalHeader = new System.Windows.Forms.DataGridView();
             this.grdColumnTotal = new System.Windows.Forms.DataGridView();
             this.btnYoushiki9 = new System.Windows.Forms.Button();
@@ -401,9 +461,13 @@
             this.tsmiWorkKind7_Schedule,
             this.tsmiWorkKind8_Schedule,
             this.tsmiWorkKind9_Schedule,
+            this.tsmiWorkKindTimeMenu1_Schedule,
+            this.tsmiWorkKindTimeMenu2_Schedule,
+            this.tsmiWorkKindTimeMenu3_Schedule,
+            this.tsmiWorkKindTimeMenu4_Schedule,
             this.tsmiWorkKindOtherMenu_Schedule});
             this.ctmsMain_Schedule.Name = "ctmsMain";
-            this.ctmsMain_Schedule.Size = new System.Drawing.Size(131, 224);
+            this.ctmsMain_Schedule.Size = new System.Drawing.Size(131, 312);
             // 
             // tsmiWorkKind1_Schedule
             // 
@@ -468,6 +532,282 @@
             this.tsmiWorkKind9_Schedule.Text = "有休(午後)";
             this.tsmiWorkKind9_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
+            // tsmiWorkKindTimeMenu1_Schedule
+            // 
+            this.tsmiWorkKindTimeMenu1_Schedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWorkKind25_Schedule,
+            this.tsmiWorkKind26_Schedule,
+            this.tsmiWorkKind27_Schedule,
+            this.tsmiWorkKind28_Schedule,
+            this.tsmiWorkKind29_Schedule,
+            this.tsmiWorkKind30_Schedule,
+            this.tsmiWorkKind31_Schedule});
+            this.tsmiWorkKindTimeMenu1_Schedule.Name = "tsmiWorkKindTimeMenu1_Schedule";
+            this.tsmiWorkKindTimeMenu1_Schedule.Size = new System.Drawing.Size(130, 22);
+            this.tsmiWorkKindTimeMenu1_Schedule.Text = ".0";
+            // 
+            // tsmiWorkKind25_Schedule
+            // 
+            this.tsmiWorkKind25_Schedule.Name = "tsmiWorkKind25_Schedule";
+            this.tsmiWorkKind25_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind25_Schedule.Text = "1";
+            this.tsmiWorkKind25_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind26_Schedule
+            // 
+            this.tsmiWorkKind26_Schedule.Name = "tsmiWorkKind26_Schedule";
+            this.tsmiWorkKind26_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind26_Schedule.Text = "2";
+            this.tsmiWorkKind26_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind27_Schedule
+            // 
+            this.tsmiWorkKind27_Schedule.Name = "tsmiWorkKind27_Schedule";
+            this.tsmiWorkKind27_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind27_Schedule.Text = "3";
+            this.tsmiWorkKind27_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind28_Schedule
+            // 
+            this.tsmiWorkKind28_Schedule.Name = "tsmiWorkKind28_Schedule";
+            this.tsmiWorkKind28_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind28_Schedule.Text = "4";
+            this.tsmiWorkKind28_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind29_Schedule
+            // 
+            this.tsmiWorkKind29_Schedule.Name = "tsmiWorkKind29_Schedule";
+            this.tsmiWorkKind29_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind29_Schedule.Text = "5";
+            this.tsmiWorkKind29_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind30_Schedule
+            // 
+            this.tsmiWorkKind30_Schedule.Name = "tsmiWorkKind30_Schedule";
+            this.tsmiWorkKind30_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind30_Schedule.Text = "6";
+            this.tsmiWorkKind30_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind31_Schedule
+            // 
+            this.tsmiWorkKind31_Schedule.Name = "tsmiWorkKind31_Schedule";
+            this.tsmiWorkKind31_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind31_Schedule.Text = "7";
+            this.tsmiWorkKind31_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKindTimeMenu2_Schedule
+            // 
+            this.tsmiWorkKindTimeMenu2_Schedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWorkKind32_Schedule,
+            this.tsmiWorkKind33_Schedule,
+            this.tsmiWorkKind34_Schedule,
+            this.tsmiWorkKind35_Schedule,
+            this.tsmiWorkKind36_Schedule,
+            this.tsmiWorkKind37_Schedule,
+            this.tsmiWorkKind38_Schedule,
+            this.tsmiWorkKind39_Schedule});
+            this.tsmiWorkKindTimeMenu2_Schedule.Name = "tsmiWorkKindTimeMenu2_Schedule";
+            this.tsmiWorkKindTimeMenu2_Schedule.Size = new System.Drawing.Size(130, 22);
+            this.tsmiWorkKindTimeMenu2_Schedule.Text = ".25";
+            // 
+            // tsmiWorkKind32_Schedule
+            // 
+            this.tsmiWorkKind32_Schedule.Name = "tsmiWorkKind32_Schedule";
+            this.tsmiWorkKind32_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind32_Schedule.Text = "0.25";
+            this.tsmiWorkKind32_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind33_Schedule
+            // 
+            this.tsmiWorkKind33_Schedule.Name = "tsmiWorkKind33_Schedule";
+            this.tsmiWorkKind33_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind33_Schedule.Text = "1.25";
+            this.tsmiWorkKind33_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind34_Schedule
+            // 
+            this.tsmiWorkKind34_Schedule.Name = "tsmiWorkKind34_Schedule";
+            this.tsmiWorkKind34_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind34_Schedule.Text = "2.25";
+            this.tsmiWorkKind34_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind35_Schedule
+            // 
+            this.tsmiWorkKind35_Schedule.Name = "tsmiWorkKind35_Schedule";
+            this.tsmiWorkKind35_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind35_Schedule.Text = "3.25";
+            this.tsmiWorkKind35_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind36_Schedule
+            // 
+            this.tsmiWorkKind36_Schedule.Name = "tsmiWorkKind36_Schedule";
+            this.tsmiWorkKind36_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind36_Schedule.Text = "4.25";
+            this.tsmiWorkKind36_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind37_Schedule
+            // 
+            this.tsmiWorkKind37_Schedule.Name = "tsmiWorkKind37_Schedule";
+            this.tsmiWorkKind37_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind37_Schedule.Text = "5.25";
+            this.tsmiWorkKind37_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind38_Schedule
+            // 
+            this.tsmiWorkKind38_Schedule.Name = "tsmiWorkKind38_Schedule";
+            this.tsmiWorkKind38_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind38_Schedule.Text = "6.25";
+            this.tsmiWorkKind38_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind39_Schedule
+            // 
+            this.tsmiWorkKind39_Schedule.Name = "tsmiWorkKind39_Schedule";
+            this.tsmiWorkKind39_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind39_Schedule.Text = "7.25";
+            this.tsmiWorkKind39_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKindTimeMenu3_Schedule
+            // 
+            this.tsmiWorkKindTimeMenu3_Schedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWorkKind40_Schedule,
+            this.tsmiWorkKind41_Schedule,
+            this.tsmiWorkKind42_Schedule,
+            this.tsmiWorkKind43_Schedule,
+            this.tsmiWorkKind44_Schedule,
+            this.tsmiWorkKind45_Schedule,
+            this.tsmiWorkKind46_Schedule,
+            this.tsmiWorkKind47_Schedule});
+            this.tsmiWorkKindTimeMenu3_Schedule.Name = "tsmiWorkKindTimeMenu3_Schedule";
+            this.tsmiWorkKindTimeMenu3_Schedule.Size = new System.Drawing.Size(130, 22);
+            this.tsmiWorkKindTimeMenu3_Schedule.Text = ".5";
+            // 
+            // tsmiWorkKind40_Schedule
+            // 
+            this.tsmiWorkKind40_Schedule.Name = "tsmiWorkKind40_Schedule";
+            this.tsmiWorkKind40_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind40_Schedule.Text = "0.5";
+            this.tsmiWorkKind40_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind41_Schedule
+            // 
+            this.tsmiWorkKind41_Schedule.Name = "tsmiWorkKind41_Schedule";
+            this.tsmiWorkKind41_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind41_Schedule.Text = "1.5";
+            this.tsmiWorkKind41_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind42_Schedule
+            // 
+            this.tsmiWorkKind42_Schedule.Name = "tsmiWorkKind42_Schedule";
+            this.tsmiWorkKind42_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind42_Schedule.Text = "2.5";
+            this.tsmiWorkKind42_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind43_Schedule
+            // 
+            this.tsmiWorkKind43_Schedule.Name = "tsmiWorkKind43_Schedule";
+            this.tsmiWorkKind43_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind43_Schedule.Text = "3.5";
+            this.tsmiWorkKind43_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind44_Schedule
+            // 
+            this.tsmiWorkKind44_Schedule.Name = "tsmiWorkKind44_Schedule";
+            this.tsmiWorkKind44_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind44_Schedule.Text = "4.5";
+            this.tsmiWorkKind44_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind45_Schedule
+            // 
+            this.tsmiWorkKind45_Schedule.Name = "tsmiWorkKind45_Schedule";
+            this.tsmiWorkKind45_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind45_Schedule.Text = "5.5";
+            this.tsmiWorkKind45_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind46_Schedule
+            // 
+            this.tsmiWorkKind46_Schedule.Name = "tsmiWorkKind46_Schedule";
+            this.tsmiWorkKind46_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind46_Schedule.Text = "6.5";
+            this.tsmiWorkKind46_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind47_Schedule
+            // 
+            this.tsmiWorkKind47_Schedule.Name = "tsmiWorkKind47_Schedule";
+            this.tsmiWorkKind47_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind47_Schedule.Text = "7.5";
+            this.tsmiWorkKind47_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKindTimeMenu4_Schedule
+            // 
+            this.tsmiWorkKindTimeMenu4_Schedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWorkKind48_Schedule,
+            this.tsmiWorkKind49_Schedule,
+            this.tsmiWorkKind50_Schedule,
+            this.tsmiWorkKind51_Schedule,
+            this.tsmiWorkKind52_Schedule,
+            this.tsmiWorkKind53_Schedule,
+            this.tsmiWorkKind54_Schedule,
+            this.tsmiWorkKind55_Schedule});
+            this.tsmiWorkKindTimeMenu4_Schedule.Name = "tsmiWorkKindTimeMenu4_Schedule";
+            this.tsmiWorkKindTimeMenu4_Schedule.Size = new System.Drawing.Size(130, 22);
+            this.tsmiWorkKindTimeMenu4_Schedule.Text = ".75";
+            // 
+            // tsmiWorkKind48_Schedule
+            // 
+            this.tsmiWorkKind48_Schedule.Name = "tsmiWorkKind48_Schedule";
+            this.tsmiWorkKind48_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind48_Schedule.Text = "0.75";
+            this.tsmiWorkKind48_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind49_Schedule
+            // 
+            this.tsmiWorkKind49_Schedule.Name = "tsmiWorkKind49_Schedule";
+            this.tsmiWorkKind49_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind49_Schedule.Text = "1.75";
+            this.tsmiWorkKind49_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind50_Schedule
+            // 
+            this.tsmiWorkKind50_Schedule.Name = "tsmiWorkKind50_Schedule";
+            this.tsmiWorkKind50_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind50_Schedule.Text = "2.75";
+            this.tsmiWorkKind50_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind51_Schedule
+            // 
+            this.tsmiWorkKind51_Schedule.Name = "tsmiWorkKind51_Schedule";
+            this.tsmiWorkKind51_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind51_Schedule.Text = "3.75";
+            this.tsmiWorkKind51_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind52_Schedule
+            // 
+            this.tsmiWorkKind52_Schedule.Name = "tsmiWorkKind52_Schedule";
+            this.tsmiWorkKind52_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind52_Schedule.Text = "4.75";
+            this.tsmiWorkKind52_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind53_Schedule
+            // 
+            this.tsmiWorkKind53_Schedule.Name = "tsmiWorkKind53_Schedule";
+            this.tsmiWorkKind53_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind53_Schedule.Text = "5.75";
+            this.tsmiWorkKind53_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind54_Schedule
+            // 
+            this.tsmiWorkKind54_Schedule.Name = "tsmiWorkKind54_Schedule";
+            this.tsmiWorkKind54_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind54_Schedule.Text = "6.75";
+            this.tsmiWorkKind54_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
+            // tsmiWorkKind55_Schedule
+            // 
+            this.tsmiWorkKind55_Schedule.Name = "tsmiWorkKind55_Schedule";
+            this.tsmiWorkKind55_Schedule.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind55_Schedule.Text = "7.75";
+            this.tsmiWorkKind55_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            // 
             // tsmiWorkKindOtherMenu_Schedule
             // 
             this.tsmiWorkKindOtherMenu_Schedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -480,12 +820,7 @@
             this.tsmiWorkKind16_Schedule,
             this.tsmiWorkKind23_Schedule,
             this.tsmiWorkKind24_Schedule,
-            this.tsmiWorkKind17_Schedule,
-            this.tsmiWorkKind18_Schedule,
-            this.tsmiWorkKind19_Schedule,
-            this.tsmiWorkKind20_Schedule,
-            this.tsmiWorkKind21_Schedule,
-            this.tsmiWorkKind22_Schedule});
+            this.tsmiWorkKind17_Schedule});
             this.tsmiWorkKindOtherMenu_Schedule.Name = "tsmiWorkKindOtherMenu_Schedule";
             this.tsmiWorkKindOtherMenu_Schedule.Size = new System.Drawing.Size(130, 22);
             this.tsmiWorkKindOtherMenu_Schedule.Text = "その他";
@@ -493,107 +828,348 @@
             // tsmiWorkKind10_Schedule
             // 
             this.tsmiWorkKind10_Schedule.Name = "tsmiWorkKind10_Schedule";
-            this.tsmiWorkKind10_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind10_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind10_Schedule.Text = "公有";
             this.tsmiWorkKind10_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind11_Schedule
             // 
             this.tsmiWorkKind11_Schedule.Name = "tsmiWorkKind11_Schedule";
-            this.tsmiWorkKind11_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind11_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind11_Schedule.Text = "遅出";
             this.tsmiWorkKind11_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind12_Schedule
             // 
             this.tsmiWorkKind12_Schedule.Name = "tsmiWorkKind12_Schedule";
-            this.tsmiWorkKind12_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind12_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind12_Schedule.Text = "研修";
             this.tsmiWorkKind12_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind13_Schedule
             // 
             this.tsmiWorkKind13_Schedule.Name = "tsmiWorkKind13_Schedule";
-            this.tsmiWorkKind13_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind13_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind13_Schedule.Text = "特別休暇";
             this.tsmiWorkKind13_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind14_Schedule
             // 
             this.tsmiWorkKind14_Schedule.Name = "tsmiWorkKind14_Schedule";
-            this.tsmiWorkKind14_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind14_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind14_Schedule.Text = "欠勤";
             this.tsmiWorkKind14_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind15_Schedule
             // 
             this.tsmiWorkKind15_Schedule.Name = "tsmiWorkKind15_Schedule";
-            this.tsmiWorkKind15_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind15_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind15_Schedule.Text = "病休";
             this.tsmiWorkKind15_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind16_Schedule
             // 
             this.tsmiWorkKind16_Schedule.Name = "tsmiWorkKind16_Schedule";
-            this.tsmiWorkKind16_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind16_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind16_Schedule.Text = "早出";
             this.tsmiWorkKind16_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind23_Schedule
             // 
             this.tsmiWorkKind23_Schedule.Name = "tsmiWorkKind23_Schedule";
-            this.tsmiWorkKind23_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind23_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind23_Schedule.Text = "遅刻";
             this.tsmiWorkKind23_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind24_Schedule
             // 
             this.tsmiWorkKind24_Schedule.Name = "tsmiWorkKind24_Schedule";
-            this.tsmiWorkKind24_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind24_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind24_Schedule.Text = "早退";
             this.tsmiWorkKind24_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind17_Schedule
             // 
             this.tsmiWorkKind17_Schedule.Name = "tsmiWorkKind17_Schedule";
-            this.tsmiWorkKind17_Schedule.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind17_Schedule.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind17_Schedule.Text = "入職前";
             this.tsmiWorkKind17_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
-            // tsmiWorkKind18_Schedule
+            // tsmiWorkKind25_Request
             // 
-            this.tsmiWorkKind18_Schedule.Name = "tsmiWorkKind18_Schedule";
-            this.tsmiWorkKind18_Schedule.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind18_Schedule.Text = "5.25";
-            this.tsmiWorkKind18_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            this.tsmiWorkKind25_Request.Name = "tsmiWorkKind25_Request";
+            this.tsmiWorkKind25_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind25_Request.Text = "1";
+            this.tsmiWorkKind25_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
-            // tsmiWorkKind19_Schedule
+            // tsmiWorkKind26_Request
             // 
-            this.tsmiWorkKind19_Schedule.Name = "tsmiWorkKind19_Schedule";
-            this.tsmiWorkKind19_Schedule.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind19_Schedule.Text = "2";
-            this.tsmiWorkKind19_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            this.tsmiWorkKind26_Request.Name = "tsmiWorkKind26_Request";
+            this.tsmiWorkKind26_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind26_Request.Text = "2";
+            this.tsmiWorkKind26_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
-            // tsmiWorkKind20_Schedule
+            // tsmiWorkKind27_Request
             // 
-            this.tsmiWorkKind20_Schedule.Name = "tsmiWorkKind20_Schedule";
-            this.tsmiWorkKind20_Schedule.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind20_Schedule.Text = "6";
-            this.tsmiWorkKind20_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            this.tsmiWorkKind27_Request.Name = "tsmiWorkKind27_Request";
+            this.tsmiWorkKind27_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind27_Request.Text = "3";
+            this.tsmiWorkKind27_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
-            // tsmiWorkKind21_Schedule
+            // tsmiWorkKind28_Request
             // 
-            this.tsmiWorkKind21_Schedule.Name = "tsmiWorkKind21_Schedule";
-            this.tsmiWorkKind21_Schedule.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind21_Schedule.Text = "6.25";
-            this.tsmiWorkKind21_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            this.tsmiWorkKind28_Request.Name = "tsmiWorkKind28_Request";
+            this.tsmiWorkKind28_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind28_Request.Text = "4";
+            this.tsmiWorkKind28_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
-            // tsmiWorkKind22_Schedule
+            // tsmiWorkKind29_Request
             // 
-            this.tsmiWorkKind22_Schedule.Name = "tsmiWorkKind22_Schedule";
-            this.tsmiWorkKind22_Schedule.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind22_Schedule.Text = "7";
-            this.tsmiWorkKind22_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
+            this.tsmiWorkKind29_Request.Name = "tsmiWorkKind29_Request";
+            this.tsmiWorkKind29_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind29_Request.Text = "5";
+            this.tsmiWorkKind29_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind30_Request
+            // 
+            this.tsmiWorkKind30_Request.Name = "tsmiWorkKind30_Request";
+            this.tsmiWorkKind30_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind30_Request.Text = "6";
+            this.tsmiWorkKind30_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind31_Request
+            // 
+            this.tsmiWorkKind31_Request.Name = "tsmiWorkKind31_Request";
+            this.tsmiWorkKind31_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKind31_Request.Text = "7";
+            this.tsmiWorkKind31_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind32_Request
+            // 
+            this.tsmiWorkKind32_Request.Name = "tsmiWorkKind32_Request";
+            this.tsmiWorkKind32_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind32_Request.Text = "0.25";
+            this.tsmiWorkKind32_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind33_Request
+            // 
+            this.tsmiWorkKind33_Request.Name = "tsmiWorkKind33_Request";
+            this.tsmiWorkKind33_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind33_Request.Text = "1.25";
+            this.tsmiWorkKind33_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind34_Request
+            // 
+            this.tsmiWorkKind34_Request.Name = "tsmiWorkKind34_Request";
+            this.tsmiWorkKind34_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind34_Request.Text = "2.25";
+            this.tsmiWorkKind34_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind35_Request
+            // 
+            this.tsmiWorkKind35_Request.Name = "tsmiWorkKind35_Request";
+            this.tsmiWorkKind35_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind35_Request.Text = "3.25";
+            this.tsmiWorkKind35_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind36_Request
+            // 
+            this.tsmiWorkKind36_Request.Name = "tsmiWorkKind36_Request";
+            this.tsmiWorkKind36_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind36_Request.Text = "4.25";
+            this.tsmiWorkKind36_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind37_Request
+            // 
+            this.tsmiWorkKind37_Request.Name = "tsmiWorkKind37_Request";
+            this.tsmiWorkKind37_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind37_Request.Text = "5.25";
+            this.tsmiWorkKind37_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind38_Request
+            // 
+            this.tsmiWorkKind38_Request.Name = "tsmiWorkKind38_Request";
+            this.tsmiWorkKind38_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind38_Request.Text = "6.25";
+            this.tsmiWorkKind38_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind39_Request
+            // 
+            this.tsmiWorkKind39_Request.Name = "tsmiWorkKind39_Request";
+            this.tsmiWorkKind39_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind39_Request.Text = "7.25";
+            this.tsmiWorkKind39_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind40_Request
+            // 
+            this.tsmiWorkKind40_Request.Name = "tsmiWorkKind40_Request";
+            this.tsmiWorkKind40_Request.Size = new System.Drawing.Size(89, 22);
+            this.tsmiWorkKind40_Request.Text = "0.5";
+            this.tsmiWorkKind40_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind41_Request
+            // 
+            this.tsmiWorkKind41_Request.Name = "tsmiWorkKind41_Request";
+            this.tsmiWorkKind41_Request.Size = new System.Drawing.Size(89, 22);
+            this.tsmiWorkKind41_Request.Text = "1.5";
+            this.tsmiWorkKind41_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind42_Request
+            // 
+            this.tsmiWorkKind42_Request.Name = "tsmiWorkKind42_Request";
+            this.tsmiWorkKind42_Request.Size = new System.Drawing.Size(89, 22);
+            this.tsmiWorkKind42_Request.Text = "2.5";
+            this.tsmiWorkKind42_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind43_Request
+            // 
+            this.tsmiWorkKind43_Request.Name = "tsmiWorkKind43_Request";
+            this.tsmiWorkKind43_Request.Size = new System.Drawing.Size(89, 22);
+            this.tsmiWorkKind43_Request.Text = "3.5";
+            this.tsmiWorkKind43_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind44_Request
+            // 
+            this.tsmiWorkKind44_Request.Name = "tsmiWorkKind44_Request";
+            this.tsmiWorkKind44_Request.Size = new System.Drawing.Size(89, 22);
+            this.tsmiWorkKind44_Request.Text = "4.5";
+            this.tsmiWorkKind44_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind45_Request
+            // 
+            this.tsmiWorkKind45_Request.Name = "tsmiWorkKind45_Request";
+            this.tsmiWorkKind45_Request.Size = new System.Drawing.Size(89, 22);
+            this.tsmiWorkKind45_Request.Text = "5.5";
+            this.tsmiWorkKind45_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind46_Request
+            // 
+            this.tsmiWorkKind46_Request.Name = "tsmiWorkKind46_Request";
+            this.tsmiWorkKind46_Request.Size = new System.Drawing.Size(89, 22);
+            this.tsmiWorkKind46_Request.Text = "6.5";
+            this.tsmiWorkKind46_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind47_Request
+            // 
+            this.tsmiWorkKind47_Request.Name = "tsmiWorkKind47_Request";
+            this.tsmiWorkKind47_Request.Size = new System.Drawing.Size(89, 22);
+            this.tsmiWorkKind47_Request.Text = "7.5";
+            this.tsmiWorkKind47_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind48_Request
+            // 
+            this.tsmiWorkKind48_Request.Name = "tsmiWorkKind48_Request";
+            this.tsmiWorkKind48_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind48_Request.Text = "0.75";
+            this.tsmiWorkKind48_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind49_Request
+            // 
+            this.tsmiWorkKind49_Request.Name = "tsmiWorkKind49_Request";
+            this.tsmiWorkKind49_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind49_Request.Text = "1.75";
+            this.tsmiWorkKind49_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind50_Request
+            // 
+            this.tsmiWorkKind50_Request.Name = "tsmiWorkKind50_Request";
+            this.tsmiWorkKind50_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind50_Request.Text = "2.75";
+            this.tsmiWorkKind50_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind51_Request
+            // 
+            this.tsmiWorkKind51_Request.Name = "tsmiWorkKind51_Request";
+            this.tsmiWorkKind51_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind51_Request.Text = "3.75";
+            this.tsmiWorkKind51_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind52_Request
+            // 
+            this.tsmiWorkKind52_Request.Name = "tsmiWorkKind52_Request";
+            this.tsmiWorkKind52_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind52_Request.Text = "4.75";
+            this.tsmiWorkKind52_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind53_Request
+            // 
+            this.tsmiWorkKind53_Request.Name = "tsmiWorkKind53_Request";
+            this.tsmiWorkKind53_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind53_Request.Text = "5.75";
+            this.tsmiWorkKind53_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind54_Request
+            // 
+            this.tsmiWorkKind54_Request.Name = "tsmiWorkKind54_Request";
+            this.tsmiWorkKind54_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind54_Request.Text = "6.75";
+            this.tsmiWorkKind54_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKind55_Request
+            // 
+            this.tsmiWorkKind55_Request.Name = "tsmiWorkKind55_Request";
+            this.tsmiWorkKind55_Request.Size = new System.Drawing.Size(95, 22);
+            this.tsmiWorkKind55_Request.Text = "7.75";
+            this.tsmiWorkKind55_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
+            // 
+            // tsmiWorkKindTimeMenu1_Request
+            // 
+            this.tsmiWorkKindTimeMenu1_Request.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWorkKind25_Request,
+            this.tsmiWorkKind26_Request,
+            this.tsmiWorkKind27_Request,
+            this.tsmiWorkKind28_Request,
+            this.tsmiWorkKind29_Request,
+            this.tsmiWorkKind30_Request,
+            this.tsmiWorkKind31_Request});
+            this.tsmiWorkKindTimeMenu1_Request.Name = "tsmiWorkKindTimeMenu1_Request";
+            this.tsmiWorkKindTimeMenu1_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKindTimeMenu1_Request.Text = ".0";
+            // 
+            // tsmiWorkKindTimeMenu2_Request
+            // 
+            this.tsmiWorkKindTimeMenu2_Request.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWorkKind32_Request,
+            this.tsmiWorkKind33_Request,
+            this.tsmiWorkKind34_Request,
+            this.tsmiWorkKind35_Request,
+            this.tsmiWorkKind36_Request,
+            this.tsmiWorkKind37_Request,
+            this.tsmiWorkKind38_Request,
+            this.tsmiWorkKind39_Request});
+            this.tsmiWorkKindTimeMenu2_Request.Name = "tsmiWorkKindTimeMenu2_Request";
+            this.tsmiWorkKindTimeMenu2_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKindTimeMenu2_Request.Text = ".25";
+            // 
+            // tsmiWorkKindTimeMenu3_Request
+            // 
+            this.tsmiWorkKindTimeMenu3_Request.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWorkKind40_Request,
+            this.tsmiWorkKind41_Request,
+            this.tsmiWorkKind42_Request,
+            this.tsmiWorkKind43_Request,
+            this.tsmiWorkKind44_Request,
+            this.tsmiWorkKind45_Request,
+            this.tsmiWorkKind46_Request,
+            this.tsmiWorkKind47_Request});
+            this.tsmiWorkKindTimeMenu3_Request.Name = "tsmiWorkKindTimeMenu3_Request";
+            this.tsmiWorkKindTimeMenu3_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKindTimeMenu3_Request.Text = ".5";
+            // 
+            // tsmiWorkKindTimeMenu4_Request
+            // 
+            this.tsmiWorkKindTimeMenu4_Request.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWorkKind48_Request,
+            this.tsmiWorkKind49_Request,
+            this.tsmiWorkKind50_Request,
+            this.tsmiWorkKind51_Request,
+            this.tsmiWorkKind52_Request,
+            this.tsmiWorkKind53_Request,
+            this.tsmiWorkKind54_Request,
+            this.tsmiWorkKind55_Request});
+            this.tsmiWorkKindTimeMenu4_Request.Name = "tsmiWorkKindTimeMenu4_Request";
+            this.tsmiWorkKindTimeMenu4_Request.Size = new System.Drawing.Size(180, 22);
+            this.tsmiWorkKindTimeMenu4_Request.Text = ".75";
             // 
             // ctmsMain_Request
             // 
@@ -609,82 +1185,86 @@
             this.tsmiWorkKind7_Request,
             this.tsmiWorkKind8_Request,
             this.tsmiWorkKind9_Request,
+            this.tsmiWorkKindTimeMenu1_Request,
+            this.tsmiWorkKindTimeMenu2_Request,
+            this.tsmiWorkKindTimeMenu3_Request,
+            this.tsmiWorkKindTimeMenu4_Request,
             this.tsmiWorkKindOtherMenu_Request});
             this.ctmsMain_Request.Name = "ctmsMain";
-            this.ctmsMain_Request.Size = new System.Drawing.Size(158, 252);
+            this.ctmsMain_Request.Size = new System.Drawing.Size(181, 362);
             // 
             // tsmiShiftControler
             // 
             this.tsmiShiftControler.Name = "tsmiShiftControler";
-            this.tsmiShiftControler.Size = new System.Drawing.Size(157, 22);
+            this.tsmiShiftControler.Size = new System.Drawing.Size(180, 22);
             this.tsmiShiftControler.Text = "入力パレット表示";
             this.tsmiShiftControler.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(154, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmiWorkKind1_Request
             // 
             this.tsmiWorkKind1_Request.Name = "tsmiWorkKind1_Request";
-            this.tsmiWorkKind1_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind1_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind1_Request.Text = "日勤";
             this.tsmiWorkKind1_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind2_Request
             // 
             this.tsmiWorkKind2_Request.Name = "tsmiWorkKind2_Request";
-            this.tsmiWorkKind2_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind2_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind2_Request.Text = "夜勤";
             this.tsmiWorkKind2_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind3_Request
             // 
             this.tsmiWorkKind3_Request.Name = "tsmiWorkKind3_Request";
-            this.tsmiWorkKind3_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind3_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind3_Request.Text = "夜明";
             this.tsmiWorkKind3_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind4_Request
             // 
             this.tsmiWorkKind4_Request.Name = "tsmiWorkKind4_Request";
-            this.tsmiWorkKind4_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind4_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind4_Request.Text = "公休(1日)";
             this.tsmiWorkKind4_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind5_Request
             // 
             this.tsmiWorkKind5_Request.Name = "tsmiWorkKind5_Request";
-            this.tsmiWorkKind5_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind5_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind5_Request.Text = "公休(午前)";
             this.tsmiWorkKind5_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind6_Request
             // 
             this.tsmiWorkKind6_Request.Name = "tsmiWorkKind6_Request";
-            this.tsmiWorkKind6_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind6_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind6_Request.Text = "公休(午後)";
             this.tsmiWorkKind6_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind7_Request
             // 
             this.tsmiWorkKind7_Request.Name = "tsmiWorkKind7_Request";
-            this.tsmiWorkKind7_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind7_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind7_Request.Text = "有休(1日)";
             this.tsmiWorkKind7_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind8_Request
             // 
             this.tsmiWorkKind8_Request.Name = "tsmiWorkKind8_Request";
-            this.tsmiWorkKind8_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind8_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind8_Request.Text = "有休(午前)";
             this.tsmiWorkKind8_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind9_Request
             // 
             this.tsmiWorkKind9_Request.Name = "tsmiWorkKind9_Request";
-            this.tsmiWorkKind9_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKind9_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind9_Request.Text = "有休(午後)";
             this.tsmiWorkKind9_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
@@ -700,119 +1280,80 @@
             this.tsmiWorkKind16_Request,
             this.tsmiWorkKind23_Request,
             this.tsmiWorkKind24_Request,
-            this.tsmiWorkKind17_Request,
-            this.tsmiWorkKind18_Request,
-            this.tsmiWorkKind19_Request,
-            this.tsmiWorkKind20_Request,
-            this.toolStripMenuItem1,
-            this.tsmiWorkKind22_Request});
+            this.tsmiWorkKind17_Request});
             this.tsmiWorkKindOtherMenu_Request.Name = "tsmiWorkKindOtherMenu_Request";
-            this.tsmiWorkKindOtherMenu_Request.Size = new System.Drawing.Size(157, 22);
+            this.tsmiWorkKindOtherMenu_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKindOtherMenu_Request.Text = "その他";
             // 
             // tsmiWorkKind10_Request
             // 
             this.tsmiWorkKind10_Request.Name = "tsmiWorkKind10_Request";
-            this.tsmiWorkKind10_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind10_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind10_Request.Text = "公有";
             this.tsmiWorkKind10_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind11_Request
             // 
             this.tsmiWorkKind11_Request.Name = "tsmiWorkKind11_Request";
-            this.tsmiWorkKind11_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind11_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind11_Request.Text = "遅出";
             this.tsmiWorkKind11_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind12_Request
             // 
             this.tsmiWorkKind12_Request.Name = "tsmiWorkKind12_Request";
-            this.tsmiWorkKind12_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind12_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind12_Request.Text = "研修";
             this.tsmiWorkKind12_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind13_Request
             // 
             this.tsmiWorkKind13_Request.Name = "tsmiWorkKind13_Request";
-            this.tsmiWorkKind13_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind13_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind13_Request.Text = "特別休暇";
             this.tsmiWorkKind13_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind14_Request
             // 
             this.tsmiWorkKind14_Request.Name = "tsmiWorkKind14_Request";
-            this.tsmiWorkKind14_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind14_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind14_Request.Text = "欠勤";
             this.tsmiWorkKind14_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind15_Request
             // 
             this.tsmiWorkKind15_Request.Name = "tsmiWorkKind15_Request";
-            this.tsmiWorkKind15_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind15_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind15_Request.Text = "病休";
             this.tsmiWorkKind15_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind16_Request
             // 
             this.tsmiWorkKind16_Request.Name = "tsmiWorkKind16_Request";
-            this.tsmiWorkKind16_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind16_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind16_Request.Text = "早出";
             this.tsmiWorkKind16_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind23_Request
             // 
             this.tsmiWorkKind23_Request.Name = "tsmiWorkKind23_Request";
-            this.tsmiWorkKind23_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind23_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind23_Request.Text = "遅刻";
             this.tsmiWorkKind23_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind24_Request
             // 
             this.tsmiWorkKind24_Request.Name = "tsmiWorkKind24_Request";
-            this.tsmiWorkKind24_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind24_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind24_Request.Text = "早退";
             this.tsmiWorkKind24_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // tsmiWorkKind17_Request
             // 
             this.tsmiWorkKind17_Request.Name = "tsmiWorkKind17_Request";
-            this.tsmiWorkKind17_Request.Size = new System.Drawing.Size(122, 22);
+            this.tsmiWorkKind17_Request.Size = new System.Drawing.Size(180, 22);
             this.tsmiWorkKind17_Request.Text = "入職前";
             this.tsmiWorkKind17_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
-            // 
-            // tsmiWorkKind18_Request
-            // 
-            this.tsmiWorkKind18_Request.Name = "tsmiWorkKind18_Request";
-            this.tsmiWorkKind18_Request.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind18_Request.Text = "5.25";
-            this.tsmiWorkKind18_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
-            // 
-            // tsmiWorkKind19_Request
-            // 
-            this.tsmiWorkKind19_Request.Name = "tsmiWorkKind19_Request";
-            this.tsmiWorkKind19_Request.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind19_Request.Text = "2";
-            this.tsmiWorkKind19_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
-            // 
-            // tsmiWorkKind20_Request
-            // 
-            this.tsmiWorkKind20_Request.Name = "tsmiWorkKind20_Request";
-            this.tsmiWorkKind20_Request.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind20_Request.Text = "6";
-            this.tsmiWorkKind20_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
-            this.toolStripMenuItem1.Text = "6.25";
-            // 
-            // tsmiWorkKind22_Request
-            // 
-            this.tsmiWorkKind22_Request.Name = "tsmiWorkKind22_Request";
-            this.tsmiWorkKind22_Request.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind22_Request.Text = "7";
-            this.tsmiWorkKind22_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // grdRowTotalHeader
             // 
@@ -1194,20 +1735,80 @@
         public System.Windows.Forms.ToolStripMenuItem tsmiWorkKind17_Schedule;
         public System.Windows.Forms.ToolStripMenuItem tsmiWorkKind17_Request;
         public System.Windows.Forms.Button btnImportRequest;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind18_Schedule;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind18_Request;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind19_Schedule;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind20_Schedule;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind21_Schedule;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind22_Schedule;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind19_Request;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind20_Request;
         private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind24_Request;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind22_Request;
         private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind23_Request;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind23_Schedule;
         private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind24_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind30_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind31_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind32_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind33_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind34_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind35_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind36_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind37_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind38_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind39_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind40_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind41_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind42_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind43_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind44_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind45_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind46_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind47_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind48_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind49_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind50_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind51_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind52_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind53_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind54_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind55_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind25_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind26_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind27_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind28_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind29_Request;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind30_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind31_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind32_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind33_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind34_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind35_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind36_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind37_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind38_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind39_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind40_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind41_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind42_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind43_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind44_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind45_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind46_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind47_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind48_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind49_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind50_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind51_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind52_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind53_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind54_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind55_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind25_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind26_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind27_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind28_Schedule;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWorkKind29_Schedule;
+        public System.Windows.Forms.ToolStripMenuItem tsmiWorkKindTimeMenu1_Schedule;
+        public System.Windows.Forms.ToolStripMenuItem tsmiWorkKindTimeMenu2_Schedule;
+        public System.Windows.Forms.ToolStripMenuItem tsmiWorkKindTimeMenu3_Schedule;
+        public System.Windows.Forms.ToolStripMenuItem tsmiWorkKindTimeMenu4_Schedule;
+        public System.Windows.Forms.ToolStripMenuItem tsmiWorkKindTimeMenu1_Request;
+        public System.Windows.Forms.ToolStripMenuItem tsmiWorkKindTimeMenu2_Request;
+        public System.Windows.Forms.ToolStripMenuItem tsmiWorkKindTimeMenu3_Request;
+        public System.Windows.Forms.ToolStripMenuItem tsmiWorkKindTimeMenu4_Request;
         public System.Windows.Forms.Button btnKeepData;
         public System.Windows.Forms.Button btnReturnKeep;
     }
