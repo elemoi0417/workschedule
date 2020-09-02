@@ -902,9 +902,13 @@ namespace workschedule.MainScheduleControl
             
             // 2行目：「対象年月：MM月DD日(G)」
             strToolTipText = strToolTipText + "\r\n";
-            strToolTipText = strToolTipText + "対象年月：" + frmMainSchedule.lblTargetMonth.Text + string.Format("{0:D2}", iColumn - 2) + 
+            // Mod Start WataruT 2020.09.02 実績画面のツールチップの値不具合対応
+            //strToolTipText = strToolTipText + "対象年月：" + frmMainSchedule.lblTargetMonth.Text + string.Format("{0:D2}", iColumn - 2) + 
+            //    "日(" + frmMainSchedule.grdMainHeader[iColumn, 1].Value.ToString() + ")";
+            strToolTipText = strToolTipText + "対象年月：" + frmMainSchedule.lblTargetMonth.Text + string.Format("{0:D2}", iColumn - 1) +
                 "日(" + frmMainSchedule.grdMainHeader[iColumn, 1].Value.ToString() + ")";
-            
+            // Mod End   WataruT 2020.09.02 実績画面のツールチップの値不具合対応
+
             // 3行目：「勤務種類：〇〇」
             strToolTipText = strToolTipText + "\r\n";
             for(int iWorkKind = 0; iWorkKind < frmMainSchedule.astrWorkKind.GetLength(0); iWorkKind++)
