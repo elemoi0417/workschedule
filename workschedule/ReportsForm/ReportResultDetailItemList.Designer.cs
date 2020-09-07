@@ -164,8 +164,7 @@
             this.cmbResultDetailWorkKind.Items.AddRange(new object[] {
             "委員会のため",
             "外出のため",
-            "研修のため",
-            "遅刻・早退のため",
+            "他科受診のため",
             "その他"});
             this.cmbResultDetailWorkKind.Location = new System.Drawing.Point(99, 104);
             this.cmbResultDetailWorkKind.Name = "cmbResultDetailWorkKind";

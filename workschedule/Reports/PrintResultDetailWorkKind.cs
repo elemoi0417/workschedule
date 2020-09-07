@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Data;
-using System.Globalization;
 using System.Windows.Forms;
 using workschedule.Controls;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
 using System.IO;
+using OfficeOpenXml;
 
 namespace workschedule.Reports
 {
@@ -15,25 +13,25 @@ namespace workschedule.Reports
         DatabaseControl clsDatabaseControl = new DatabaseControl();
 
         // 定数
-        const int COLUMN_TARGET_WARD = 8;
-        const int ROW_TARGET_WARD = 1;
-        const int COLUMN_TARGET_MONTH = 8;
-        const int ROW_TARGET_MONTH = 2;
-        const int COLUMN_TARGET_WORK_KIND = 8;
-        const int ROW_TARGET_WORK_KIND = 3;
+        const int COLUMN_TARGET_WARD = 9;
+        const int ROW_TARGET_WARD = 2;
+        const int COLUMN_TARGET_MONTH = 9;
+        const int ROW_TARGET_MONTH = 3;
+        const int COLUMN_TARGET_WORK_KIND = 9;
+        const int ROW_TARGET_WORK_KIND = 4;
 
-        const int ROW_DETAIL_DATA = 6;
+        const int ROW_DETAIL_DATA = 7;
 
-        const int COLUMN_STAFF_NAME = 0;
-        const int COLUMN_TARGET_DATE = 9;
-        const int COLUMN_START_TIME = 17;
-        const int COLUMN_END_TIME = 27;
+        const int COLUMN_STAFF_NAME = 1;
+        const int COLUMN_TARGET_DATE = 10;
+        const int COLUMN_START_TIME = 18;
+        const int COLUMN_END_TIME = 28;
 
-        const int COLUMN_STAFF_NAME_OTHER = 0;
-        const int COLUMN_TARGET_DATE_OTHER = 9;
-        const int COLUMN_DETAIL_ITEM_NAME_OTHER = 17;
-        const int COLUMN_START_TIME_OTHER = 28;
-        const int COLUMN_END_TIME_OTHER = 34;
+        const int COLUMN_STAFF_NAME_OTHER = 1;
+        const int COLUMN_TARGET_DATE_OTHER = 10;
+        const int COLUMN_DETAIL_ITEM_NAME_OTHER = 18;
+        const int COLUMN_START_TIME_OTHER = 29;
+        const int COLUMN_END_TIME_OTHER = 35;
 
         // 変数
         string strFilePath = Environment.CurrentDirectory + @"\Report\resultdetailworkkind.xlsx";
@@ -68,7 +66,6 @@ namespace workschedule.Reports
         {
             DataTable dtResultDetail;
             SaveFileDialog sfd = new SaveFileDialog();
-            IWorkbook xlWorkbook;
 
             // 保存ダイアログのプロパティ設定
             SetSaveFileDialogProperties(ref sfd);
@@ -84,67 +81,75 @@ namespace workschedule.Reports
 
             // == 実績データ取得 == 
             if (pstrTargetWorkKindName == "その他") {
-                // Officeオブジェクトの初期化
-                xlWorkbook = WorkbookFactory.Create(strFilePathOther);
-                ISheet xlSheet = xlWorkbook.GetSheet("実績項目詳細");
-
-                // === Excelデータ入力 ===
-                // 病棟、対象年月、勤務詳細
-                WriteCellValue(xlSheet, COLUMN_TARGET_WARD, ROW_TARGET_WARD, pstrWardName);
-                WriteCellValue(xlSheet, COLUMN_TARGET_MONTH, ROW_TARGET_MONTH, pstrTargetMonthName);
-                WriteCellValue(xlSheet, COLUMN_TARGET_WORK_KIND, ROW_TARGET_WORK_KIND, pstrTargetWorkKindName);
-
-                dtResultDetail = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Other(pstrWard, pstrTargetMonth);
-                
-                for (int iResultDetailCount = 0; iResultDetailCount < dtResultDetail.Rows.Count; iResultDetailCount++)
+                // Excelファイルの読み込み
+                var xlReadFile = new FileInfo(strFilePathOther);
+                // オブジェクトにセット
+                using (var xlFile = new ExcelPackage(xlReadFile))
                 {
-                    // 職員氏名
-                    WriteCellValue(xlSheet, COLUMN_STAFF_NAME_OTHER, ROW_DETAIL_DATA + iResultDetailCount, dtResultDetail.Rows[iResultDetailCount]["staff_name"].ToString());
-                    // 対象日
-                    WriteCellValue(xlSheet, COLUMN_TARGET_DATE_OTHER, ROW_DETAIL_DATA + iResultDetailCount, dtResultDetail.Rows[iResultDetailCount]["target_date"].ToString());
-                    // 項目名
-                    WriteCellValue(xlSheet, COLUMN_DETAIL_ITEM_NAME_OTHER, ROW_DETAIL_DATA + iResultDetailCount, dtResultDetail.Rows[iResultDetailCount]["work_kind"].ToString());
-                    // 開始時刻
-                    WriteCellValue(xlSheet, COLUMN_START_TIME_OTHER, ROW_DETAIL_DATA + iResultDetailCount, DateTime.Parse(dtResultDetail.Rows[iResultDetailCount]["start_time"].ToString()));
-                    // 終了時刻
-                    WriteCellValue(xlSheet, COLUMN_END_TIME_OTHER, ROW_DETAIL_DATA + iResultDetailCount, DateTime.Parse(dtResultDetail.Rows[iResultDetailCount]["end_time"].ToString()));
+                    // シートを選択
+                    var xlSheet = xlFile.Workbook.Worksheets["実績項目詳細"];
+
+                    // === Excelデータ入力 ===
+                    // 病棟、対象年月、勤務詳細
+                    xlSheet.Cells[ROW_TARGET_WARD, COLUMN_TARGET_WARD].Value = pstrWardName;
+                    xlSheet.Cells[ROW_TARGET_MONTH, COLUMN_TARGET_MONTH].Value = pstrTargetMonthName;
+                    xlSheet.Cells[ROW_TARGET_WORK_KIND, COLUMN_TARGET_WORK_KIND].Value = pstrTargetWorkKindName;
+
+                    dtResultDetail = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem_Other(pstrWard, pstrTargetMonth);
+
+                    for (int iResultDetailCount = 0; iResultDetailCount < dtResultDetail.Rows.Count; iResultDetailCount++)
+                    {
+                        // 職員氏名
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_STAFF_NAME_OTHER].Value = dtResultDetail.Rows[iResultDetailCount]["staff_name"].ToString();
+                        // 対象日
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_TARGET_DATE_OTHER].Value = dtResultDetail.Rows[iResultDetailCount]["target_date"].ToString();
+                        // 項目名
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_DETAIL_ITEM_NAME_OTHER].Value = dtResultDetail.Rows[iResultDetailCount]["work_kind"].ToString();
+                        // 開始時刻
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_START_TIME_OTHER].Value = dtResultDetail.Rows[iResultDetailCount]["start_time"].ToString();
+                        // 終了時刻
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_END_TIME_OTHER].Value = dtResultDetail.Rows[iResultDetailCount]["end_time"].ToString();
+                    }
+
+                    // ファイルを保存
+                    xlFile.SaveAs(new FileInfo(sfd.FileName));
                 }
             }
             else
             {
-                // Officeオブジェクトの初期化
-                xlWorkbook = WorkbookFactory.Create(strFilePath);
-                ISheet xlSheet = xlWorkbook.GetSheet("実績項目詳細");
+                // Excelファイルの読み込み
+                var xlReadFile = new FileInfo(strFilePath);
 
-                // === Excelデータ入力 ===
-                // 病棟、対象年月、勤務詳細
-                WriteCellValue(xlSheet, COLUMN_TARGET_WARD, ROW_TARGET_WARD, pstrWardName);
-                WriteCellValue(xlSheet, COLUMN_TARGET_MONTH, ROW_TARGET_MONTH, pstrTargetMonthName);
-                WriteCellValue(xlSheet, COLUMN_TARGET_WORK_KIND, ROW_TARGET_WORK_KIND, pstrTargetWorkKindName);
-
-                dtResultDetail = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem(pstrWard, pstrTargetMonth, pstrTargetWorkKindName);
-
-                for (int iResultDetailCount = 0; iResultDetailCount < dtResultDetail.Rows.Count; iResultDetailCount++)
+                // オブジェクトにセット
+                using (var xlFile = new ExcelPackage(xlReadFile))
                 {
-                    // 職員氏名
-                    WriteCellValue(xlSheet, COLUMN_STAFF_NAME, ROW_DETAIL_DATA + iResultDetailCount, dtResultDetail.Rows[iResultDetailCount]["staff_name"].ToString());
-                    // 対象日
-                    WriteCellValue(xlSheet, COLUMN_TARGET_DATE, ROW_DETAIL_DATA + iResultDetailCount, dtResultDetail.Rows[iResultDetailCount]["target_date"].ToString());
-                    // 開始時刻
-                    WriteCellValue(xlSheet, COLUMN_START_TIME, ROW_DETAIL_DATA + iResultDetailCount, DateTime.Parse(dtResultDetail.Rows[iResultDetailCount]["start_time"].ToString()));
-                    // 終了時刻
-                    WriteCellValue(xlSheet, COLUMN_END_TIME, ROW_DETAIL_DATA + iResultDetailCount, DateTime.Parse(dtResultDetail.Rows[iResultDetailCount]["end_time"].ToString()));
+                    // シートを選択
+                    var xlSheet = xlFile.Workbook.Worksheets["実績項目詳細"];
+
+                    // === Excelデータ入力 ===
+                    // 病棟、対象年月、勤務詳細
+                    xlSheet.Cells[ROW_TARGET_WARD, COLUMN_TARGET_WARD].Value = pstrWardName;
+                    xlSheet.Cells[ROW_TARGET_MONTH, COLUMN_TARGET_MONTH].Value = pstrTargetMonthName;
+                    xlSheet.Cells[ROW_TARGET_WORK_KIND, COLUMN_TARGET_WORK_KIND].Value = pstrTargetWorkKindName;
+
+                    dtResultDetail = clsDatabaseControl.GetResultDetail_Ward_TargetDate_ResultDetailItem(pstrWard, pstrTargetMonth, pstrTargetWorkKindName);
+
+                    for (int iResultDetailCount = 0; iResultDetailCount < dtResultDetail.Rows.Count; iResultDetailCount++)
+                    {
+                        // 職員氏名
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_STAFF_NAME].Value = dtResultDetail.Rows[iResultDetailCount]["staff_name"].ToString();
+                        // 対象日
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_TARGET_DATE].Value = dtResultDetail.Rows[iResultDetailCount]["target_date"].ToString();
+                        // 開始時刻
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_START_TIME].Value = dtResultDetail.Rows[iResultDetailCount]["start_time"].ToString();
+                        // 終了時刻
+                        xlSheet.Cells[ROW_DETAIL_DATA + iResultDetailCount, COLUMN_END_TIME].Value = dtResultDetail.Rows[iResultDetailCount]["end_time"].ToString();
+                    }
+                    xlSheet.Cells[6, 37].Value = "= IF((AB7 - R7) = 0, \"\", AB7 - R7)";
+
+                    // ファイルを保存
+                    xlFile.SaveAs(new FileInfo(sfd.FileName));
                 }
-                WriteCellValue(xlSheet, 37, 6, "= IF((AB7 - R7) = 0, \"\", AB7 - R7)");
-            }
-
-            // シート内の各関数の再計算
-            XSSFFormulaEvaluator.EvaluateAllFormulaCells(xlWorkbook);
-
-            // ファイル保存
-            using (var fs = new FileStream(sfd.FileName, FileMode.Create))
-            {
-                xlWorkbook.Write(fs);
             }
 
             // 終了メッセージ
@@ -166,7 +171,7 @@ namespace workschedule.Reports
         private void SetSaveFileDialogProperties(ref SaveFileDialog sfd)
         {   
             // ファイル名の既定値(YYYY年MM月_〇病棟_様式9.xlsx)
-            sfd.FileName = pstrTargetMonthName + "_" + pstrWardName + "_" + "様式9.xlsx";
+            sfd.FileName = pstrTargetMonthName + "_" + pstrWardName + "_実績項目集計(" + pstrTargetWorkKindName + ").xlsx";
             // 既定フォルダ
             sfd.InitialDirectory = @"C:\";
             // ファイル種類フィルタ
@@ -227,82 +232,6 @@ namespace workschedule.Reports
             {
                 objCom = null;
             }
-        }
-        
-        /// <summary>
-        /// セル書き込み(時刻)
-        /// </summary>
-        /// <param name="sheet"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="value"></param>
-        static void WriteCellValue(ISheet sheet, int idxColumn, int idxRow, DateTime value)
-        {
-            var row = sheet.GetRow(idxRow) ?? sheet.CreateRow(idxRow); //指定した行を取得できない時はエラーとならないよう新規作成している
-            var cell = row.GetCell(idxColumn) ?? row.CreateCell(idxColumn); //一行上の処理の列版
-
-
-            cell.SetCellValue(value);
-        }
-
-        /// <summary>
-        /// セル書き込み(文字列)
-        /// </summary>
-        /// <param name="sheet"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="value"></param>
-        static void WriteCellValue(ISheet sheet, int idxColumn, int idxRow, string value)
-        {
-            var row = sheet.GetRow(idxRow) ?? sheet.CreateRow(idxRow); //指定した行を取得できない時はエラーとならないよう新規作成している
-            var cell = row.GetCell(idxColumn) ?? row.CreateCell(idxColumn); //一行上の処理の列版
-
-            cell.SetCellValue(value);
-        }
-
-        /// <summary>
-        /// セル書き込み(文字列)
-        /// </summary>
-        /// <param name="sheet"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="value"></param>
-        static void WriteCellValue(ISheet sheet, int idxColumn, int idxRow, double value)
-        {
-            var row = sheet.GetRow(idxRow) ?? sheet.CreateRow(idxRow); //指定した行を取得できない時はエラーとならないよう新規作成している
-            var cell = row.GetCell(idxColumn) ?? row.CreateCell(idxColumn); //一行上の処理の列版
-
-            cell.SetCellValue(value);
-        }
-
-        /// <summary>
-        /// セルスタイルの取得
-        /// </summary>
-        /// <param name="sheet"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="idxRow"></param>
-        /// <returns></returns>
-        static ICellStyle GetCellStyle(ISheet sheet, int idxColumn, int idxRow)
-        {
-            var row = sheet.GetRow(idxRow) ?? sheet.CreateRow(idxRow); //指定した行を取得できない時はエラーとならないよう新規作成している
-            var cell = row.GetCell(idxColumn) ?? row.CreateCell(idxColumn); //一行上の処理の列版
-
-            return cell.CellStyle;
-        }
-
-        /// <summary>
-        /// セルスタイルをセット
-        /// </summary>
-        /// <param name="sheet"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="idxRow"></param>
-        /// <param name="value"></param>
-        static void WriteCellStyle(ISheet sheet, int idxColumn, int idxRow, ICellStyle cellStyle)
-        {
-            var row = sheet.GetRow(idxRow) ?? sheet.CreateRow(idxRow); //指定した行を取得できない時はエラーとならないよう新規作成している
-            var cell = row.GetCell(idxColumn) ?? row.CreateCell(idxColumn); //一行上の処理の列版
-
-            cell.CellStyle = cellStyle;
         }
     }
 }

@@ -1584,7 +1584,10 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    rh.result_no = rd.result_no AND ";
                 lsSQL = lsSQL + "    rh.ward = '" + strTargetWard + "' AND ";
                 lsSQL = lsSQL + "    rh.target_month = '" + strTargetMonth + "' AND ";
-                lsSQL = lsSQL + "    (rd.other1_work_kind <> '委員会のため' AND rd.other1_work_kind <> '外出のため' AND rd.other1_work_kind <> '研修のため' AND rd.other1_work_kind <> '') ";
+                // Mod Start WataruT 2020.09.07 実績項目変更に伴う帳票対応
+                //lsSQL = lsSQL + "    (rd.other1_work_kind <> '委員会のため' AND rd.other1_work_kind <> '外出のため' AND rd.other1_work_kind <> '研修のため' AND rd.other1_work_kind <> '') ";
+                lsSQL = lsSQL + "    (rd.other1_work_kind <> '委員会のため' AND rd.other1_work_kind <> '外出のため' AND rd.other1_work_kind <> '他科受診のため' AND rd.other1_work_kind <> '') ";
+                // Mod End   WataruT 2020.09.07 実績項目変更に伴う帳票対応
                 lsSQL = lsSQL + "UNION ALL ";
                 lsSQL = lsSQL + "SELECT ";
                 lsSQL = lsSQL + "    s.name as staff_name, ";
@@ -1606,7 +1609,10 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    rh.result_no = rd.result_no AND ";
                 lsSQL = lsSQL + "    rh.ward = '" + strTargetWard + "' AND ";
                 lsSQL = lsSQL + "    rh.target_month = '" + strTargetMonth + "' AND ";
-                lsSQL = lsSQL + "    (rd.other2_work_kind <> '委員会のため' AND rd.other2_work_kind <> '外出のため' AND rd.other2_work_kind <> '研修のため' AND rd.other2_work_kind <> '') ";
+                // Mod Start WataruT 2020.09.07 実績項目変更に伴う帳票対応
+                //lsSQL = lsSQL + "    (rd.other2_work_kind <> '委員会のため' AND rd.other2_work_kind <> '外出のため' AND rd.other2_work_kind <> '研修のため' AND rd.other2_work_kind <> '') ";
+                lsSQL = lsSQL + "    (rd.other2_work_kind <> '委員会のため' AND rd.other2_work_kind <> '外出のため' AND rd.other2_work_kind <> '他科受診のため' AND rd.other2_work_kind <> '') ";
+                // Mod End   WataruT 2020.09.07 実績項目変更に伴う帳票対応
                 lsSQL = lsSQL + "UNION ALL ";
                 lsSQL = lsSQL + "SELECT ";
                 lsSQL = lsSQL + "    s.name as staff_name, ";
@@ -1628,7 +1634,10 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    rh.result_no = rd.result_no AND ";
                 lsSQL = lsSQL + "    rh.ward = '" + strTargetWard + "' AND ";
                 lsSQL = lsSQL + "    rh.target_month = '" + strTargetMonth + "' AND ";
-                lsSQL = lsSQL + "    (rd.other3_work_kind <> '委員会のため' AND rd.other3_work_kind <> '外出のため' AND rd.other3_work_kind <> '研修のため' AND rd.other3_work_kind <> '') ";
+                // Mod Start WataruT 2020.09.07 実績項目変更に伴う帳票対応
+                //lsSQL = lsSQL + "    (rd.other3_work_kind <> '委員会のため' AND rd.other3_work_kind <> '外出のため' AND rd.other3_work_kind <> '研修のため' AND rd.other3_work_kind <> '') ";
+                lsSQL = lsSQL + "    (rd.other3_work_kind <> '委員会のため' AND rd.other3_work_kind <> '外出のため' AND rd.other3_work_kind <> '他科受診のため' AND rd.other3_work_kind <> '') ";
+                // Mod End   WataruT 2020.09.07 実績項目変更に伴う帳票対応
                 lsSQL = lsSQL + "ORDER BY ";
                 lsSQL = lsSQL + "    target_date, staff_name;";
 
