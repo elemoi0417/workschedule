@@ -81,7 +81,10 @@ namespace workschedule
         /// <param name="e"></param>
         private void btnClear1_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("クリアしてもよろしいですか？","") == DialogResult.Yes)
+            // Mod Start WataruT 2020.09.07 実績入力画面のクリアボタンが動作しない
+            //if (MessageBox.Show("クリアしてもよろしいですか？","") == DialogResult.Yes)
+            if (MessageBox.Show("クリアしてもよろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            // Mod End   WataruT 2020.09.07 実績入力画面のクリアボタンが動作しない
             {
                 cmbOther1WorkKind.Text = "";
                 cmbOther1StartTimeHour.SelectedIndex = 0;
@@ -98,7 +101,10 @@ namespace workschedule
         /// <param name="e"></param>
         private void btnClear2_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("クリアしてもよろしいですか？", "") == DialogResult.Yes)
+            // Mod Start WataruT 2020.09.07 実績入力画面のクリアボタンが動作しない
+            //if (MessageBox.Show("クリアしてもよろしいですか？","") == DialogResult.Yes)
+            if (MessageBox.Show("クリアしてもよろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            // Mod End   WataruT 2020.09.07 実績入力画面のクリアボタンが動作しない
             {
                 cmbOther2WorkKind.Text = "";
                 cmbOther2StartTimeHour.SelectedIndex = 0;
@@ -115,7 +121,10 @@ namespace workschedule
         /// <param name="e"></param>
         private void btnClear3_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("クリアしてもよろしいですか？", "") == DialogResult.Yes)
+            // Mod Start WataruT 2020.09.07 実績入力画面のクリアボタンが動作しない
+            //if (MessageBox.Show("クリアしてもよろしいですか？","") == DialogResult.Yes)
+            if (MessageBox.Show("クリアしてもよろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            // Mod End   WataruT 2020.09.07 実績入力画面のクリアボタンが動作しない
             {
                 cmbOther3WorkKind.Text = "";
                 cmbOther3StartTimeHour.SelectedIndex = 0;
