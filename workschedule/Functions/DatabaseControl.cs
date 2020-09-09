@@ -2007,6 +2007,42 @@ namespace workschedule.Controls
             }
         }
 
+        /// <summary>
+        /// 対象となる勤務種類が勤務扱いか判定 Add WataruT 2020.09.09 未取込データチェック機能追加
+        /// </summary>
+        /// <returns></returns>
+        public bool GetWorkKind_WorkCheck(string strWorkKind)
+        {
+            try
+            {
+                string lsSQL;
+                DataTable dt;
+
+                lsSQL = "SELECT ";
+                lsSQL = lsSQL + "    * ";
+                lsSQL = lsSQL + "FROM ";
+                lsSQL = lsSQL + "    m_work_kind ";
+                lsSQL = lsSQL + "WHERE ";
+                lsSQL = lsSQL + "     id = '" + strWorkKind + "' AND";
+                lsSQL = lsSQL + "     work_kind = '1';";
+
+                dt = GetDataTable(lsSQL);
+
+                if (dt.Rows.Count != 0)
+                {
+                    return true;
+                }
+
+                return false;
+
+            }
+            catch (MySqlException me)
+            {
+                Console.WriteLine("ERROR: " + me.Message);
+                return false;
+            }
+        }
+
         // --- INSERT ---
 
         /// <summary>

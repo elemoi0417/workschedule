@@ -948,5 +948,69 @@ namespace workschedule.MainScheduleControl
 
             return strToolTipText;
         }
+
+        /// <summary>
+        /// 予定データの未取込チェック Add WataruT 2020.09.09 未取込データチェック機能追加
+        /// </summary>
+        public void CheckDifference()
+        {
+            DataTable dtScheduleDetail;
+            string strTargetDate;
+            bool bTargetFlag;
+
+            strTargetDate = "";
+
+            // 対象月を全日チェック
+            for (int iDay = 0; iDay < frmMainSchedule.piDayCount; iDay++)
+            {
+                bTargetFlag = false;
+                for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.piScheduleStaffCount; iScheduleStaff++)
+                {
+                    if (frmMainSchedule.astrResultWorkKind[iScheduleStaff, iDay] != "")
+                    {
+                        bTargetFlag = true;
+                        break;
+                    }
+                }
+
+                if(bTargetFlag == true)
+                {
+                    // 対象職員ループ
+                    for (int iScheduleStaff = 0; iScheduleStaff < frmMainSchedule.piScheduleStaffCount; iScheduleStaff++)
+                    {
+                        // 病棟、職員ID、職種、対象年月から勤務予定データを取得
+                        dtScheduleDetail = clsDatabaseControl.GetScheduleDetail_Ward_Staff_StaffKind_TargetMonth(frmMainSchedule.cmbWard.SelectedValue.ToString(),
+                            frmMainSchedule.astrScheduleStaff[iScheduleStaff, 0], frmMainSchedule.pstrStaffKind, frmMainSchedule.pstrTargetMonth);
+
+                        // 既存データがある場合
+                        if (dtScheduleDetail.Rows.Count != 0)
+                        {
+                            if (clsDatabaseControl.GetWorkKind_WorkCheck(dtScheduleDetail.Rows[iDay]["work_kind"].ToString()) == true)
+                            {
+                                if (dtScheduleDetail.Rows[iDay]["work_kind"].ToString() != frmMainSchedule.astrResultWorkKind[iScheduleStaff, iDay])
+                                {
+                                    strTargetDate += frmMainSchedule.lblTargetMonth.Text + string.Format("{0:D2}", iDay + 1) + "日(" + frmMainSchedule.grdMainHeader[iDay + 2, 1].Value.ToString() + ")\r\n";
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                if (dtScheduleDetail.Rows[iDay]["work_kind"].ToString() != frmMainSchedule.astrResultWorkKind[iScheduleStaff, iDay] &&
+                                    frmMainSchedule.astrResultWorkKind[iScheduleStaff, iDay] != "")
+                                {
+                                    strTargetDate += frmMainSchedule.lblTargetMonth.Text + string.Format("{0:D2}", iDay + 1) + "日(" + frmMainSchedule.grdMainHeader[iDay + 2, 1].Value.ToString() + ")\r\n";
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (strTargetDate != "")
+                MessageBox.Show("未取込のデータがあります。\r\n\r\n【対象日付】\r\n" + strTargetDate);
+            else
+                MessageBox.Show("未取込データはありません。");
+        }
     }
 }

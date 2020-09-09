@@ -383,6 +383,9 @@ namespace workschedule
                 btnKeepData.Visible = false;
                 btnReturnKeep.Visible = false;
                 // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                // Add Start WataruT 2020.09.09 未取込データチェック機能追加
+                btnDifferenceCheck.Visible = false;
+                // Add End   WataruT 2020.09.09 未取込データチェック機能追加
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 1;
@@ -427,6 +430,9 @@ namespace workschedule
                 btnReturnKeep.Visible = true;
                 btnReturnKeep.Enabled = false;
                 // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                // Add Start WataruT 2020.09.09 未取込データチェック機能追加
+                btnDifferenceCheck.Visible = false;
+                // Add End   WataruT 2020.09.09 未取込データチェック機能追加
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 2;
@@ -470,6 +476,9 @@ namespace workschedule
                 btnKeepData.Visible = false;
                 btnReturnKeep.Visible = false;
                 // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
+                // Add Start WataruT 2020.09.09 未取込データチェック機能追加
+                btnDifferenceCheck.Visible = true;
+                // Add End   WataruT 2020.09.09 未取込データチェック機能追加
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 3;
@@ -660,6 +669,23 @@ namespace workschedule
                 // キープ用配列をメイン変数にセット
                 clsMainScheduleScheduleControl.SetKeepData();
             }
+        }
+
+        /// <summary>
+        /// 「未取込チェック」ボタン」 Add WataruT 2020/09/09 未取込データチェック機能追加
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnDifferenceCheck_Click(object sender, EventArgs e)
+        {            
+            // プログレスウィンドウの表示
+            clsMainScheduleCommonControl.ShowProgressDialog(true);
+
+            // 未取込チェック
+            clsMainScheduleResultControl.CheckDifference();
+
+            // プログレスウィンドウを閉じる
+            clsMainScheduleCommonControl.ShowProgressDialog(false);
         }
 
         // --- 各種イベント ---
@@ -1259,5 +1285,6 @@ namespace workschedule
                     e.ToolTipText = clsMainScheduleResultControl.GetToolTipText(e.ColumnIndex, e.RowIndex);
             }
         }
+
     }
 }
