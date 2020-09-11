@@ -333,6 +333,17 @@ namespace workschedule
                     frmMainSchedule.astrResultOtherWorkTime[piScheduleStaff, frmMainSchedule.piGrdMain_CurrentColumn - 2, i - 1, 2] = 
                         Controls["cmbOther" + i.ToString() + "EndTimeHour"].Text + ":" + Controls["cmbOther" + i.ToString() + "EndTimeMinute"].Text;
                 }
+                // Add Start WataruT 2020.09.11 実績クリア時のデータ登録不具合対応
+                else
+                {
+                    // 業務種類
+                    frmMainSchedule.astrResultOtherWorkTime[piScheduleStaff, frmMainSchedule.piGrdMain_CurrentColumn - 2, i - 1, 0] = "";
+                    // 開始時刻
+                    frmMainSchedule.astrResultOtherWorkTime[piScheduleStaff, frmMainSchedule.piGrdMain_CurrentColumn - 2, i - 1, 1] = "";
+                    // 終了時刻
+                    frmMainSchedule.astrResultOtherWorkTime[piScheduleStaff, frmMainSchedule.piGrdMain_CurrentColumn - 2, i - 1, 2] = "";
+                }
+                // Add End   WataruT 2020.09.11 実績クリア時のデータ登録不具合対応
             }
         }
         
