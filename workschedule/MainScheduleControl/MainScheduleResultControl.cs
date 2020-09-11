@@ -862,26 +862,52 @@ namespace workschedule.MainScheduleControl
                 // 夜勤の場合
                 if(frmMainSchedule.astrResultWorkKind[iScheduleStaff, iTargetColumn - 2] == "02")
                 {
-                    if (iNightCount < 2)
+                    // Mod Start WataruT 2020.09.11 夜勤と総夜勤の時間反映処理変更
+                    //if (iNightCount < 2)
+                    //{
+                    //    iNightCount++;
+                    //    frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value =
+                    //        frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 1].Value;
+                    //}   
+                    //else
+                    //    frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value = "";
+                    if (iNightCount == 2 && frmMainSchedule.cmbWard.SelectedValue.ToString() == "06")
+                    {
+                        iNightCount++;
+                        frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value = "";
+                    }
+                    else
                     {
                         iNightCount++;
                         frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value =
                             frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 1].Value;
-                    }   
-                    else
-                        frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value = "";
+                    }
+                    // Mod End   WataruT 2020.09.11 夜勤と総夜勤の時間反映処理変更
                 }
                 // 夜明の場合
                 else if(frmMainSchedule.astrResultWorkKind[iScheduleStaff, iTargetColumn - 2] == "03")
                 {
-                    if (iNightAfterCount < 2)
+                    // Mod Start WataruT 2020.09.11 夜勤と総夜勤の時間反映処理変更
+                    //if (iNightAfterCount < 2)
+                    //{
+                    //    iNightAfterCount++;
+                    //    frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value =
+                    //        frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 1].Value;
+                    //}   
+                    //else
+                    //    frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value = "";
+                    if (iNightAfterCount == 2 && frmMainSchedule.cmbWard.SelectedValue.ToString() == "06")
+                    {
+                        iNightAfterCount++;
+                        frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value = "";
+                    }
+                    else
                     {
                         iNightAfterCount++;
                         frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value =
                             frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 1].Value;
-                    }   
-                    else
-                        frmMainSchedule.grdMain[iTargetColumn, (iScheduleStaff + 1) * 3 - 2].Value = "";
+                    }
+                    // Mod End  WataruT 2020.09.11 夜勤と総夜勤の時間反映処理変更
                 }
             }
         }
