@@ -849,7 +849,7 @@ namespace workschedule
                 case "早出":
                     ChangeMainGridData(15);
                     break;
-                case "入職前":
+                case "勤務無":
                     ChangeMainGridData(16);
                     break;
                 // Mod Start WataruT 2020.09.02 時間数の項目を作成
@@ -1037,7 +1037,7 @@ namespace workschedule
                 case "早出":
                     ChangeMainGridData(15);
                     break;
-                case "入職前":
+                case "勤務無":
                     ChangeMainGridData(16);
                     break;
                 // Mod Start WataruT 2020.09.02 時間数の項目を作成

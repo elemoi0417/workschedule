@@ -893,7 +893,7 @@
             // 
             this.tsmiWorkKind17_Schedule.Name = "tsmiWorkKind17_Schedule";
             this.tsmiWorkKind17_Schedule.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind17_Schedule.Text = "入職前";
+            this.tsmiWorkKind17_Schedule.Text = "勤務無";
             this.tsmiWorkKind17_Schedule.Click += new System.EventHandler(this.ctmsMain_ClickItem_Schedule);
             // 
             // tsmiWorkKind30_Request
@@ -1353,7 +1353,7 @@
             // 
             this.tsmiWorkKind17_Request.Name = "tsmiWorkKind17_Request";
             this.tsmiWorkKind17_Request.Size = new System.Drawing.Size(122, 22);
-            this.tsmiWorkKind17_Request.Text = "入職前";
+            this.tsmiWorkKind17_Request.Text = "勤務無";
             this.tsmiWorkKind17_Request.Click += new System.EventHandler(this.ctmsMain_ClickItem_Request);
             // 
             // grdRowTotalHeader
