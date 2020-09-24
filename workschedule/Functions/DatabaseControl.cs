@@ -1834,15 +1834,22 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    s.staff_kind_sub, ";
                 lsSQL = lsSQL + "    sd.target_date, ";
                 lsSQL = lsSQL + "    wk.work_time, ";
-                lsSQL = lsSQL + "    sdo.office_flag, ";
+                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                //lsSQL = lsSQL + "    sdo.office_flag, ";
+                lsSQL = lsSQL + "    ss.office_flag, ";
+                lsSQL = lsSQL + "    sh.ward, ";
+                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                 lsSQL = lsSQL + "    wk.id as work_kind ";
                 lsSQL = lsSQL + "FROM ";
                 lsSQL = lsSQL + "    m_staff s, ";
                 lsSQL = lsSQL + "    m_work_kind wk, ";
                 lsSQL = lsSQL + "    d_schedule_staff ss, ";
                 lsSQL = lsSQL + "    d_schedule_header sh, ";
-                lsSQL = lsSQL + "    d_schedule_detail sd, ";
-                lsSQL = lsSQL + "    d_staff_day_only sdo ";
+                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                //lsSQL = lsSQL + "    d_schedule_detail sd, ";
+                //lsSQL = lsSQL + "    d_staff_day_only sdo ";
+                lsSQL = lsSQL + "    d_schedule_detail sd ";
+                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
                 lsSQL = lsSQL + "WHERE ";
                 lsSQL = lsSQL + "    sh.schedule_no = sd.schedule_no AND ";
                 lsSQL = lsSQL + "    sh.ward = '" + strWard + "' AND ";
@@ -1852,9 +1859,12 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    s.id = ss.staff_id AND ";
                 lsSQL = lsSQL + "    sd.staff = s.id AND ";
                 lsSQL = lsSQL + "    sd.work_kind = wk.id AND ";
-                lsSQL = lsSQL + "    wk.work_kind = '1' AND ";
-                lsSQL = lsSQL + "    sh.ward = sdo.ward AND ";
-                lsSQL = lsSQL + "    s.id = sdo.staff ";
+                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                //lsSQL = lsSQL + "    wk.work_kind = '1' AND ";
+                //lsSQL = lsSQL + "    sh.ward = sdo.ward AND ";
+                //lsSQL = lsSQL + "    s.id = sdo.staff ";
+                lsSQL = lsSQL + "    wk.work_kind = '1' ";
+                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                 lsSQL = lsSQL + "ORDER BY ";
                 lsSQL = lsSQL + "    sd.target_date, ";
                 lsSQL = lsSQL + "    CAST(s.seq as SIGNED);";
@@ -1890,14 +1900,21 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    rd.work_time_day, ";
                 lsSQL = lsSQL + "    rd.work_time_night, ";
                 lsSQL = lsSQL + "    rd.work_time_night_total, ";
-                lsSQL = lsSQL + "    sdo.office_flag ";
+                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                //lsSQL = lsSQL + "    sdo.office_flag ";
+                lsSQL = lsSQL + "    ss.office_flag, ";
+                lsSQL = lsSQL + "    rh.ward ";
+                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                 lsSQL = lsSQL + "FROM ";
                 lsSQL = lsSQL + "    m_staff s, ";
                 lsSQL = lsSQL + "    m_work_kind wk, ";
                 lsSQL = lsSQL + "    d_schedule_staff ss, ";
                 lsSQL = lsSQL + "    d_result_header rh, ";
-                lsSQL = lsSQL + "    d_result_detail rd, ";
-                lsSQL = lsSQL + "    d_staff_day_only sdo ";
+                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                //lsSQL = lsSQL + "    d_result_detail rd, ";
+                //lsSQL = lsSQL + "    d_staff_day_only sdo ";
+                lsSQL = lsSQL + "    d_result_detail rd ";
+                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                 lsSQL = lsSQL + "WHERE ";
                 lsSQL = lsSQL + "    rh.result_no = rd.result_no AND ";
                 lsSQL = lsSQL + "    rh.ward = '" + strWard + "' AND ";
@@ -1907,9 +1924,12 @@ namespace workschedule.Controls
                 lsSQL = lsSQL + "    s.id = ss.staff_id AND ";
                 lsSQL = lsSQL + "    s.id = rd.staff AND ";
                 lsSQL = lsSQL + "    rd.work_kind = wk.id AND ";
-                lsSQL = lsSQL + "    wk.work_kind = '1' AND ";
-                lsSQL = lsSQL + "    rh.ward = sdo.ward AND ";
-                lsSQL = lsSQL + "    s.id = sdo.staff ";
+                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                //lsSQL = lsSQL + "    wk.work_kind = '1' AND ";
+                //lsSQL = lsSQL + "    rh.ward = sdo.ward AND ";
+                //lsSQL = lsSQL + "    s.id = sdo.staff ";
+                lsSQL = lsSQL + "    wk.work_kind = '1' ";
+                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                 lsSQL = lsSQL + "ORDER BY ";
                 lsSQL = lsSQL + "    CAST(s.seq as SIGNED), ";
                 lsSQL = lsSQL + "    rd.target_date ";

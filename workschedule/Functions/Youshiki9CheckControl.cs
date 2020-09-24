@@ -256,24 +256,41 @@ namespace workschedule.Functions
                     switch(dr["work_kind"].ToString())
                     {
                         case "02":      // 夜勤
-                            if(iNightCount != 2)
+                            // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                            //if (iNightCount != 2)
+                            if (iNightCount != 2 || dr["ward"].ToString() != "06")
+                            // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
                             {
                                 // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
                                 //iTotalWorkHours += int.Parse(dr["work_time"].ToString());
                                 dTotalWorkHours += double.Parse(dr["work_time"].ToString());
                                 // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
-                                iNightCount++;
+                                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                                //iNightCount++;
+                                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                             }
+                            // Add Start WataruT 2020.09.24 様式9チェックの計算値不正
+                            iNightCount++;
+                            // Add End   WataruT 2020.09.24 様式9チェックの計算値不正
                             break;
                         case "03":      // 夜明
-                            if (iNightAfterCount != 2)
+
+                            // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
+                            //if (iNightAfterCount != 2)
+                            if (iNightAfterCount != 2 || dr["ward"].ToString() != "06")
+                            // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
                             {
                                 // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
                                 //iTotalWorkHours += int.Parse(dr["work_time"].ToString());
                                 dTotalWorkHours += double.Parse(dr["work_time"].ToString());
                                 // Mod End   WataruT 2020.07.22 特定の時短勤務用の項目追加
-                                iNightAfterCount++;
+                                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                                //iNightAfterCount++;
+                                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                             }
+                            // Add Start WataruT 2020.09.24 様式9チェックの計算値不正
+                            iNightAfterCount++;
+                            // Add End   WataruT 2020.09.24 様式9チェックの計算値不正
                             break;
                         default:
                             // Mod Start WataruT 2020.07.22 特定の時短勤務用の項目追加
@@ -523,6 +540,10 @@ namespace workschedule.Functions
             double dTemp;
             string strTargetDate;
             bool bResultFlag;
+            // Add Start WataruT 2020.09.24 様式9チェックの計算値不正
+            int iNightCount = 0;
+            int iNightAfterCount = 0;
+            // Add End   WataruT 2020.09.24 様式9チェックの計算値不正
 
             // 日にちごとに処理
             for (int i = 1; i <= int.Parse(strTargetDays); i++)
@@ -530,6 +551,11 @@ namespace workschedule.Functions
                 // 変数の初期化
                 bResultFlag = false;
                 strTargetDate = strTargetMonth + String.Format("{0:D2}", i);
+                // Add Start WataruT 2020.09.24 様式9チェックの計算値不正
+                // 夜勤・夜明のカウントクリア
+                iNightCount = 0;
+                iNightAfterCount = 0;
+                // Add End   WataruT 2020.09.24 様式9チェックの計算値不正
 
                 // 実績データ処理
                 foreach (DataRow dr in dtYoushiki9Check_Result.Rows)
@@ -556,7 +582,29 @@ namespace workschedule.Functions
                         {
                             if (DateTime.Parse(dr["target_date"].ToString()).ToString("yyyyMMdd") == strTargetDate)
                             {
-                                dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                                //dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                switch (dr["work_kind"].ToString())
+                                {
+                                    case "02":      // 夜勤
+                                        if (iNightCount != 2 || dr["ward"].ToString() != "06")
+                                        {
+                                            dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                        }
+                                        iNightCount++;
+                                        break;
+                                    case "03":      // 夜明
+                                        if (iNightAfterCount != 2 || dr["ward"].ToString() != "06")
+                                        {
+                                            dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                        }
+                                        iNightAfterCount++;
+                                        break;
+                                    default:
+                                        dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                        break;
+                                }
+                                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                             }
                         }
                     }
@@ -576,6 +624,10 @@ namespace workschedule.Functions
             double dTemp;
             string strTargetDate;
             bool bResultFlag;
+            // Add Start WataruT 2020.09.24 様式9チェックの計算値不正
+            int iNightCount = 0;
+            int iNightAfterCount = 0;
+            // Add End   WataruT 2020.09.24 様式9チェックの計算値不正
 
             // 日にちごとに処理
             for (int i = 1; i <= int.Parse(strTargetDays); i++)
@@ -583,6 +635,11 @@ namespace workschedule.Functions
                 // 変数の初期化
                 bResultFlag = false;
                 strTargetDate = strTargetMonth + String.Format("{0:D2}", i);
+                // Add Start WataruT 2020.09.24 様式9チェックの計算値不正
+                // 夜勤・夜明のカウントクリア
+                iNightCount = 0;
+                iNightAfterCount = 0;
+                // Add End   WataruT 2020.09.24 様式9チェックの計算値不正
 
                 // 実績データ処理
                 foreach (DataRow dr in dtYoushiki9Check_Result.Rows)
@@ -609,7 +666,29 @@ namespace workschedule.Functions
                         {
                             if (DateTime.Parse(dr["target_date"].ToString()).ToString("yyyyMMdd") == strTargetDate)
                             {
-                                dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                // Mod Start WataruT 2020.09.24 様式9チェックの計算値不正
+                                //dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                switch (dr["work_kind"].ToString())
+                                {
+                                    case "02":      // 夜勤
+                                        if (iNightCount != 2 || dr["ward"].ToString() != "06")
+                                        {
+                                            dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                        }
+                                        iNightCount++;
+                                        break;
+                                    case "03":      // 夜明
+                                        if (iNightAfterCount != 2 || dr["ward"].ToString() != "06")
+                                        {
+                                            dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                        }
+                                        iNightAfterCount++;
+                                        break;
+                                    default:
+                                        dTotalWorkHours += double.Parse(dr["work_time"].ToString());
+                                        break;
+                                }
+                                // Mod End   WataruT 2020.09.24 様式9チェックの計算値不正
                             }
                         }
                     }
