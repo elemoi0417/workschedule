@@ -410,6 +410,9 @@ namespace workschedule.MainScheduleControl
         public void SetResultColumnTotal()
         {
             double dColumnTotalTemp;
+            // Add Start WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
+            double[] dResultTotalTime = new double[3];
+            // Add End   WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
 
             // データテーブル作成
             DataTable dt = new DataTable();
@@ -451,16 +454,38 @@ namespace workschedule.MainScheduleControl
                         switch(iTimeKind)
                         {
                             case 0:
+                                // Mod Start WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
+                                //if (frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 3].Value.ToString() != "")
+                                //    dColumnTotalTemp += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 3].Value.ToString());
                                 if (frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 3].Value.ToString() != "")
+                                {
                                     dColumnTotalTemp += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 3].Value.ToString());
+                                    dResultTotalTime[iTimeKind] += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 3].Value.ToString());
+                                }   
+                                // Mod End   WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
                                 break;
                             case 1:
+                                // Mod Start WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
+                                //if (frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 2].Value.ToString() != "")
+                                //    dColumnTotalTemp += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 2].Value.ToString());
+                                //break;
                                 if (frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 2].Value.ToString() != "")
+                                {
                                     dColumnTotalTemp += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 2].Value.ToString());
+                                    dResultTotalTime[iTimeKind] += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 2].Value.ToString());
+                                }   
+                                // Mod End   WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
                                 break;
                             case 2:
+                                // Mod Start WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
+                                //if (frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 1].Value.ToString() != "")
+                                //    dColumnTotalTemp += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 1].Value.ToString());
                                 if (frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 1].Value.ToString() != "")
+                                {
                                     dColumnTotalTemp += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 1].Value.ToString());
+                                    dResultTotalTime[iTimeKind] += double.Parse(frmMainSchedule.grdMain[iDay + 1, (iScheduleStaff + 1) * 3 - 1].Value.ToString());
+                                }   
+                                // Mod End   WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
                                 break;
                         }
                     }
@@ -498,6 +523,12 @@ namespace workschedule.MainScheduleControl
             frmMainSchedule.grdColumnTotal.Columns[0].Frozen = true;
             frmMainSchedule.grdColumnTotal.Columns[1].Frozen = true;
             frmMainSchedule.grdColumnTotal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+
+            // Add Start WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
+            frmMainSchedule.lblResultDayTotalTime.Text = dResultTotalTime[0].ToString();
+            frmMainSchedule.lblResultNightTotalTime.Text = dResultTotalTime[1].ToString();
+            frmMainSchedule.lblResultAllNightTotalTime.Text = dResultTotalTime[2].ToString();
+            // Add End   WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
         }
 
         /// <summary>

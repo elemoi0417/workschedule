@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainSchedule));
             this.btnAutoCreate = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -184,6 +184,12 @@
             this.btnKeepData = new System.Windows.Forms.Button();
             this.btnReturnKeep = new System.Windows.Forms.Button();
             this.btnDifferenceCheck = new System.Windows.Forms.Button();
+            this.lblResultDayTotalTime = new System.Windows.Forms.Label();
+            this.lblResultNightTotalTime = new System.Windows.Forms.Label();
+            this.lblResultAllNightTotalTime = new System.Windows.Forms.Label();
+            this.lblResultAllNightTotalName = new System.Windows.Forms.Label();
+            this.lblResultNightTotalName = new System.Windows.Forms.Label();
+            this.lblResultDayTotalName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdMainHeader)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdRowTotal)).BeginInit();
@@ -310,14 +316,14 @@
             this.grdMainHeader.AllowUserToResizeColumns = false;
             this.grdMainHeader.AllowUserToResizeRows = false;
             this.grdMainHeader.ColumnHeadersVisible = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdMainHeader.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdMainHeader.DefaultCellStyle = dataGridViewCellStyle1;
             this.grdMainHeader.Location = new System.Drawing.Point(0, 62);
             this.grdMainHeader.Name = "grdMainHeader";
             this.grdMainHeader.ReadOnly = true;
@@ -333,14 +339,14 @@
             this.grdMain.AllowUserToResizeColumns = false;
             this.grdMain.AllowUserToResizeRows = false;
             this.grdMain.ColumnHeadersVisible = false;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdMain.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdMain.DefaultCellStyle = dataGridViewCellStyle2;
             this.grdMain.Location = new System.Drawing.Point(0, 106);
             this.grdMain.Name = "grdMain";
             this.grdMain.ReadOnly = true;
@@ -359,14 +365,14 @@
             this.grdRowTotal.AllowUserToResizeColumns = false;
             this.grdRowTotal.AllowUserToResizeRows = false;
             this.grdRowTotal.ColumnHeadersVisible = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdRowTotal.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdRowTotal.DefaultCellStyle = dataGridViewCellStyle3;
             this.grdRowTotal.Location = new System.Drawing.Point(1184, 106);
             this.grdRowTotal.Name = "grdRowTotal";
             this.grdRowTotal.ReadOnly = true;
@@ -1363,14 +1369,14 @@
             this.grdRowTotalHeader.AllowUserToResizeColumns = false;
             this.grdRowTotalHeader.AllowUserToResizeRows = false;
             this.grdRowTotalHeader.ColumnHeadersVisible = false;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdRowTotalHeader.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdRowTotalHeader.DefaultCellStyle = dataGridViewCellStyle4;
             this.grdRowTotalHeader.Location = new System.Drawing.Point(1184, 62);
             this.grdRowTotalHeader.Name = "grdRowTotalHeader";
             this.grdRowTotalHeader.ReadOnly = true;
@@ -1386,14 +1392,14 @@
             this.grdColumnTotal.AllowUserToResizeColumns = false;
             this.grdColumnTotal.AllowUserToResizeRows = false;
             this.grdColumnTotal.ColumnHeadersVisible = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdColumnTotal.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdColumnTotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.grdColumnTotal.Location = new System.Drawing.Point(0, 573);
             this.grdColumnTotal.Name = "grdColumnTotal";
             this.grdColumnTotal.ReadOnly = true;
@@ -1628,12 +1634,84 @@
             this.btnDifferenceCheck.Visible = false;
             this.btnDifferenceCheck.Click += new System.EventHandler(this.btnDifferenceCheck_Click);
             // 
+            // lblResultDayTotalTime
+            // 
+            this.lblResultDayTotalTime.AutoSize = true;
+            this.lblResultDayTotalTime.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblResultDayTotalTime.Location = new System.Drawing.Point(1252, 628);
+            this.lblResultDayTotalTime.Name = "lblResultDayTotalTime";
+            this.lblResultDayTotalTime.Size = new System.Drawing.Size(39, 15);
+            this.lblResultDayTotalTime.TabIndex = 53;
+            this.lblResultDayTotalTime.Text = "395.5";
+            this.lblResultDayTotalTime.Visible = false;
+            // 
+            // lblResultNightTotalTime
+            // 
+            this.lblResultNightTotalTime.AutoSize = true;
+            this.lblResultNightTotalTime.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblResultNightTotalTime.Location = new System.Drawing.Point(1252, 649);
+            this.lblResultNightTotalTime.Name = "lblResultNightTotalTime";
+            this.lblResultNightTotalTime.Size = new System.Drawing.Size(53, 15);
+            this.lblResultNightTotalTime.TabIndex = 54;
+            this.lblResultNightTotalTime.Text = "1925.55";
+            this.lblResultNightTotalTime.Visible = false;
+            // 
+            // lblResultAllNightTotalTime
+            // 
+            this.lblResultAllNightTotalTime.AutoSize = true;
+            this.lblResultAllNightTotalTime.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblResultAllNightTotalTime.Location = new System.Drawing.Point(1252, 670);
+            this.lblResultAllNightTotalTime.Name = "lblResultAllNightTotalTime";
+            this.lblResultAllNightTotalTime.Size = new System.Drawing.Size(53, 15);
+            this.lblResultAllNightTotalTime.TabIndex = 55;
+            this.lblResultAllNightTotalTime.Text = "1925.55";
+            this.lblResultAllNightTotalTime.Visible = false;
+            // 
+            // lblResultAllNightTotalName
+            // 
+            this.lblResultAllNightTotalName.AutoSize = true;
+            this.lblResultAllNightTotalName.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblResultAllNightTotalName.Location = new System.Drawing.Point(1232, 670);
+            this.lblResultAllNightTotalName.Name = "lblResultAllNightTotalName";
+            this.lblResultAllNightTotalName.Size = new System.Drawing.Size(24, 15);
+            this.lblResultAllNightTotalName.TabIndex = 58;
+            this.lblResultAllNightTotalName.Text = "総:";
+            this.lblResultAllNightTotalName.Visible = false;
+            // 
+            // lblResultNightTotalName
+            // 
+            this.lblResultNightTotalName.AutoSize = true;
+            this.lblResultNightTotalName.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblResultNightTotalName.Location = new System.Drawing.Point(1232, 649);
+            this.lblResultNightTotalName.Name = "lblResultNightTotalName";
+            this.lblResultNightTotalName.Size = new System.Drawing.Size(24, 15);
+            this.lblResultNightTotalName.TabIndex = 57;
+            this.lblResultNightTotalName.Text = "夜:";
+            this.lblResultNightTotalName.Visible = false;
+            // 
+            // lblResultDayTotalName
+            // 
+            this.lblResultDayTotalName.AutoSize = true;
+            this.lblResultDayTotalName.Font = new System.Drawing.Font("Meiryo UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblResultDayTotalName.Location = new System.Drawing.Point(1232, 628);
+            this.lblResultDayTotalName.Name = "lblResultDayTotalName";
+            this.lblResultDayTotalName.Size = new System.Drawing.Size(24, 15);
+            this.lblResultDayTotalName.TabIndex = 56;
+            this.lblResultDayTotalName.Text = "日:";
+            this.lblResultDayTotalName.Visible = false;
+            // 
             // MainSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1309, 688);
+            this.Controls.Add(this.lblResultAllNightTotalName);
+            this.Controls.Add(this.lblResultNightTotalName);
+            this.Controls.Add(this.lblResultDayTotalName);
+            this.Controls.Add(this.lblResultAllNightTotalTime);
+            this.Controls.Add(this.lblResultNightTotalTime);
+            this.Controls.Add(this.lblResultDayTotalTime);
             this.Controls.Add(this.btnDifferenceCheck);
             this.Controls.Add(this.btnReturnKeep);
             this.Controls.Add(this.btnKeepData);
@@ -1663,7 +1741,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAutoCreate);
             this.Controls.Add(this.txtTargetMonth);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainSchedule";
@@ -1832,6 +1910,12 @@
         public System.Windows.Forms.Button btnKeepData;
         public System.Windows.Forms.Button btnReturnKeep;
         public System.Windows.Forms.Button btnDifferenceCheck;
+        public System.Windows.Forms.Label lblResultDayTotalTime;
+        public System.Windows.Forms.Label lblResultNightTotalTime;
+        public System.Windows.Forms.Label lblResultAllNightTotalTime;
+        public System.Windows.Forms.Label lblResultAllNightTotalName;
+        public System.Windows.Forms.Label lblResultNightTotalName;
+        public System.Windows.Forms.Label lblResultDayTotalName;
     }
 }
 

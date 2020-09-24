@@ -74,17 +74,18 @@ namespace workschedule
 
         // 使用クラス宣言
         CommonControl clsCommonControl = new CommonControl();
-        
+
         MainScheduleCommonControl clsMainScheduleCommonControl;
         MainScheduleRequestControl clsMainScheduleRequestControl;
         MainScheduleScheduleControl clsMainScheduleScheduleControl;
         MainScheduleResultControl clsMainScheduleResultControl;
 
+
         public MainSchedule(string strWard)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
-            
+
             // グリッド描画の高速化(ダブルバッファリングを有効化)
             grdMain.GetType().InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, grdMain, new object[] { true });
             grdMainHeader.GetType().InvokeMember("DoubleBuffered", BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetProperty, null, grdMainHeader, new object[] { true });
@@ -99,8 +100,13 @@ namespace workschedule
 
             // ログイン職員の病棟コードをセット
             pstrLoginWard = strWard;
+
+            // Add Start WataruT 2020.09.24 モニタの低解像度対応
+            // モニタが低解像度の場合、スクロールバーを表示
+            SetFormScale();
+            // Add End   WataruT 2020.09.24 モニタの低解像度対応
         }
-            
+
         // --- ボタンイベント ---
 
         /// <summary>
@@ -111,14 +117,14 @@ namespace workschedule
         private void btnAutoCreate_Click(object sender, EventArgs e)
         {
             // 職員登録チェック
-            if(dtScheduleStaff.Rows.Count == 0)
+            if (dtScheduleStaff.Rows.Count == 0)
             {
                 MessageBox.Show("職員登録をおこなってください。", "");
                 return;
             }
 
             // 常日勤チェック
-            if(clsMainScheduleCommonControl.CheckStaffDayOnly() == false)
+            if (clsMainScheduleCommonControl.CheckStaffDayOnly() == false)
             {
                 MessageBox.Show("常日勤設定のない職員がいます。", "");
                 return;
@@ -161,10 +167,11 @@ namespace workschedule
         private void btnChangeStaffKind_Click(object sender, EventArgs e)
         {
             // 職種コードを変更
-            if(pstrStaffKind == "01")
+            if (pstrStaffKind == "01")
             {
                 pstrStaffKind = "02";
-            }else
+            }
+            else
             {
                 pstrStaffKind = "01";
             }
@@ -193,7 +200,7 @@ namespace workschedule
             // Add Start WataruT 2020.07.21 初回登録解除機能追加
             if (btnSaveFirst.Text == "登録\r\n解除")
             {
-                if(MessageBox.Show("初回登録を解除しますがよろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("初回登録を解除しますがよろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     // 初回予定データを削除
                     clsMainScheduleScheduleControl.DeleteScheduleFirstData();
@@ -209,7 +216,7 @@ namespace workschedule
             // Add End   WataruT 2020.07.21 初回登録解除機能追加
 
             // 確認メッセージ
-            if (MessageBox.Show("初回データとして登録しますがよろしいですか？","",MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show("初回データとして登録しますがよろしいですか？", "", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 // プログレスウィンドウの表示
                 clsMainScheduleCommonControl.ShowProgressDialog(true);
@@ -251,7 +258,7 @@ namespace workschedule
 
                     // 希望シフトの作成
                     clsMainScheduleRequestControl.SaveRequestData();
-                    
+
                     MessageBox.Show("保存完了", "");
                     break;
                 case 2:     // 予定
@@ -343,7 +350,7 @@ namespace workschedule
 
             // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
             // [予定]なら「戻す」ボタンを無効化
-            if(piDataKind == 2) btnReturnKeep.Enabled = false;
+            if (piDataKind == 2) btnReturnKeep.Enabled = false;
             // Add End   WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
 
             // グリッドにデータをセット
@@ -386,10 +393,17 @@ namespace workschedule
                 // Add Start WataruT 2020.09.09 未取込データチェック機能追加
                 btnDifferenceCheck.Visible = false;
                 // Add End   WataruT 2020.09.09 未取込データチェック機能追加
-
+                // Add Start WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
+                lblResultDayTotalName.Visible = false;
+                lblResultDayTotalTime.Visible = false;
+                lblResultNightTotalName.Visible = false;
+                lblResultNightTotalTime.Visible = false;
+                lblResultAllNightTotalName.Visible = false;
+                lblResultAllNightTotalTime.Visible = false;
+                // Add End   WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 1;
-                
+
                 // ActiveControlを初期化
                 ActiveControl = null;
 
@@ -433,6 +447,14 @@ namespace workschedule
                 // Add Start WataruT 2020.09.09 未取込データチェック機能追加
                 btnDifferenceCheck.Visible = false;
                 // Add End   WataruT 2020.09.09 未取込データチェック機能追加
+                // Add Start WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
+                lblResultDayTotalName.Visible = false;
+                lblResultDayTotalTime.Visible = false;
+                lblResultNightTotalName.Visible = false;
+                lblResultNightTotalTime.Visible = false;
+                lblResultAllNightTotalName.Visible = false;
+                lblResultAllNightTotalTime.Visible = false;
+                // Add End   WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 2;
@@ -479,10 +501,18 @@ namespace workschedule
                 // Add Start WataruT 2020.09.09 未取込データチェック機能追加
                 btnDifferenceCheck.Visible = true;
                 // Add End   WataruT 2020.09.09 未取込データチェック機能追加
+                // Add Start WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
+                lblResultDayTotalName.Visible = true;
+                lblResultDayTotalTime.Visible = true;
+                lblResultNightTotalName.Visible = true;
+                lblResultNightTotalTime.Visible = true;
+                lblResultAllNightTotalName.Visible = true;
+                lblResultAllNightTotalTime.Visible = true;
+                // Add End   WataruT 2020.09.24 実績画面にひと月の合計時間数を表示
 
                 // 表示するデータの種類の共通変数を変更
                 piDataKind = 3;
-                
+
                 // ActiveControlを初期化
                 ActiveControl = null;
 
@@ -508,10 +538,10 @@ namespace workschedule
                 btnStaffKind_Care.BackColor = Color.DimGray;
                 btnStaffKind_Nurse.Font = new Font("Meiryo UI", 11, FontStyle.Bold | FontStyle.Underline);
                 btnStaffKind_Care.Font = new Font("Meiryo UI", 11, FontStyle.Bold);
-                
+
                 // 職種の共通変数を"看護師"に変更
                 pstrStaffKind = "01";
-                
+
                 // ActiveControlを初期化
                 ActiveControl = null;
 
@@ -544,10 +574,10 @@ namespace workschedule
                 btnStaffKind_Care.BackColor = Color.PaleVioletRed;
                 btnStaffKind_Nurse.Font = new Font("Meiryo UI", 11, FontStyle.Bold);
                 btnStaffKind_Care.Font = new Font("Meiryo UI", 11, FontStyle.Bold | FontStyle.Underline);
-                
+
                 // 職種の共通変数を"ケア"に変更
                 pstrStaffKind = "02";
-                
+
                 // ActiveControlを初期化
                 ActiveControl = null;
 
@@ -573,7 +603,7 @@ namespace workschedule
         /// <param name="e"></param>
         private void btnYoushiki9_Click(object sender, EventArgs e)
         {
-            Youshiki9Check frmYoushiki9Check = new Youshiki9Check(cmbWard.SelectedValue.ToString(), cmbWard.Text.ToString(), lblTargetMonth.Text); 
+            Youshiki9Check frmYoushiki9Check = new Youshiki9Check(cmbWard.SelectedValue.ToString(), cmbWard.Text.ToString(), lblTargetMonth.Text);
 
             frmYoushiki9Check.ShowDialog();
         }
@@ -677,7 +707,7 @@ namespace workschedule
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnDifferenceCheck_Click(object sender, EventArgs e)
-        {            
+        {
             // プログレスウィンドウの表示
             clsMainScheduleCommonControl.ShowProgressDialog(true);
 
@@ -723,7 +753,7 @@ namespace workschedule
             // グリッドの表示位置を調整
             clsMainScheduleCommonControl.SetGridPosition();
         }
-        
+
         /// <summary>
         /// 病棟選択時イベント
         /// </summary>
@@ -731,7 +761,7 @@ namespace workschedule
         /// <param name="e"></param>
         private void cmbWard_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(pbActivateFlag == true)
+            if (pbActivateFlag == true)
             {
                 // Add Start WataruT 2020.08.14 予定データ作成中のデータキープ機能追加
                 // [予定]なら「戻す」ボタンを無効化
@@ -751,12 +781,12 @@ namespace workschedule
         private void grdMain_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
         {
             // 勤務データ種類
-            switch(piDataKind)
+            switch (piDataKind)
             {
                 case 1: // 希望シフト
                         // データセルのみ対象とする
                     if (e.ColumnIndex > 0)
-                        e.ContextMenuStrip = ctmsMain_Request;                        
+                        e.ContextMenuStrip = ctmsMain_Request;
                     else
                         return;
                     break;
@@ -779,7 +809,7 @@ namespace workschedule
             // 右クリックしたセルの行・列番号をセット
             piGrdMain_CurrentColumn = e.ColumnIndex;
             piGrdMain_CurrentRow = e.RowIndex;
-            
+
             // 右クリックしたセルをカレントセルとする
             grdMain.CurrentCell = grdMain[piGrdMain_CurrentColumn, piGrdMain_CurrentRow];
 
@@ -828,7 +858,7 @@ namespace workschedule
                 // Mod Start WataruT 2020.07.29 代有を公有に文言変更
                 //case "代有":
                 case "公有":
-                // Mod End   WataruT 2020.07.29 代有を公有に文言変更
+                    // Mod End   WataruT 2020.07.29 代有を公有に文言変更
                     ChangeMainGridData(9);
                     break;
                 case "遅出":
@@ -973,7 +1003,7 @@ namespace workschedule
                 case "早退":
                     ChangeMainGridData(23);
                     break;
-                // Add End   WataruT 2020.08.06 遅刻・早退入力対応
+                    // Add End   WataruT 2020.08.06 遅刻・早退入力対応
             }
         }
 
@@ -984,7 +1014,7 @@ namespace workschedule
         /// <param name="e"></param>
         private void ctmsMain_ClickItem_Schedule(object sender, EventArgs e)
         {
-            switch(sender.ToString())
+            switch (sender.ToString())
             {
                 case "日勤":
                     ChangeMainGridData(0);
@@ -1016,7 +1046,7 @@ namespace workschedule
                 // Mod Start WataruT 2020.07.29 代有を公有に文言変更
                 //case "代有":
                 case "公有":
-                // Mod End   WataruT 2020.07.29 代有を公有に文言変更
+                    // Mod End   WataruT 2020.07.29 代有を公有に文言変更
                     ChangeMainGridData(9);
                     break;
                 case "遅出":
@@ -1161,7 +1191,7 @@ namespace workschedule
                 case "早退":
                     ChangeMainGridData(23);
                     break;
-                // Add End   WataruT 2020.08.06 遅刻・早退入力対応
+                    // Add End   WataruT 2020.08.06 遅刻・早退入力対応
             }
         }
 
@@ -1219,7 +1249,7 @@ namespace workschedule
         /// </summary>
         public void ChangeMainGridData(int iWorkKindID)
         {
-            switch(piDataKind)
+            switch (piDataKind)
             {
                 case 1:
                     // Mod Start WataruT 2020.07.13 複数選択箇所を一括変更可能とする
@@ -1258,7 +1288,7 @@ namespace workschedule
             // データセット前の初期化処理
             clsMainScheduleCommonControl.InitialProcess(false);
 
-            switch(piDataKind)
+            switch (piDataKind)
             {
                 case 1:     // 希望シフト
                     clsMainScheduleRequestControl.SetMainData_Request();
@@ -1280,11 +1310,43 @@ namespace workschedule
         private void grdMain_CellToolTipTextNeeded(object sender, DataGridViewCellToolTipTextNeededEventArgs e)
         {
             // 実績画面の場合のみ表示
-            if(piDataKind == 3)
-            {   if (e.ColumnIndex >= 2 && grdMain[e.ColumnIndex, e.RowIndex].Style.BackColor != Color.White)
+            if (piDataKind == 3)
+            {
+                if (e.ColumnIndex >= 2 && grdMain[e.ColumnIndex, e.RowIndex].Style.BackColor != Color.White)
                     e.ToolTipText = clsMainScheduleResultControl.GetToolTipText(e.ColumnIndex, e.RowIndex);
             }
         }
+        
+        /// <summary>
+        /// モニタが低解像度の場合、フォームにスクロールバーを表示
+        /// Add WataruT 2020.09.24 モニタの低解像度対応
+        /// </summary>
+        private void SetFormScale()
+        {
+            //スクロール機能を有効にする
+            AutoScroll = true;
 
+            //フォームが存在しているディスプレイの作業領域の高さと幅を取得
+            double Dh = System.Windows.Forms.Screen.GetWorkingArea(this).Height;
+            double Dw = System.Windows.Forms.Screen.GetWorkingArea(this).Width;
+            double Fh = this.Size.Height;
+            double Fw = this.Size.Width;
+
+            if (Dh < Fh | Dw < Fw)
+            {
+                double zoomh = Dh / Fh;
+                double zoomw = Dw / Fw;
+                if (zoomh <= zoomw)
+                {
+                    this.Height = Convert.ToInt32(Fh * zoomh);
+                    this.Width = Convert.ToInt32(Fw * zoomh);
+                }
+                else
+                {
+                    this.Height = Convert.ToInt32(Fh * zoomw);
+                    this.Width = Convert.ToInt32(Fw * zoomw);
+                }
+            }
+        }
     }
 }
