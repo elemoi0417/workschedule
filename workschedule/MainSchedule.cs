@@ -371,6 +371,12 @@ namespace workschedule
         {
             if (btnDataKind_Request.BackColor != Color.PaleVioletRed)
             {
+                // Add Start WataruT 2020.09.24 モニタの低解像度対応
+                // スクロールバーの位置をを初期化
+                VerticalScroll.Value = 0;
+                HorizontalScroll.Value = 0;
+                // Add End   WataruT 2020.09.24 モニタの低解像度対応
+
                 // ボタンの色、フォント変更
                 btnDataKind_Request.BackColor = Color.PaleVioletRed;
                 btnDataKind_Schedule.BackColor = Color.DimGray;
@@ -424,6 +430,12 @@ namespace workschedule
         {
             if (btnDataKind_Schedule.BackColor != Color.PaleVioletRed)
             {
+                // Add Start WataruT 2020.09.24 モニタの低解像度対応
+                // スクロールバーの位置をを初期化
+                VerticalScroll.Value = 0;
+                HorizontalScroll.Value = 0;
+                // Add End   WataruT 2020.09.24 モニタの低解像度対応
+
                 // ボタンの色、フォント変更
                 btnDataKind_Request.BackColor = Color.DimGray;
                 btnDataKind_Schedule.BackColor = Color.PaleVioletRed;
@@ -479,6 +491,12 @@ namespace workschedule
         {
             if (btnDataKind_Result.BackColor != Color.PaleVioletRed)
             {
+                // Add Start WataruT 2020.09.24 モニタの低解像度対応
+                // スクロールバーの位置をを初期化
+                VerticalScroll.Value = 0;
+                HorizontalScroll.Value = 0;
+                // Add End   WataruT 2020.09.24 モニタの低解像度対応
+
                 // ボタンの色、フォント変更
                 btnDataKind_Request.BackColor = Color.DimGray;
                 btnDataKind_Schedule.BackColor = Color.DimGray;
