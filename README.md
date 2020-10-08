@@ -4,6 +4,8 @@
 
 This is a shift management system for hospitals.
 Since it is a system dedicated to one hospital, it is not suitable for operation in other hospitals.
+It was created by the hospital staff.
+Secondary use of this source is free.
 
 <!-- # Badges -->
 
