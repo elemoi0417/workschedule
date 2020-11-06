@@ -172,9 +172,15 @@ namespace workschedule.Reports
             WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS, ROW_AVERAGE_YEARS, double.Parse(drWardYoushiki9["average_year"].ToString()));
 
             // 平均在院日数(算出期間)
-            WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS_START_YEAR, ROW_AVERAGE_YEARS_START_YEAR, double.Parse((int.Parse(clsJapaneseCalendar.GetYear(dtTargetMonth.AddMonths(-3)).ToString()) - 1).ToString()));
+            // Mod Start WataruT 2020.11.06 様式9の平均在院日数の算出期間修正
+            //WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS_START_YEAR, ROW_AVERAGE_YEARS_START_YEAR, double.Parse((int.Parse(clsJapaneseCalendar.GetYear(dtTargetMonth.AddMonths(-3)).ToString()) - 1).ToString()));
+            WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS_START_YEAR, ROW_AVERAGE_YEARS_START_YEAR, double.Parse((int.Parse(clsJapaneseCalendar.GetYear(dtTargetMonth.AddMonths(-3)).ToString())).ToString()));
+            // Mod End   WataruT 2020.11.06 様式9の平均在院日数の算出期間修正
             WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS_START_MONTH, ROW_AVERAGE_YEARS_START_MONTH, double.Parse(dtTargetMonth.AddMonths(-3).ToString("MM")));
-            WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS_END_YEAR, ROW_AVERAGE_YEARS_END_YEAR, double.Parse((int.Parse(clsJapaneseCalendar.GetYear(dtTargetMonth.AddMonths(-1)).ToString()) - 1).ToString()));
+            // Mod Start WataruT 2020.11.06 様式9の平均在院日数の算出期間修正
+            //WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS_END_YEAR, ROW_AVERAGE_YEARS_END_YEAR, double.Parse((int.Parse(clsJapaneseCalendar.GetYear(dtTargetMonth.AddMonths(-1)).ToString()) - 1).ToString()));
+            WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS_END_YEAR, ROW_AVERAGE_YEARS_END_YEAR, double.Parse((int.Parse(clsJapaneseCalendar.GetYear(dtTargetMonth.AddMonths(-1)).ToString())).ToString()));
+            // Mod End   WataruT 2020.11.06 様式9の平均在院日数の算出期間修正
             WriteCellValue(xlSheet, COLUMN_AVERAGE_YEARS_END_MONTH, ROW_AVERAGE_YEARS_END_MONTH, double.Parse(dtTargetMonth.AddMonths(-1).ToString("MM")));
 
             // 対象年月
