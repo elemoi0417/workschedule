@@ -449,6 +449,26 @@ namespace workschedule.MainScheduleControl
             {
                 strDayOfWeek = clsCommonControl.GetWeekName(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay + 1), frmMainSchedule.astrHoliday);
 
+                // Add Start WataruT 2020.11.19 年末の特定日を半日とする
+                dtTargetDate = DateTime.ParseExact(frmMainSchedule.pstrTargetMonth + String.Format("{0:D2}", iDay + 1), strFormat, null);
+                if (frmMainSchedule.pstrTargetMonth.Substring(4, 2) + String.Format("{0:D2}", iDay + 1) == "1229")
+                {
+                    switch (dtTargetDate.ToString("ddd"))
+                    {
+                        case "土":
+                            break;
+                        case "日":
+                            iSundayCount++;
+                            if (iSundayCount > 4) frmMainSchedule.pdHolidayCount++;
+                            break;
+                        default:
+                            frmMainSchedule.pdHolidayCount += 0.5;
+                            break;
+                    }
+                    continue;
+                }
+                // Add End   WataruT 2020.11.19 年末の特定日を半日とする
+
                 switch (strDayOfWeek)
                 {
                     case "祝":
