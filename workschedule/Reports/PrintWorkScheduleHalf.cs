@@ -326,10 +326,33 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
-                                // 初回計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
-                                // 最終計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
+                                // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
+                                //// 初回計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
+                                //// 最終計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 実施欄に予定データを印字する
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iDay].Value = "";
+                                }
+                                // Mod End   WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
                             }
                         }
                     }
@@ -422,16 +445,39 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
-                                // 初回計画データ
-                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
-                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                // 最終計画データ
-                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
-                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
+                                //// 初回計画データ
+                                //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                ////WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
+                                //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                //// 最終計画データ
+                                //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                ////WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
+                                //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 実施欄に予定データを印字する
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
+                                }
+                                // Mod End   WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
                             }
                         }
                     }
@@ -529,10 +575,33 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
-                                // 初回計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = "";
-                                // 最終計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = "";
+                                // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
+                                //// 初回計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = "";
+                                //// 最終計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = "";
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 実施欄に予定データを印字する
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 - 15 + iDay].Value = "";
+                                }
+                                // Mod End   WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
                             }
                         }
                     }
@@ -623,16 +692,40 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
-                                // 初回計画データ
-                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, "");
-                                xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = "";
-                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                // 最終計画データ
-                                // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                                //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, "");
-                                xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = "";
-                                // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
+                                //// 初回計画データ
+                                //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                ////WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, "");
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = "";
+                                //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                //// 最終計画データ
+                                //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                ////WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START2 + iDay, ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, "");
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = "";
+                                //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 実施欄に予定データを印字する
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 2, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START2 + (iStaff - ROW_NURSE_TOTAL_ROW + 1) * 2 - 1, COLUMN_NURSE_DAY_START2 + iTargetMonthDay + iDay].Value = "";
+                                }
+                                // Mod End   WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
+
                             }
                         }
                     }
@@ -733,10 +826,33 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
-                                // 初回計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
-                                // 最終計画データ
-                                xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
+                                // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
+                                //// 初回計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
+                                //// 最終計画データ
+                                //xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 予定データ
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 - 15 + iDay].Value = "";
+                                }
+                                // Mod End   WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
                             }
                         }
                     }
@@ -826,6 +942,7 @@ namespace workschedule.Reports
                             // 初回計画データがない場合
                             else if (bNoDataFlag == false)
                             {
+                                // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
                                 // 初回計画データ
                                 // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
                                 //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, "");
@@ -836,6 +953,28 @@ namespace workschedule.Reports
                                 //WriteCellValue(xlSheet, COLUMN_NURSE_DAY_START1 + 15 + iDay, ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, "");
                                 xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
                                 // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                                // 予定データがあるか確認
+                                if (dtScheduleDetail.Rows.Count != 0)
+                                {
+                                    // 予定データを順に確認
+                                    foreach (DataRow row in dtScheduleDetail.Rows)
+                                    {
+                                        // 対象日と一致する
+                                        if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                        {
+                                            // 予定データ
+                                            xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = row["name_short"].ToString();
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    // 初回計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 2, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
+                                    // 最終計画データ
+                                    xlSheet.Cells[ROW_NURSE_STAFF_START1 + (iStaff + 1) * 2 - 1, COLUMN_NURSE_DAY_START1 + iTargetMonthDay + iDay].Value = "";
+                                }
+                                // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
                             }
                         }
                     }
@@ -930,10 +1069,33 @@ namespace workschedule.Reports
                         // 初回計画データがない場合
                         else if (bNoDataFlag == false)
                         {
-                            // 初回計画データ
-                            xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START - 15 + iDay].Value = "";
-                            // 最終計画データ
-                            xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START - 15 + iDay].Value = "";
+                            // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
+                            //// 初回計画データ
+                            //xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START - 15 + iDay].Value = "";
+                            //// 最終計画データ
+                            //xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START - 15 + iDay].Value = "";
+                            // 予定データがあるか確認
+                            if (dtScheduleDetail.Rows.Count != 0)
+                            {
+                                // 予定データを順に確認
+                                foreach (DataRow row in dtScheduleDetail.Rows)
+                                {
+                                    // 対象日と一致する
+                                    if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                    {
+                                        // 予定データ
+                                        xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START - 15 + iDay].Value = row["name_short"].ToString();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // 初回計画データ
+                                xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START - 15 + iDay].Value = "";
+                                // 最終計画データ
+                                xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START - 15 + iDay].Value = "";
+                            }
+                            // Mod End   WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
                         }
                     }
                 }
@@ -1023,16 +1185,39 @@ namespace workschedule.Reports
                         // 初回計画データがない場合
                         else if (bNoDataFlag == false)
                         {
-                            // 初回計画データ
-                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                            //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, "");
-                            xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = "";
-                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                            // 最終計画データ
-                            // Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
-                            //WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, "");
-                            xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = "";
-                            // Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            // Mod Start WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
+                            //// 初回計画データ
+                            //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            ////WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, "");
+                            //xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = "";
+                            //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            //// 最終計画データ
+                            //// Mod Start WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            ////WriteCellValue(xlSheet, COLUMN_CARE_DAY_START + iDay, ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, "");
+                            //xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = "";
+                            //// Mod End   WataruT 2020.08.05 計画表(締翌日)の不具合対応
+                            // 予定データがあるか確認
+                            if (dtScheduleDetail.Rows.Count != 0)
+                            {
+                                // 予定データを順に確認
+                                foreach (DataRow row in dtScheduleDetail.Rows)
+                                {
+                                    // 対象日と一致する
+                                    if (DateTime.Parse(row["target_date"].ToString()).Day == iDay + 1)
+                                    {
+                                        // 予定データ
+                                        xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = row["name_short"].ToString();
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                // 初回計画データ
+                                xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 2, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = "";
+                                // 最終計画データ
+                                xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_DAY_START + iTargetMonthDay + iDay].Value = "";
+                            }
+                            // Mod End   WataruT 2021.01.18 締翌日の帳票で初回登録されていない人の予定データが表示されない
                         }
                     }
                 }
