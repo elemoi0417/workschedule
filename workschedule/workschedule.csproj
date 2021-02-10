@@ -212,6 +212,12 @@
     <Compile Include="ReportsForm\ReportResultDetailItemList.Designer.cs">
       <DependentUpon>ReportResultDetailItemList.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReportsForm\ReportWorkScheduleMensMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportsForm\ReportWorkScheduleMensMenu.Designer.cs">
+      <DependentUpon>ReportWorkScheduleMensMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportsForm\ReportYoushiki9Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,7 @@
     <Compile Include="ReportsForm\ReportWorkScheduleMenu.Designer.cs">
       <DependentUpon>ReportWorkScheduleMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\PrintWorkScheduleMens.cs" />
     <Compile Include="Reports\PrintWorkScheduleHalf.cs" />
     <Compile Include="Reports\PrintWorkSchedule.cs" />
     <Compile Include="Reports\PrintResultDetailWorkKind.cs" />
@@ -304,6 +311,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReportsForm\ReportResultDetailItemList.resx">
       <DependentUpon>ReportResultDetailItemList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportsForm\ReportWorkScheduleMensMenu.resx">
+      <DependentUpon>ReportWorkScheduleMensMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportsForm\ReportYoushiki9Menu.resx">
       <DependentUpon>ReportYoushiki9Menu.cs</DependentUpon>

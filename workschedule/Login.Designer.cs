@@ -97,7 +97,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(66, 15);
             this.lblVersion.TabIndex = 3;
-            this.lblVersion.Text = "Ver 1.0.27";
+            this.lblVersion.Text = "Ver 1.0.28";
             // 
             // Login
             // 

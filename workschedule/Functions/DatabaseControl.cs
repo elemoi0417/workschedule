@@ -771,6 +771,53 @@ namespace workschedule.Controls
         }
 
         /// <summary>
+        /// 対象月に勤務予定のある男性職員一覧 Add WataruT 2021.02.10 男性職員の予定表出力機能追加 
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetScheduleStaff_OnlyMens(string strTargetMonth)
+        {
+            try
+            {
+                string lsSQL;
+                DataTable dt;
+
+                lsSQL = "SELECT ";
+                lsSQL = lsSQL + "    ms.id as id, ";
+                lsSQL = lsSQL + "    ms.name as name, ";
+                lsSQL = lsSQL + "    msk.name as staff_kind, ";
+                lsSQL = lsSQL + "    dss.office_flag as office_flag, ";
+                lsSQL = lsSQL + "    dss.ward as ward_code, ";
+                lsSQL = lsSQL + "    mw.name as ward_name ";
+                lsSQL = lsSQL + "FROM ";
+                lsSQL = lsSQL + "    m_staff ms, ";
+                lsSQL = lsSQL + "    m_staff_kind msk, ";
+                lsSQL = lsSQL + "    d_schedule_staff dss, ";
+                lsSQL = lsSQL + "    m_ward mw ";
+                lsSQL = lsSQL + "WHERE ";
+                lsSQL = lsSQL + "    ms.id = dss.staff_id AND ";
+                lsSQL = lsSQL + "    dss.ward = mw.id AND ";
+                lsSQL = lsSQL + "    ms.staff_kind = msk.id AND ";
+                lsSQL = lsSQL + "    ms.staff_kind_sub = msk.sub_id AND ";
+                lsSQL = lsSQL + "    ms.sex = 1 AND ";
+                lsSQL = lsSQL + "    dss.target_month = '" + strTargetMonth + "' ";
+                lsSQL = lsSQL + "ORDER BY ";
+                lsSQL = lsSQL + "    CAST(dss.ward AS SIGNED), ";
+                lsSQL = lsSQL + "    CAST(ms.staff_kind AS SIGNED), ";
+                lsSQL = lsSQL + "    CAST(dss.seq AS SIGNED);";
+
+                dt = GetDataTable(lsSQL);
+
+                return dt;
+
+            }
+            catch (MySqlException me)
+            {
+                Console.WriteLine("ERROR: " + me.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
         /// 様式9の出力時に使用する職員一覧
         /// </summary>
         /// <returns></returns>
@@ -1070,6 +1117,46 @@ namespace workschedule.Controls
             {
                 Console.WriteLine("ERROR: " + me.Message);
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// 病棟、職員ID、対象年月から勤務予定データを取得(男性職員限定用) Add WataruT 2021.02.10 男性職員の予定表出力機能追加
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetScheduleDetail_Ward_Staff_TargetMonth(string strWard, string strStaff, string strTargetMonth)
+        {
+            try
+            {
+                string lsSQL;
+                DataTable dt;
+
+                lsSQL = "SELECT ";
+                lsSQL = lsSQL + "    b.*, ";
+                lsSQL = lsSQL + "    c.name_short ";
+                lsSQL = lsSQL + "FROM ";
+                lsSQL = lsSQL + "    d_schedule_header a,";
+                lsSQL = lsSQL + "    d_schedule_detail b,";
+                lsSQL = lsSQL + "    m_work_kind c ";
+                lsSQL = lsSQL + "WHERE ";
+                lsSQL = lsSQL + "    a.ward = '" + strWard + "' AND ";
+                lsSQL = lsSQL + "    a.target_month = '" + strTargetMonth + "' AND ";
+                lsSQL = lsSQL + "    b.staff = '" + strStaff + "' AND ";
+                lsSQL = lsSQL + "    c.work_kind = '1' AND ";
+                lsSQL = lsSQL + "    a.schedule_no = b.schedule_no AND ";
+                lsSQL = lsSQL + "    b.work_kind = c.id ";
+                lsSQL = lsSQL + "ORDER BY ";
+                lsSQL = lsSQL + "    CAST(b.schedule_detail_no AS SIGNED);";
+
+                dt = GetDataTable(lsSQL);
+
+                return dt;
+
+            }
+            catch (MySqlException me)
+            {
+                Console.WriteLine("ERROR: " + me.Message);
+                return null;
             }
         }
 

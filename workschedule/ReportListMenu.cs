@@ -51,6 +51,9 @@ namespace workschedule
             // リストの項目をセット
             lstReport.Items.Add("勤務計画表(月初)");
             lstReport.Items.Add("勤務計画表(締翌日)");
+            // Add Start WataruT 2021.02.10 男性職員の予定表出力機能追加
+            lstReport.Items.Add("勤務計画表(男性のみ)");
+            // Add End   WataruT 2021.02.10 男性職員の予定表出力機能追加
             lstReport.Items.Add("様式9");
             lstReport.Items.Add("実績項目集計");
         }
@@ -73,6 +76,12 @@ namespace workschedule
                         ReportWorkScheduleHalfMenu frmReportWorkScheduleHalfMenu = new ReportWorkScheduleHalfMenu();
                         frmReportWorkScheduleHalfMenu.ShowDialog();
                         break;
+                    // Add Start WataruT 2021.02.10 男性職員の予定表出力機能追加
+                    case "勤務計画表(男性のみ)":
+                        ReportWorkScheduleMensMenu frmReportWorkScheduleMensMenu = new ReportWorkScheduleMensMenu();
+                        frmReportWorkScheduleMensMenu.ShowDialog();
+                        break;
+                    // Add End   WataruT 2021.02.10 男性職員の予定表出力機能追加
                     case "様式9":
                         ReportYoushiki9Menu frmReportYoushiki9Menu = new ReportYoushiki9Menu();
                         frmReportYoushiki9Menu.ShowDialog();
