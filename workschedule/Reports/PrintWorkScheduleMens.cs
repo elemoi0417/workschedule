@@ -118,7 +118,7 @@ namespace workschedule.Reports
                     if (clsCommonControl.GetWeekName(dtTargetMonth.AddDays(i).ToString("yyyyMMdd"), astrHoliday) == "祝" || 
                         clsCommonControl.GetWeekName(dtTargetMonth.AddDays(i).ToString("yyyyMMdd"), astrHoliday) == "日")
                     {
-                        for (int iStaffCount = 0; iStaffCount <= ROW_TOTAL_ROW; iStaffCount++)
+                        for (int iStaffCount = 0; iStaffCount <= ROW_TOTAL_ROW + 1; iStaffCount++)
                         {
                             xlSheet.Cells[ROW_DAY_START1 + iStaffCount, COLUMN_DAY_START1 + i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Gray125;
                             xlSheet.Cells[ROW_DAY_START2 + iStaffCount, COLUMN_DAY_START2 + i].Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Gray125;
