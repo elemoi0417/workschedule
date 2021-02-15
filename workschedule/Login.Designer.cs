@@ -80,7 +80,7 @@
             this.txtExPassword.Location = new System.Drawing.Point(31, 176);
             this.txtExPassword.Name = "txtExPassword";
             this.txtExPassword.PasswordChar = '*';
-            this.txtExPassword.Size = new System.Drawing.Size(246, 25);
+            this.txtExPassword.Size = new System.Drawing.Size(246, 29);
             this.txtExPassword.TabIndex = 1;
             this.txtExPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtExPassword.WatermarkText = "パスワード";
@@ -93,7 +93,7 @@
             this.txtExId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtExId.Location = new System.Drawing.Point(31, 138);
             this.txtExId.Name = "txtExId";
-            this.txtExId.Size = new System.Drawing.Size(246, 19);
+            this.txtExId.Size = new System.Drawing.Size(246, 29);
             this.txtExId.TabIndex = 0;
             this.txtExId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtExId.WatermarkText = "ユーザID";
