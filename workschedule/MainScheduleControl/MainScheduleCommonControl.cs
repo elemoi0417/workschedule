@@ -433,11 +433,19 @@ namespace workschedule.MainScheduleControl
                 {
                     case "土":
                         iSaturdayCount++;
-                        if (iSaturdayCount > 4) frmMainSchedule.pdHolidayCount = frmMainSchedule.pdHolidayCount + 0.5;
-                        {
+                        // Mod Start 2021.02.15 土曜日の祝日判定処理不具合対応
+                        //if (iSaturdayCount > 4) frmMainSchedule.pdHolidayCount = frmMainSchedule.pdHolidayCount + 0.5;
+                        //{
+                        //    bSaturdayHolidayFlag = false;
+                        //    break;
+                        //}
+                        if (iSaturdayCount > 4) {
+                            frmMainSchedule.pdHolidayCount = frmMainSchedule.pdHolidayCount + 0.5;
                             bSaturdayHolidayFlag = false;
-                            break;
+                            
                         }
+                        break;
+                        // Mod Start 2021.02.15 土曜日の祝日判定処理不具合対応
                     case "日":
                         iSundayCount++;
                         if (iSundayCount > 4) frmMainSchedule.pdHolidayCount++;
