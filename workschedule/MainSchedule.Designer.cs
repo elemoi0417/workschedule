@@ -1743,7 +1743,6 @@
             this.Controls.Add(this.txtTargetMonth);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "MainSchedule";
             this.Text = "勤務表管理システム";
             this.Activated += new System.EventHandler(this.MainSchedule_Activated);
