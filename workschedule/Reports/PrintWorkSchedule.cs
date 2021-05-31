@@ -176,6 +176,11 @@ namespace workschedule.Reports
                 }
                 // == 看護師・准看護師 ==
 
+                // Add Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                // データなしフラグを初期化（ループの必要なし）
+                bNoDataFlag = false;
+                // Add End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+
                 // 複数ページ対応とするか判定
                 if (astrScheduleStaffNurse.GetLength(0) > ROW_NURSE_TOTAL_ROW)
                 {
@@ -212,8 +217,10 @@ namespace workschedule.Reports
                         // 1日から順に処理
                         for (int iDay = 0; iDay < DateTime.DaysInMonth(dtTargetMonth.Year, dtTargetMonth.Month); iDay++)
                         {
-                            // データなしフラグを初期化
-                            bNoDataFlag = false;
+                            // Mod Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                            //// データなしフラグを初期化
+                            //bNoDataFlag = false;
+                            // Mod End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
 
                             // 初回計画データがある場合
                             if (dtScheduleFirstDetail.Rows.Count != 0)
@@ -268,7 +275,10 @@ namespace workschedule.Reports
                                 }
                             }
                             // 初回計画データがない場合
-                            else if (bNoDataFlag == false)
+                            // Mod Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                            //else if (bNoDataFlag == false)
+                            else
+                            // Mod End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
                             {
                                 // Mod Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
                                 //// 初回計画データ
@@ -346,8 +356,10 @@ namespace workschedule.Reports
                         // 1日から順に処理
                         for (int iDay = 0; iDay < DateTime.DaysInMonth(dtTargetMonth.Year, dtTargetMonth.Month); iDay++)
                         {
-                            // データなしフラグを初期化
-                            bNoDataFlag = false;
+                            // Mod Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                            //// データなしフラグを初期化
+                            //bNoDataFlag = false;
+                            // Mod End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
 
                             // 初回計画データがある場合
                             if (dtScheduleFirstDetail.Rows.Count != 0)
@@ -401,7 +413,10 @@ namespace workschedule.Reports
                                 }
                             }
                             // 初回計画データがない場合
-                            else if (bNoDataFlag == false)
+                            // Mod Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                            //else if (bNoDataFlag == false)
+                            else
+                            // Mod End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
                             {
                                 // Mod Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
                                 //// 初回計画データ
@@ -433,6 +448,15 @@ namespace workschedule.Reports
                             }
                         }
                     }
+
+                    // Add Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                    if(bNoDataFlag == false)
+                    {
+                        xlSheet.Cells[3, 6].Value = "※作成中の勤務表です";
+                        xlSheet.Cells[50, 6].Value = "※作成中の勤務表です";
+                    }
+                    // Add End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+
                 }
                 else
                 {
@@ -557,7 +581,14 @@ namespace workschedule.Reports
                             }
                         }
                     }
-                    
+
+                    // Add Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                    if (bNoDataFlag == false)
+                    {
+                        xlSheet.Cells[3, 6].Value = "※作成中の勤務表です";
+                    }
+                    // Add End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+
                 }
 
                 // == ケア ==
@@ -574,6 +605,11 @@ namespace workschedule.Reports
                     xlSheet.Cells[ROW_CARE_STAFF_START + (iStaff + 1) * 2 - 1, COLUMN_CARE_STAFF_START + 1].Value = "";
                 }
 
+                // Add Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                // データなしフラグを初期化（ループ内でおこなわなくてもよい）
+                bNoDataFlag = false;
+                // Add End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+
                 // 初回予定データ、最終実績データ
                 for (int iStaff = 0; iStaff < astrScheduleStaffCare.GetLength(0); iStaff++)
                 {
@@ -589,8 +625,10 @@ namespace workschedule.Reports
                     // 1日から順に処理
                     for (int iDay = 0; iDay < DateTime.DaysInMonth(dtTargetMonth.Year, dtTargetMonth.Month); iDay++)
                     {
-                        // データなしフラグを初期化
-                        bNoDataFlag = false;
+                        // Mod Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                        //// データなしフラグを初期化
+                        //bNoDataFlag = false;
+                        // Mod End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
 
                         // 初回計画データがある場合
                         if (dtScheduleFirstDetail.Rows.Count != 0)
@@ -645,7 +683,10 @@ namespace workschedule.Reports
                             }
                         }
                         // 初回計画データがない場合
-                        else if (bNoDataFlag == false)
+                        // Mod Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                        //else if (bNoDataFlag == false)
+                        else
+                        // Mod End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
                         {
                             // Mod Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
                             //// 初回計画データ
@@ -678,6 +719,13 @@ namespace workschedule.Reports
                     }
                 }
 
+                // Add Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                if (bNoDataFlag == false)
+                {
+                    xlSheet.Cells[97, 6].Value = "※作成中の勤務表です";
+                }
+                // Add End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+
                 // 印刷範囲の指定
                 xlSheet.PrinterSettings.PrintArea = xlSheet.Cells[1, 1, 137, 36];
 
@@ -686,15 +734,16 @@ namespace workschedule.Reports
                 {
                     xlSheet.DeleteRow(48, 47, true);
                 }
-
-                // Add Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
-                if(bNoDataFlag == false)
-                {
-                    xlSheet.Cells[3, 6].Value = "※作成中の勤務表です";
-                    xlSheet.Cells[50, 6].Value = "※作成中の勤務表です";
-                    xlSheet.Cells[97, 6].Value = "※作成中の勤務表です";
-                }
-                // Add End   WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+                // Mod Start WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
+                //// Add Start WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+                //if (bNoDataFlag == false)
+                //{
+                //    xlSheet.Cells[3, 6].Value = "※作成中の勤務表です";
+                //    xlSheet.Cells[50, 6].Value = "※作成中の勤務表です";
+                //    xlSheet.Cells[97, 6].Value = "※作成中の勤務表です";
+                //}
+                //// Add End   WataruT 2020.08.13 勤務表(月初)を初回登録無しで印刷可能とする
+                // Mod End   WataruT 2021.05.31 勤務表(月初)の作成中の文言を看護師とケアで分ける
 
                 // ファイルを保存
                 xlFile.SaveAs(new FileInfo(sfd.FileName));
